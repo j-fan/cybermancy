@@ -7,6 +7,8 @@ export const App: FunctionComponent = () => {
     <Fragment>
       <GlobalStyle />
       <DemoScene />
+      <video id="webcam-video" autoPlay muted playsInline />
+      <canvas id="webcam-canvas" />
     </Fragment>
   );
 };

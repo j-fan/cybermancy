@@ -7,23 +7,27 @@
   "license": "MIT",
   "scripts": {
     "check-types": "tsc",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --color --progress",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --color --progress --content-base public/",
     "build": "cross-env NODE_ENV=production webpack --color --progress",
+    "postbuild": "ncp ./static ./docs --filter '**/*.*'",
     "start": "serve docs",
     "lint": "eslint --ext .tsx,.ts,.js --quiet --fix src"
   },
   "dependencies": {
+    "@babel/runtime": "^7.12.5",
     "@babylonjs/core": "^4.2.0",
     "@babylonjs/gui": "^4.2.0",
     "@babylonjs/loaders": "^4.2.0",
     "eslint-plugin-react": "^7.22.0",
     "face-api.js": "^0.22.2",
+    "ncp": "^2.0.0",
     "react": "^16.12.0",
     "react-babylonjs": "^3.0.4",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
+    "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "@babel/preset-typescript": "^7.7.7",
