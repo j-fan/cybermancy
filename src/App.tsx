@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment, FunctionComponent } from "react";
 import { GlobalStyle } from "./globalStyles";
 import { DemoScene } from "./DemoScene";
 
-export default function App() {
+export const App: FunctionComponent = () => {
   return (
     <Fragment>
       <GlobalStyle />
       <DemoScene />
     </Fragment>
   );
-}
+};

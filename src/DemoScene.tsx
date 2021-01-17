@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { Engine, Scene } from "react-babylonjs";
 import { Vector3 } from "@babylonjs/core/Maths/math";
 
-export const DemoScene = () => (
+export const DemoScene: FunctionComponent = () => (
   <div style={{ flex: 1, display: "flex" }}>
     <Engine antialias adaptToDeviceRatio canvasId="babylonJS">
       <Scene>
