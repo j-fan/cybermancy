@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from "react";
 import { Engine, Scene } from "react-babylonjs";
-import { Vector3 } from "@babylonjs/core/Maths/math";
+import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
 
-export const DemoScene: FunctionComponent = () => (
-  <div style={{ flex: 1, display: "flex" }}>
+export const MainScene: FunctionComponent = () => (
+  <div>
     <Engine antialias adaptToDeviceRatio canvasId="babylonJS">
-      <Scene>
+      <Scene clearColor={new Color4(0, 0, 0, 0)}>
         <freeCamera
           name="camera1"
           position={new Vector3(0, 5, -10)}
