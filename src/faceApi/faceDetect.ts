@@ -1,8 +1,12 @@
 import * as faceApi from "face-api.js";
+import { Gender } from "face-api.js";
 
-let estimatedGender = "none";
-let estimatedAge = 0;
 let detector: faceApi.TinyFaceDetectorOptions;
+let totalGender = 0;
+let totalAge = 0;
+let estimatedAge = 0;
+let estimatedGender = Gender.MALE;
+let successfulDetections = 0;
 
 const startFaceDetect = async () => {
   await faceApi.nets.tinyFaceDetector.loadFromUri("./models");
@@ -25,37 +29,22 @@ const runDetection = async () => {
   return result;
 };
 
-let totalGender = 0;
-let totalAge = 0;
-let successfulDetections = 0;
-
-const initFaceDetect = async (): Promise<void> => {
-  await startFaceDetect();
-  await runFaceDetection();
-};
-
 const runDetectionOnce = async () => {
   const result = await runDetection();
 
-  if (result) {
+  if (result && result.age > 0) {
     successfulDetections++;
-    if (result.gender === "female") {
+    if (result.gender === Gender.FEMALE) {
       totalGender += result.genderProbability;
     } else {
       totalGender -= result.genderProbability;
     }
     totalAge += result.age;
     estimatedAge = totalAge / successfulDetections;
-    estimatedGender =
-      totalGender == 0 ? "none" : totalGender > 0 ? "female" : "male";
+    estimatedGender = totalGender > 0 ? Gender.FEMALE : Gender.MALE;
   }
-};
 
-const runFaceDetection = async (): Promise<void> => {
-  const numDetectionsToAverage = 5;
-  for (let i = 0; i < numDetectionsToAverage; i++) {
-    await runDetectionOnce();
-  }
+  console.log(estimatedAge, estimatedGender);
 };
 
 const resetFaceDetection = (): void => {
@@ -65,10 +54,11 @@ const resetFaceDetection = (): void => {
   successfulDetections = 0;
 };
 
-export {
-  initFaceDetect,
-  estimatedAge,
-  estimatedGender,
-  resetFaceDetection,
-  runFaceDetection,
+const initFaceDetect = async (): Promise<void> => {
+  await startFaceDetect();
+  while (successfulDetections < 5) {
+    await runDetectionOnce();
+  }
 };
+
+export { initFaceDetect, estimatedAge, estimatedGender, resetFaceDetection };
