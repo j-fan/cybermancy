@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from "react";
 import { Engine, Scene } from "react-babylonjs";
 import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
-import styled from "styled-components";
-import { fitToScreenWithoutOverflow } from "./globalStyles";
+import styled, { css } from "styled-components";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<MainSceneProps>`
   z-index: 99;
   position: absolute;
   top: 0;
@@ -13,21 +12,30 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   canvas {
-    ${fitToScreenWithoutOverflow}
+    ${({ width, height }) => css`
+      width: ${width}px;
+      height: ${height}px;
+    `}
   }
 `;
 
-export const MainScene: FunctionComponent = () => {
+type MainSceneProps = {
+  width: number;
+  height: number;
+};
+
+const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
   return (
-    <Wrapper>
+    <Wrapper width={width} height={height}>
       <Engine
         antialias
         adaptToDeviceRatio
         canvasId="babylonJS"
-        // width={videoElement?.clientWidth}
-        // height={videoElement?.clientHeight}
+        width={width}
+        height={height}
       >
         <Scene clearColor={new Color4(0, 0, 0, 0)}>
           <freeCamera
@@ -55,3 +63,5 @@ export const MainScene: FunctionComponent = () => {
     </Wrapper>
   );
 };
+
+export { MainScene };

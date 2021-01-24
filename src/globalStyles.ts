@@ -33,14 +33,4 @@ export const device = {
   desktopL: `(min-width: ${size.desktop})`,
 };
 
-export const fitToScreenWithoutOverflow = css`
-  height: auto;
-  width: 100%;
-
-  @media ${device.mobileM} {
-    height: 100%;
-    width: auto;
-  }
-`;
-
 export { GlobalStyle };
