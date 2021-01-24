@@ -1,30 +1,32 @@
-import React, { Fragment, FunctionComponent } from "react";
-import styled, { css } from "styled-components";
-import { GlobalStyle } from "./globalStyles";
+import React, { FunctionComponent } from "react";
+import styled from "styled-components";
+import { fitToScreenWithoutOverflow, GlobalStyle } from "./globalStyles";
 import { MainScene } from "./MainScene";
 
-const fixToTopAndBehind = css`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-`;
-
 const StyledVideo = styled.video`
-  ${fixToTopAndBehind}
+  ${fitToScreenWithoutOverflow}
 `;
 
 const StyledCanvas = styled.canvas`
-  ${fixToTopAndBehind}
+  position: fixed;
+`;
+
+const AppWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
 `;
 
 export const App: FunctionComponent = () => {
   return (
-    <Fragment>
+    <AppWrapper>
       <GlobalStyle />
       <MainScene />
       <StyledVideo id="webcam-video" autoPlay muted playsInline />
       <StyledCanvas id="webcam-canvas" />
-    </Fragment>
+    </AppWrapper>
   );
 };
