@@ -28,21 +28,18 @@ type MainSceneProps = {
   height: number;
 };
 
+const environmentUrl = "./images/environment.dds";
 let hdrTexture: BaseTexture | undefined = undefined;
-let hdrTextureClone: BaseTexture | undefined = undefined;
 const onSceneMounted = (createdArgs: SceneEventArgs) => {
   createdArgs.scene.imageProcessingConfiguration.exposure = 0.6;
   createdArgs.scene.imageProcessingConfiguration.contrast = 1.6;
 };
 
 const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
-  const environmentUrl = "./images/environment.dds";
   const [_, setTexturesLoaded] = useState(false);
 
   const hdrTextureRef = useCallback((node) => {
     hdrTexture = node;
-    hdrTextureClone = hdrTexture.clone();
-    hdrTextureClone.coordinatesMode = Texture.SKYBOX_MODE;
     setTexturesLoaded(true); // trigger render and props assignment
   }, []);
 

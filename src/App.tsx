@@ -3,7 +3,7 @@ import { ResizeObserver } from "@juggle/resize-observer";
 import useMeasure from "react-use-measure";
 import styled from "styled-components";
 import { device, GlobalStyle } from "./globalStyles";
-import { MainScene } from "./MainScene";
+import { MainScene } from "./babylon/MainScene";
 
 const StyledVideo = styled.video`
   height: auto;
