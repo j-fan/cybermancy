@@ -7,7 +7,7 @@ import { initCamera } from "./faceApi/webcam";
 const initAll = async () => {
   ReactDOM.render(<App />, document.getElementById("app"));
   await initCamera();
-  // await initFaceDetect();
+  await initFaceDetect();
 };
 
 initAll();

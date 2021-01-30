@@ -1,16 +1,19 @@
 import * as faceApi from "face-api.js";
 import { Gender } from "face-api.js";
+import { FACE_DEBUG_CANVAS_ID, WEBCAM_VIDEO_ID } from "../App";
 
+const SHOW_FACE_DEBUG = true;
 let detector: faceApi.TinyFaceDetectorOptions;
 let totalGender = 0;
 let totalAge = 0;
 let estimatedAge = 0;
 let estimatedGender = Gender.MALE;
-let successfulDetections = 0;
+let successfulAgeGenderDetections = 0;
 
 const startFaceDetect = async () => {
   await faceApi.nets.tinyFaceDetector.loadFromUri("./models");
   await faceApi.nets.ageGenderNet.loadFromUri("./models");
+  await faceApi.nets.faceLandmark68TinyNet.loadFromUri("./models");
 
   const inputSize = 512;
   const scoreThreshold = 0.5;
@@ -22,25 +25,45 @@ const startFaceDetect = async () => {
   console.log("tinyface loaded");
 };
 
-const runDetection = async () => {
+const runFaceLandmarkDetection = async () => {
   const result = await faceApi
-    .detectSingleFace("webcam-video", detector)
-    .withAgeAndGender();
+    .detectSingleFace(WEBCAM_VIDEO_ID, detector)
+    .withFaceLandmarks(true);
+
+  const faceLandmarkDebugCanvas = document.getElementById(
+    FACE_DEBUG_CANVAS_ID
+  ) as HTMLCanvasElement;
+
+  const videoCanvas = document.getElementById(
+    WEBCAM_VIDEO_ID
+  ) as HTMLCanvasElement;
+
+  if (SHOW_FACE_DEBUG && faceLandmarkDebugCanvas && result && videoCanvas) {
+    const dimensions = faceApi.matchDimensions(
+      faceLandmarkDebugCanvas,
+      videoCanvas,
+      true
+    );
+    const resizedResults = faceApi.resizeResults(result, dimensions);
+    faceApi.draw.drawFaceLandmarks(faceLandmarkDebugCanvas, resizedResults);
+  }
   return result;
 };
 
-const runDetectionOnce = async () => {
-  const result = await runDetection();
+const runAgeGenderDetection = async () => {
+  const result = await faceApi
+    .detectSingleFace(WEBCAM_VIDEO_ID, detector)
+    .withAgeAndGender();
 
   if (result && result.age > 0) {
-    successfulDetections++;
+    successfulAgeGenderDetections++;
     if (result.gender === Gender.FEMALE) {
       totalGender += result.genderProbability;
     } else {
       totalGender -= result.genderProbability;
     }
     totalAge += result.age;
-    estimatedAge = totalAge / successfulDetections;
+    estimatedAge = totalAge / successfulAgeGenderDetections;
     estimatedGender = totalGender > 0 ? Gender.FEMALE : Gender.MALE;
   }
 
@@ -51,13 +74,16 @@ const resetFaceDetection = (): void => {
   console.log("reset face detect");
   totalGender = 0;
   totalAge = 0;
-  successfulDetections = 0;
+  successfulAgeGenderDetections = 0;
 };
 
 const initFaceDetect = async (): Promise<void> => {
   await startFaceDetect();
-  while (successfulDetections < 5) {
-    await runDetectionOnce();
+  while (true) {
+    if (successfulAgeGenderDetections < 5) {
+      await runAgeGenderDetection();
+    }
+    await runFaceLandmarkDetection();
   }
 };
 

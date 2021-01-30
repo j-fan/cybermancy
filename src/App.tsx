@@ -5,7 +5,11 @@ import styled from "styled-components";
 import { device, GlobalStyle } from "./globalStyles";
 import { MainScene } from "./babylon/MainScene";
 
-const StyledVideo = styled.video`
+const WEBCAM_VIDEO_ID = "webcam-video";
+const WEBCAM_CANVAS_ID = "webcam-canvas";
+const FACE_DEBUG_CANVAS_ID = "face-debug";
+
+const WebcamVideo = styled.video`
   height: auto;
   width: 100%;
 
@@ -15,8 +19,14 @@ const StyledVideo = styled.video`
   }
 `;
 
-const StyledCanvas = styled.canvas`
+const WebcamCanvas = styled.canvas`
   position: fixed;
+`;
+
+const FaceLandmarksDebugCanvas = styled.canvas`
+  width: 100%;
+  height: 100%;
+  position: absolute;
 `;
 
 const AppWrapper = styled.div`
@@ -28,7 +38,7 @@ const AppWrapper = styled.div`
   height: 100vh;
 `;
 
-export const App: FunctionComponent = () => {
+const App: FunctionComponent = () => {
   const [ref, { height: videoHeight, width: videoWidth }] = useMeasure({
     polyfill: ResizeObserver,
   });
@@ -37,8 +47,11 @@ export const App: FunctionComponent = () => {
     <AppWrapper>
       <GlobalStyle />
       <MainScene width={videoWidth} height={videoHeight} />
-      <StyledVideo id="webcam-video" autoPlay muted playsInline ref={ref} />
-      <StyledCanvas id="webcam-canvas" />
+      <WebcamVideo id={WEBCAM_VIDEO_ID} autoPlay muted playsInline ref={ref} />
+      <WebcamCanvas id={WEBCAM_CANVAS_ID} />
+      <FaceLandmarksDebugCanvas id={FACE_DEBUG_CANVAS_ID} />
     </AppWrapper>
   );
 };
+
+export { App, WEBCAM_VIDEO_ID, FACE_DEBUG_CANVAS_ID };
