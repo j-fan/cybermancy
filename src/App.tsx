@@ -4,6 +4,7 @@ import useMeasure from "react-use-measure";
 import styled from "styled-components";
 import { device, GlobalStyle } from "./globalStyles";
 import { MainScene } from "./babylon/MainScene";
+import { initFaceDetect } from "./faceApi/faceDetect";
 
 const WEBCAM_VIDEO_ID = "webcam-video";
 const WEBCAM_CANVAS_ID = "webcam-canvas";
@@ -47,7 +48,14 @@ const App: FunctionComponent = () => {
     <AppWrapper>
       <GlobalStyle />
       <MainScene width={videoWidth} height={videoHeight} />
-      <WebcamVideo id={WEBCAM_VIDEO_ID} autoPlay muted playsInline ref={ref} />
+      <WebcamVideo
+        id={WEBCAM_VIDEO_ID}
+        autoPlay
+        muted
+        playsInline
+        ref={ref}
+        onPlay={initFaceDetect}
+      />
       <WebcamCanvas id={WEBCAM_CANVAS_ID} />
       <FaceLandmarksDebugCanvas id={FACE_DEBUG_CANVAS_ID} />
     </AppWrapper>
