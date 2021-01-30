@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { ResizeObserver } from "@juggle/resize-observer";
 import useMeasure from "react-use-measure";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { device, GlobalStyle } from "./globalStyles";
 import { MainScene } from "./babylon/MainScene";
 import { initFaceDetect } from "./faceApi/faceDetect";
@@ -9,6 +9,11 @@ import { initFaceDetect } from "./faceApi/faceDetect";
 const WEBCAM_VIDEO_ID = "webcam-video";
 const WEBCAM_CANVAS_ID = "webcam-canvas";
 const FACE_DEBUG_CANVAS_ID = "face-debug";
+
+export type VideoDimensions = {
+  width: number;
+  height: number;
+};
 
 const WebcamVideo = styled.video`
   height: auto;
@@ -24,9 +29,11 @@ const WebcamCanvas = styled.canvas`
   position: fixed;
 `;
 
-const FaceLandmarksDebugCanvas = styled.canvas`
-  width: 100%;
-  height: 100%;
+const FaceLandmarksDebugCanvas = styled.canvas<VideoDimensions>`
+  ${({ width, height }) => css`
+    width: ${width}px;
+    height: ${height}px;
+  `}
   position: absolute;
   z-index: 100;
 `;
@@ -55,10 +62,20 @@ const App: FunctionComponent = () => {
         muted
         playsInline
         ref={ref}
-        onPlay={() => initFaceDetect({ showDebug: true })}
+        onPlay={() =>
+          initFaceDetect({
+            showDebug: true,
+            width: videoWidth,
+            height: videoHeight,
+          })
+        }
       />
       <WebcamCanvas id={WEBCAM_CANVAS_ID} />
-      <FaceLandmarksDebugCanvas id={FACE_DEBUG_CANVAS_ID} />
+      <FaceLandmarksDebugCanvas
+        id={FACE_DEBUG_CANVAS_ID}
+        width={videoWidth}
+        height={videoHeight}
+      />
     </AppWrapper>
   );
 };

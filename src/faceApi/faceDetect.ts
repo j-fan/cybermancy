@@ -11,6 +11,8 @@ let successfulAgeGenderDetections = 0;
 
 type FaceDetectOptions = {
   showDebug?: boolean;
+  width: number;
+  height: number;
 };
 
 const startFaceDetect = async () => {
@@ -28,7 +30,11 @@ const startFaceDetect = async () => {
   console.log("tinyface loaded");
 };
 
-const runFaceLandmarkDetection = async ({ showDebug }: FaceDetectOptions) => {
+const runFaceLandmarkDetection = async ({
+  showDebug,
+  width,
+  height,
+}: FaceDetectOptions) => {
   const result = await faceApi
     .detectSingleFace(WEBCAM_VIDEO_ID, detector)
     .withFaceLandmarks(true);
@@ -37,14 +43,10 @@ const runFaceLandmarkDetection = async ({ showDebug }: FaceDetectOptions) => {
     FACE_DEBUG_CANVAS_ID
   ) as HTMLCanvasElement;
 
-  const videoCanvas = document.getElementById(
-    WEBCAM_VIDEO_ID
-  ) as HTMLCanvasElement;
-
-  if (showDebug && faceLandmarkDebugCanvas && result && videoCanvas) {
+  if (showDebug && faceLandmarkDebugCanvas && result) {
     const dimensions = faceApi.matchDimensions(
       faceLandmarkDebugCanvas,
-      videoCanvas,
+      { width, height },
       true
     );
     const resizedResults = faceApi.resizeResults(result, dimensions);
@@ -82,14 +84,17 @@ const resetFaceDetection = (): void => {
   successfulAgeGenderDetections = 0;
 };
 
+const runDetections = async (options: FaceDetectOptions) => {
+  if (successfulAgeGenderDetections < 5) {
+    await runAgeGenderDetection(options);
+  }
+  await runFaceLandmarkDetection(options);
+  requestAnimationFrame(() => runDetections(options));
+};
+
 const initFaceDetect = async (options: FaceDetectOptions): Promise<void> => {
   await startFaceDetect();
-  while (true) {
-    if (successfulAgeGenderDetections < 5) {
-      await runAgeGenderDetection(options);
-    }
-    await runFaceLandmarkDetection(options);
-  }
+  runDetections(options);
 };
 
 export { initFaceDetect, estimatedAge, estimatedGender, resetFaceDetection };

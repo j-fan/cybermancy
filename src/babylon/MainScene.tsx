@@ -1,9 +1,10 @@
 import React, { FunctionComponent, useCallback, useState } from "react";
 import { Engine, Scene, SceneEventArgs } from "react-babylonjs";
-import { Color3, Color4, Vector3 } from "@babylonjs/core/Maths/math";
+import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
 import styled, { css } from "styled-components";
-import { BaseTexture, Texture } from "@babylonjs/core";
+import { BaseTexture } from "@babylonjs/core";
 import { ExampleObjects } from "./ExampleObjects";
+import { VideoDimensions } from "../App";
 
 const Wrapper = styled.div<MainSceneProps>`
   z-index: 99;
@@ -24,10 +25,7 @@ const Wrapper = styled.div<MainSceneProps>`
   }
 `;
 
-type MainSceneProps = {
-  width: number;
-  height: number;
-};
+type MainSceneProps = VideoDimensions;
 
 const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
   const environmentUrl = "./images/environment.dds";
