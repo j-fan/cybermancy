@@ -1,14 +1,17 @@
-import * as faceApi from "face-api.js";
-import { Gender } from "face-api.js";
+import * as faceApi from "@vladmandic/face-api";
+import { Gender } from "@vladmandic/face-api";
 import { FACE_DEBUG_CANVAS_ID, WEBCAM_VIDEO_ID } from "../App";
 
-const SHOW_FACE_DEBUG = true;
 let detector: faceApi.TinyFaceDetectorOptions;
 let totalGender = 0;
 let totalAge = 0;
 let estimatedAge = 0;
 let estimatedGender = Gender.MALE;
 let successfulAgeGenderDetections = 0;
+
+type FaceDetectOptions = {
+  showDebug?: boolean;
+};
 
 const startFaceDetect = async () => {
   await faceApi.nets.tinyFaceDetector.loadFromUri("./models");
@@ -25,7 +28,7 @@ const startFaceDetect = async () => {
   console.log("tinyface loaded");
 };
 
-const runFaceLandmarkDetection = async () => {
+const runFaceLandmarkDetection = async ({ showDebug }: FaceDetectOptions) => {
   const result = await faceApi
     .detectSingleFace(WEBCAM_VIDEO_ID, detector)
     .withFaceLandmarks(true);
@@ -38,7 +41,7 @@ const runFaceLandmarkDetection = async () => {
     WEBCAM_VIDEO_ID
   ) as HTMLCanvasElement;
 
-  if (SHOW_FACE_DEBUG && faceLandmarkDebugCanvas && result && videoCanvas) {
+  if (showDebug && faceLandmarkDebugCanvas && result && videoCanvas) {
     const dimensions = faceApi.matchDimensions(
       faceLandmarkDebugCanvas,
       videoCanvas,
@@ -50,7 +53,7 @@ const runFaceLandmarkDetection = async () => {
   return result;
 };
 
-const runAgeGenderDetection = async () => {
+const runAgeGenderDetection = async ({ showDebug }: FaceDetectOptions) => {
   const result = await faceApi
     .detectSingleFace(WEBCAM_VIDEO_ID, detector)
     .withAgeAndGender();
@@ -67,7 +70,9 @@ const runAgeGenderDetection = async () => {
     estimatedGender = totalGender > 0 ? Gender.FEMALE : Gender.MALE;
   }
 
-  console.log(estimatedAge, estimatedGender);
+  if (showDebug) {
+    console.log(estimatedAge, estimatedGender);
+  }
 };
 
 const resetFaceDetection = (): void => {
@@ -77,13 +82,13 @@ const resetFaceDetection = (): void => {
   successfulAgeGenderDetections = 0;
 };
 
-const initFaceDetect = async (): Promise<void> => {
+const initFaceDetect = async (options: FaceDetectOptions): Promise<void> => {
   await startFaceDetect();
   while (true) {
     if (successfulAgeGenderDetections < 5) {
-      await runAgeGenderDetection();
+      await runAgeGenderDetection(options);
     }
-    await runFaceLandmarkDetection();
+    await runFaceLandmarkDetection(options);
   }
 };
 

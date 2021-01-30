@@ -16,6 +16,9 @@ const config = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
+  node: {
+    fs: "empty"
+  },
   module: {
     rules: [
       {
