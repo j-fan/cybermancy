@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "check-types": "tsc",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --color --progress --content-base public/",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --color --progress --content-base public/ --host 192.168.20.26 --https",
     "build": "cross-env NODE_ENV=production webpack --color --progress",
     "postbuild": "ncp ./public ./docs --filter '**/*.*'",
     "start": "serve docs",
