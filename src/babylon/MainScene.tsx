@@ -1,10 +1,11 @@
 import React, { FunctionComponent, useCallback, useState } from "react";
 import { Engine, Scene, SceneEventArgs } from "react-babylonjs";
-import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
+import { Color3, Color4, Vector3 } from "@babylonjs/core/Maths/math";
 import styled, { css } from "styled-components";
 import { BaseTexture } from "@babylonjs/core";
 import { ExampleObjects } from "./ExampleObjects";
 import { VideoDimensions } from "../App";
+import { ModelWithProgress } from "./ModelWithProgress";
 
 const Wrapper = styled.div<MainSceneProps>`
   z-index: 99;
@@ -54,6 +55,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
         <Scene
           clearColor={new Color4(0, 0, 0, 0)}
           onSceneMount={onSceneMounted}
+          environmentTexture={hdrTexture}
         >
           <cubeTexture
             ref={hdrTextureRef}
@@ -76,7 +78,14 @@ const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
             direction={Vector3.Up()}
           />
 
-          <ExampleObjects hdrTexture={hdrTexture} />
+          <ModelWithProgress
+            name="Atom"
+            rootUrl="./3dassets/"
+            sceneFilename="atom.glb"
+            scaleTo={4}
+            progressBarColor={Color3.FromInts(255, 165, 0)}
+            position={new Vector3(0, 0, 0)}
+          />
         </Scene>
       </Engine>
     </Wrapper>
