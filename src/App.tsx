@@ -35,7 +35,6 @@ const FaceLandmarksDebugCanvas = styled.canvas<VideoDimensions>`
     height: ${height}px;
   `}
   position: absolute;
-  z-index: 100;
 `;
 
 const AppWrapper = styled.div`
@@ -62,13 +61,13 @@ const App: FunctionComponent = () => {
         muted
         playsInline
         ref={ref}
-        onPlay={() =>
-          initFaceDetect({
-            showDebug: true,
-            width: videoWidth,
-            height: videoHeight,
-          })
-        }
+        // onPlay={() =>
+        //   initFaceDetect({
+        //     showDebug: true,
+        //     width: videoWidth,
+        //     height: videoHeight,
+        //   })
+        // }
       />
       <WebcamCanvas id={WEBCAM_CANVAS_ID} />
       <FaceLandmarksDebugCanvas

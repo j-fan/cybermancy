@@ -3,9 +3,9 @@ import { Engine, Scene, SceneEventArgs } from "react-babylonjs";
 import { Color3, Color4, Vector3 } from "@babylonjs/core/Maths/math";
 import styled, { css } from "styled-components";
 import { BaseTexture } from "@babylonjs/core";
-import { ExampleObjects } from "./ExampleObjects";
 import { VideoDimensions } from "../App";
 import { ModelWithProgress } from "./ModelWithProgress";
+// import "@babylonjs/inspector";
 
 const Wrapper = styled.div<MainSceneProps>`
   z-index: 99;
@@ -27,16 +27,17 @@ const Wrapper = styled.div<MainSceneProps>`
 `;
 
 type MainSceneProps = VideoDimensions;
+const ENVIRONMENT_IMG_URL = "./images/environment.dds";
 
 const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
-  const environmentUrl = "./images/environment.dds";
   const [hdrTexture, setHdrTexture] = useState<BaseTexture | undefined>(
     undefined
   );
 
-  const onSceneMounted = (createdArgs: SceneEventArgs) => {
-    createdArgs.scene.imageProcessingConfiguration.exposure = 0.6;
-    createdArgs.scene.imageProcessingConfiguration.contrast = 1.6;
+  const onSceneMounted = ({ scene }: SceneEventArgs) => {
+    scene.imageProcessingConfiguration.exposure = 0.6;
+    scene.imageProcessingConfiguration.contrast = 1.6;
+    // scene.debugLayer.show();
   };
 
   const hdrTextureRef = useCallback((node) => {
@@ -45,13 +46,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
 
   return (
     <Wrapper width={width} height={height}>
-      <Engine
-        antialias
-        adaptToDeviceRatio
-        canvasId="babylonJS"
-        width={width}
-        height={height}
-      >
+      <Engine antialias canvasId="babylonJS" width={width} height={height}>
         <Scene
           clearColor={new Color4(0, 0, 0, 0)}
           onSceneMount={onSceneMounted}
@@ -60,7 +55,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
           <cubeTexture
             ref={hdrTextureRef}
             name="hdrTexture"
-            rootUrl={environmentUrl}
+            rootUrl={ENVIRONMENT_IMG_URL}
             createPolynomials={true}
             format={undefined}
             prefiltered={true}
@@ -79,12 +74,15 @@ const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
           />
 
           <ModelWithProgress
-            name="Atom"
+            name="Cube"
             rootUrl="./3dassets/"
-            sceneFilename="atom.glb"
-            scaleTo={4}
+            sceneFilename="cube.glb"
+            scaleTo={1}
             progressBarColor={Color3.FromInts(255, 165, 0)}
             position={new Vector3(0, 0, 0)}
+            onClick={() => {
+              alert("cube clicked");
+            }}
           />
         </Scene>
       </Engine>
