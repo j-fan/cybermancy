@@ -61,13 +61,13 @@ const App: FunctionComponent = () => {
         muted
         playsInline
         ref={ref}
-        // onPlay={() =>
-        //   initFaceDetect({
-        //     showDebug: true,
-        //     width: videoWidth,
-        //     height: videoHeight,
-        //   })
-        // }
+        onPlay={() =>
+          initFaceDetect({
+            showDebug: true,
+            width: videoWidth,
+            height: videoHeight,
+          })
+        }
       />
       <WebcamCanvas id={WEBCAM_CANVAS_ID} />
       <FaceLandmarksDebugCanvas
