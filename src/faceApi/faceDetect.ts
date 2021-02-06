@@ -1,8 +1,14 @@
 import * as faceApi from "@vladmandic/face-api";
-import { Gender } from "@vladmandic/face-api";
+import {
+  FaceDetection,
+  FaceLandmarks68,
+  Gender,
+  TinyFaceDetectorOptions,
+  WithFaceLandmarks,
+} from "@vladmandic/face-api";
 import { FACE_DEBUG_CANVAS_ID, WEBCAM_VIDEO_ID } from "../App";
 
-let detector: faceApi.TinyFaceDetectorOptions;
+let detector: TinyFaceDetectorOptions;
 let totalGender = 0;
 let totalAge = 0;
 let estimatedAge = 0;
@@ -15,19 +21,17 @@ type FaceDetectOptions = {
   height: number;
 };
 
-const startFaceDetect = async () => {
+const startFaceDetect = async (): Promise<void> => {
   await faceApi.nets.tinyFaceDetector.loadFromUri("./models");
   await faceApi.nets.ageGenderNet.loadFromUri("./models");
   await faceApi.nets.faceLandmark68TinyNet.loadFromUri("./models");
 
   const inputSize = 512;
   const scoreThreshold = 0.5;
-  detector = await new faceApi.TinyFaceDetectorOptions({
+  detector = await new TinyFaceDetectorOptions({
     inputSize,
     scoreThreshold,
   });
-
-  console.log("tinyface loaded");
 };
 
 const runFaceLandmarkDetection = async ({
@@ -77,24 +81,25 @@ const runAgeGenderDetection = async ({ showDebug }: FaceDetectOptions) => {
   }
 };
 
-const resetFaceDetection = (): void => {
-  console.log("reset face detect");
-  totalGender = 0;
-  totalAge = 0;
-  successfulAgeGenderDetections = 0;
+type DetectionResults = {
+  landmarks?: WithFaceLandmarks<{ detection: FaceDetection }, FaceLandmarks68>;
+  estimatedAge: number;
+  estimatedGender: Gender;
 };
 
-const runDetections = async (options: FaceDetectOptions) => {
+const runDetections = async (
+  options: FaceDetectOptions
+): Promise<DetectionResults> => {
   if (successfulAgeGenderDetections < 5) {
     await runAgeGenderDetection(options);
   }
-  await runFaceLandmarkDetection(options);
-  requestAnimationFrame(() => runDetections(options));
+  const landmarks = await runFaceLandmarkDetection(options);
+
+  return {
+    landmarks,
+    estimatedAge,
+    estimatedGender,
+  };
 };
 
-const initFaceDetect = async (options: FaceDetectOptions): Promise<void> => {
-  await startFaceDetect();
-  runDetections(options);
-};
-
-export { initFaceDetect, estimatedAge, estimatedGender, resetFaceDetection };
+export { startFaceDetect, runDetections };

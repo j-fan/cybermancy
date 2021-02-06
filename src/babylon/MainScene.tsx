@@ -5,6 +5,7 @@ import styled, { css } from "styled-components";
 import { BaseTexture } from "@babylonjs/core";
 import { VideoDimensions } from "../App";
 import { InteractiveModel } from "./InteractiveModel";
+import { runDetections } from "../faceApi/faceDetect";
 // import "@babylonjs/inspector";
 
 const Wrapper = styled.div<MainSceneProps>`
@@ -44,6 +45,14 @@ const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
     setHdrTexture(node);
   }, []);
 
+  const beforeRender = async () => {
+    await runDetections({
+      showDebug: true,
+      width,
+      height,
+    });
+  };
+
   return (
     <Wrapper width={width} height={height}>
       <Engine antialias canvasId="babylonJS" width={width} height={height}>
@@ -51,6 +60,10 @@ const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
           clearColor={new Color4(0, 0, 0, 0)}
           onSceneMount={onSceneMounted}
           environmentTexture={hdrTexture}
+          beforeRender={beforeRender}
+          onReadyObservable={() => {
+            console.log("ready");
+          }}
         >
           <cubeTexture
             ref={hdrTextureRef}
