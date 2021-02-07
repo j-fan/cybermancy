@@ -18,6 +18,7 @@ export type VideoDimensions = {
 const WebcamVideo = styled.video`
   height: auto;
   width: 100%;
+  transform: scaleX(-1);
 
   @media ${device.mobileL} {
     height: 100%;
@@ -35,6 +36,7 @@ const FaceLandmarksDebugCanvas = styled.canvas<VideoDimensions>`
     height: ${height}px;
   `}
   position: absolute;
+  transform: scaleX(-1);
 `;
 
 const AppWrapper = styled.div`
