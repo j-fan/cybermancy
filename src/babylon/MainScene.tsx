@@ -2,13 +2,14 @@ import React, { FunctionComponent, useCallback, useState } from "react";
 import { Engine, Scene, SceneEventArgs } from "react-babylonjs";
 import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
 import styled, { css } from "styled-components";
-import { BaseTexture } from "@babylonjs/core";
-import { VideoDimensions } from "../App";
+import { Camera, BaseTexture } from "@babylonjs/core";
 import { InteractiveModel } from "./InteractiveModel";
 import { runDetections } from "../faceApi/faceDetect";
+import { FaceLandmarks68 } from "@vladmandic/face-api";
+import { faceApiToBabylonCoord } from "../utils/faceApiToBabylonCoord";
 // import "@babylonjs/inspector";
 
-const Wrapper = styled.div<MainSceneProps>`
+const Wrapper = styled.div<{ width: number; height: number }>`
   z-index: 99;
   position: absolute;
   top: 0;
@@ -27,13 +28,27 @@ const Wrapper = styled.div<MainSceneProps>`
   }
 `;
 
-type MainSceneProps = VideoDimensions;
+type MainSceneProps = {
+  trueVideoWidth: number;
+  trueVideoHeight: number;
+  width: number;
+  height: number;
+};
+
 const ENVIRONMENT_IMG_URL = "./images/environment.dds";
 
-const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
+const MainScene: FunctionComponent<MainSceneProps> = ({
+  width,
+  height,
+  trueVideoHeight,
+  trueVideoWidth,
+}) => {
   const [hdrTexture, setHdrTexture] = useState<BaseTexture | undefined>(
     undefined
   );
+  const [faceLandmarks, setFaceLandmarks] = useState<
+    FaceLandmarks68 | undefined
+  >();
 
   const onSceneMounted = ({ scene }: SceneEventArgs) => {
     scene.imageProcessingConfiguration.exposure = 0.6;
@@ -46,11 +61,15 @@ const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
   }, []);
 
   const beforeRender = async () => {
-    await runDetections({
+    const faceResults = await runDetections({
       showDebug: true,
       width,
       height,
     });
+
+    if (faceResults.landmarks) {
+      setFaceLandmarks(faceResults.landmarks.landmarks);
+    }
   };
 
   return (
@@ -81,6 +100,11 @@ const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
             radius={9.0}
             target={Vector3.Zero()}
             minZ={0.001}
+            mode={Camera.ORTHOGRAPHIC_CAMERA}
+            orthoLeft={trueVideoWidth}
+            orthoTop={0}
+            orthoBottom={trueVideoHeight}
+            orthoRight={0}
           />
 
           <hemisphericLight
@@ -93,8 +117,8 @@ const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
             name="Cube"
             rootUrl="./3dassets/"
             sceneFilename="cube.glb"
-            scaleTo={1}
-            position={new Vector3(0, 0, 0)}
+            scaleTo={35}
+            position={faceApiToBabylonCoord(faceLandmarks?.getRightEye()[0])}
             onClick={() => {
               alert("cube clicked");
             }}
@@ -104,8 +128,8 @@ const MainScene: FunctionComponent<MainSceneProps> = ({ width, height }) => {
             name="Spikes"
             rootUrl="./3dassets/"
             sceneFilename="spikes.glb"
-            scaleTo={1}
-            position={new Vector3(0, -1, 0)}
+            scaleTo={50}
+            position={faceApiToBabylonCoord(faceLandmarks?.getLeftEye()[0])}
             onClick={() => {
               alert("spike clicked");
             }}
