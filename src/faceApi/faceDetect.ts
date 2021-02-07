@@ -14,6 +14,7 @@ let totalAge = 0;
 let estimatedAge = 0;
 let estimatedGender = Gender.MALE;
 let successfulAgeGenderDetections = 0;
+let netsLoaded = false;
 
 type FaceDetectOptions = {
   showDebug?: boolean;
@@ -32,6 +33,7 @@ const startFaceDetect = async (): Promise<void> => {
     inputSize,
     scoreThreshold,
   });
+  netsLoaded = true;
 };
 
 const runFaceLandmarkDetection = async ({
@@ -90,6 +92,10 @@ type DetectionResults = {
 const runDetections = async (
   options: FaceDetectOptions
 ): Promise<DetectionResults> => {
+  if (!netsLoaded) {
+    return { estimatedAge, estimatedGender };
+  }
+
   if (successfulAgeGenderDetections < 5) {
     await runAgeGenderDetection(options);
   }
