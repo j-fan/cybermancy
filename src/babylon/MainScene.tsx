@@ -24,6 +24,7 @@ const Wrapper = styled.div<{ width: number; height: number }>`
     ${({ width, height }) => css`
       width: ${width}px;
       height: ${height}px;
+      outline: none;
     `}
   }
 `;
