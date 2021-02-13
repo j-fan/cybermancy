@@ -5,6 +5,7 @@ import styled, { css } from "styled-components";
 import { device, GlobalStyle } from "./globalStyles";
 import { MainScene } from "./babylon/MainScene";
 import { startFaceDetect } from "./faceApi/faceDetect";
+import { defaultModalContext, ModalProvider } from "./components/Modal";
 
 const WEBCAM_VIDEO_ID = "webcam-video";
 const WEBCAM_CANVAS_ID = "webcam-canvas";
@@ -58,32 +59,34 @@ const App: FunctionComponent = () => {
   });
 
   return (
-    <AppWrapper>
-      <GlobalStyle />
-      <MainScene
-        width={videoCanvasWidth}
-        height={videoCanvasHeight}
-        trueVideoWidth={videoRef.current?.videoWidth ?? 0}
-        trueVideoHeight={videoRef.current?.videoHeight ?? 0}
-      />
-      <WebcamVideo
-        id={WEBCAM_VIDEO_ID}
-        autoPlay
-        muted
-        playsInline
-        ref={(ref) => {
-          setUseMeasureRef(ref);
-          videoRef.current = ref;
-        }}
-        onPlay={startFaceDetect}
-      />
-      <WebcamCanvas id={WEBCAM_CANVAS_ID} />
-      <FaceLandmarksDebugCanvas
-        id={FACE_DEBUG_CANVAS_ID}
-        width={videoCanvasWidth}
-        height={videoCanvasHeight}
-      />
-    </AppWrapper>
+    <ModalProvider>
+      <AppWrapper>
+        <GlobalStyle />
+        <MainScene
+          width={videoCanvasWidth}
+          height={videoCanvasHeight}
+          trueVideoWidth={videoRef.current?.videoWidth ?? 0}
+          trueVideoHeight={videoRef.current?.videoHeight ?? 0}
+        />
+        <WebcamVideo
+          id={WEBCAM_VIDEO_ID}
+          autoPlay
+          muted
+          playsInline
+          ref={(ref) => {
+            setUseMeasureRef(ref);
+            videoRef.current = ref;
+          }}
+          onPlay={startFaceDetect}
+        />
+        <WebcamCanvas id={WEBCAM_CANVAS_ID} />
+        <FaceLandmarksDebugCanvas
+          id={FACE_DEBUG_CANVAS_ID}
+          width={videoCanvasWidth}
+          height={videoCanvasHeight}
+        />
+      </AppWrapper>
+    </ModalProvider>
   );
 };
 

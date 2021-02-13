@@ -3,10 +3,10 @@ import { Engine, Scene, SceneEventArgs } from "react-babylonjs";
 import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
 import styled, { css } from "styled-components";
 import { Camera, BaseTexture } from "@babylonjs/core";
-import { InteractiveModel } from "./InteractiveModel";
 import { runDetections } from "../faceApi/faceDetect";
 import { FaceLandmarks68 } from "@vladmandic/face-api";
-import { faceApiToBabylonCoord } from "../utils/faceApiToBabylonCoord";
+import { InteractiveModels } from "./InteractiveModels";
+import { useModal } from "../components/Modal";
 // import "@babylonjs/inspector";
 
 const Wrapper = styled.div<{ width: number; height: number }>`
@@ -43,6 +43,9 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
   trueVideoHeight,
   trueVideoWidth,
 }) => {
+  // Unfortunately useContext does not work on child babaylon components,
+  // so we have to pass it down from here.
+  const { updateModal } = useModal();
   const [hdrTexture, setHdrTexture] = useState<BaseTexture | undefined>(
     undefined
   );
@@ -97,6 +100,11 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
             name="camera1"
             alpha={Math.PI / 2}
             beta={Math.PI / 2}
+            /* prevent any rotation caused by mouse */
+            upperBetaLimit={Math.PI / 2}
+            upperAlphaLimit={Math.PI / 2}
+            lowerBetaLimit={Math.PI / 2}
+            lowerAlphaLimit={Math.PI / 2}
             radius={9.0}
             target={Vector3.Zero()}
             minZ={0.001}
@@ -113,37 +121,9 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
             direction={Vector3.Up()}
           />
 
-          <InteractiveModel
-            name="Cube"
-            rootUrl="./3dassets/"
-            sceneFilename="cube.glb"
-            scaleTo={35}
-            position={faceApiToBabylonCoord(faceLandmarks?.getRightEye()[0])}
-            onClick={() => {
-              alert("cube clicked");
-            }}
-          />
-
-          <InteractiveModel
-            name="Spikes"
-            rootUrl="./3dassets/"
-            sceneFilename="spikes.glb"
-            scaleTo={50}
-            position={faceApiToBabylonCoord(faceLandmarks?.getLeftEye()[0])}
-            onClick={() => {
-              alert("spike clicked");
-            }}
-          />
-
-          <InteractiveModel
-            name="Boombox"
-            rootUrl="./3dassets/BoomBox/"
-            sceneFilename="BoomBox.gltf"
-            scaleTo={1}
-            position={new Vector3(0, 1, 0)}
-            onClick={() => {
-              alert("boombox clicked");
-            }}
+          <InteractiveModels
+            faceLandmarks={faceLandmarks}
+            updateModal={updateModal}
           />
         </Scene>
       </Engine>
