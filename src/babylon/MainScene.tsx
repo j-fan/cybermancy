@@ -100,6 +100,11 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
             name="camera1"
             alpha={Math.PI / 2}
             beta={Math.PI / 2}
+            /* prevent any rotation caused by mouse */
+            upperBetaLimit={Math.PI / 2}
+            upperAlphaLimit={Math.PI / 2}
+            lowerBetaLimit={Math.PI / 2}
+            lowerAlphaLimit={Math.PI / 2}
             radius={9.0}
             target={Vector3.Zero()}
             minZ={0.001}
