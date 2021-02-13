@@ -3,10 +3,10 @@ import { Engine, Scene, SceneEventArgs } from "react-babylonjs";
 import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
 import styled, { css } from "styled-components";
 import { Camera, BaseTexture } from "@babylonjs/core";
-import { InteractiveModel } from "./InteractiveModel";
 import { runDetections } from "../faceApi/faceDetect";
 import { FaceLandmarks68 } from "@vladmandic/face-api";
-import { faceApiToBabylonCoord } from "../utils/faceApiToBabylonCoord";
+import { InteractiveModels } from "./InteractiveModels";
+import { useModal } from "../components/Modal";
 // import "@babylonjs/inspector";
 
 const Wrapper = styled.div<{ width: number; height: number }>`
@@ -113,38 +113,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
             direction={Vector3.Up()}
           />
 
-          <InteractiveModel
-            name="Cube"
-            rootUrl="./3dassets/"
-            sceneFilename="cube.glb"
-            scaleTo={35}
-            position={faceApiToBabylonCoord(faceLandmarks?.getRightEye()[0])}
-            onClick={() => {
-              alert("cube clicked");
-            }}
-          />
-
-          <InteractiveModel
-            name="Spikes"
-            rootUrl="./3dassets/"
-            sceneFilename="spikes.glb"
-            scaleTo={50}
-            position={faceApiToBabylonCoord(faceLandmarks?.getLeftEye()[0])}
-            onClick={() => {
-              alert("spike clicked");
-            }}
-          />
-
-          <InteractiveModel
-            name="Boombox"
-            rootUrl="./3dassets/BoomBox/"
-            sceneFilename="BoomBox.gltf"
-            scaleTo={1}
-            position={new Vector3(0, 1, 0)}
-            onClick={() => {
-              alert("boombox clicked");
-            }}
-          />
+          <InteractiveModels faceLandmarks={faceLandmarks} />
         </Scene>
       </Engine>
     </Wrapper>
