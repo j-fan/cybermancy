@@ -5,7 +5,7 @@ import React, {
   useState,
 } from "react";
 
-type ModalProps = {
+export type ModalProps = {
   title?: string;
   description?: React.ReactNode;
   isOpen?: boolean;

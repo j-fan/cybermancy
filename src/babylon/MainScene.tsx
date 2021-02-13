@@ -43,6 +43,9 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
   trueVideoHeight,
   trueVideoWidth,
 }) => {
+  // Unfortunately useContext does not work on child babaylon components,
+  // so we have to pass it down from here.
+  const { updateModal } = useModal();
   const [hdrTexture, setHdrTexture] = useState<BaseTexture | undefined>(
     undefined
   );
@@ -113,7 +116,10 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
             direction={Vector3.Up()}
           />
 
-          <InteractiveModels faceLandmarks={faceLandmarks} />
+          <InteractiveModels
+            faceLandmarks={faceLandmarks}
+            updateModal={updateModal}
+          />
         </Scene>
       </Engine>
     </Wrapper>

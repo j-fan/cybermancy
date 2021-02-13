@@ -1,18 +1,19 @@
 import { Vector3 } from "@babylonjs/core";
 import { FaceLandmarks68 } from "@vladmandic/face-api";
 import React, { Fragment, FunctionComponent } from "react";
-import { useModal } from "../components/Modal";
+import { ModalProps, useModal } from "../components/Modal";
 import { faceApiToBabylonCoord } from "../utils/faceApiToBabylonCoord";
 import { InteractiveModel } from "./InteractiveModel";
 
 type InteractiveModelsProps = {
   faceLandmarks?: FaceLandmarks68;
+  updateModal?: (newModalState: ModalProps) => void;
 };
 
 const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
   faceLandmarks,
+  updateModal,
 }) => {
-  const { updateModal } = useModal();
   return (
     <Fragment>
       <InteractiveModel
@@ -22,7 +23,7 @@ const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
         scaleTo={35}
         position={faceApiToBabylonCoord(faceLandmarks?.getRightEye()[0])}
         onClick={() => {
-          updateModal?.({ description: "woooo" });
+          updateModal?.({ description: `woooo ${Math.random()}` });
         }}
       />
 
