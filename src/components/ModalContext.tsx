@@ -12,9 +12,7 @@ type ModalContextProps = {
 } & ModalProps;
 
 const defaultModalContext = {
-  isOpen: true,
-  title: "title",
-  description: "description",
+  isOpen: false,
 };
 
 const ModalContext = createContext<ModalContextProps>(defaultModalContext);
@@ -25,7 +23,7 @@ const ModalProvider: FunctionComponent<ModalProps> = ({ children }) => {
   );
 
   const updateModal = (newModalState: ModalProps) => {
-    setCurrentModalState(newModalState);
+    setCurrentModalState({ ...currentModalState, ...newModalState });
   };
 
   const closeModal = () => {

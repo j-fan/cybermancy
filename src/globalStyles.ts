@@ -1,4 +1,12 @@
-import { createGlobalStyle, css } from "styled-components";
+import { createGlobalStyle } from "styled-components";
+
+export const colours = {
+  black: "#222",
+  white: "#FFF",
+  pink: "#ff256f",
+  purple: "#c21dfd",
+  teal: "#45fce7",
+};
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -7,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     font-family: Open-Sans, Helvetica, Sans-Serif;
-    background-color: #222;
+    background-color: ${colours.black};
     /* overflow: hidden; */
   }
 `;

@@ -9,7 +9,11 @@ import { InteractiveModels } from "./InteractiveModels";
 import { useModal } from "../components/ModalContext";
 // import "@babylonjs/inspector";
 
-const Wrapper = styled.div<{ width: number; height: number }>`
+const Wrapper = styled.div<{
+  width: number;
+  height: number;
+  isModalOpen?: boolean;
+}>`
   z-index: 99;
   position: absolute;
   top: 0;
@@ -19,6 +23,18 @@ const Wrapper = styled.div<{ width: number; height: number }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  ${({ isModalOpen }) =>
+    isModalOpen
+      ? css`
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity ease 0.3s;
+        `
+      : css`
+          opacity: 1;
+          pointer-events: all;
+          transition: opacity ease 0.3s 0.6s;
+        `}
 
   canvas {
     ${({ width, height }) => css`
@@ -46,7 +62,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
 }) => {
   // Unfortunately useContext does not work on child babaylon components,
   // so we have to pass it down from here.
-  const { updateModal } = useModal();
+  const { updateModal, isOpen: isModalOpen } = useModal();
   const [hdrTexture, setHdrTexture] = useState<BaseTexture | undefined>(
     undefined
   );
@@ -77,7 +93,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
   };
 
   return (
-    <Wrapper width={width} height={height}>
+    <Wrapper width={width} height={height} isModalOpen={isModalOpen}>
       <Engine antialias canvasId="babylonJS" width={width} height={height}>
         <Scene
           clearColor={new Color4(0, 0, 0, 0)}

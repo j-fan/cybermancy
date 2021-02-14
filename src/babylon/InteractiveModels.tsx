@@ -23,7 +23,10 @@ const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
         scaleTo={35}
         position={faceApiToBabylonCoord(faceLandmarks?.getRightEye()[0])}
         onClick={() => {
-          updateModal?.({ description: `woooo ${Math.random()}` });
+          updateModal?.({
+            description: `woooo ${Math.random()}`,
+            isOpen: true,
+          });
         }}
       />
 
