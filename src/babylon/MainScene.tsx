@@ -6,7 +6,7 @@ import { Camera, BaseTexture } from "@babylonjs/core";
 import { runDetections } from "../faceApi/faceDetect";
 import { FaceLandmarks68 } from "@vladmandic/face-api";
 import { InteractiveModels } from "./InteractiveModels";
-import { useModal } from "../components/Modal";
+import { useModal } from "../components/ModalContext";
 // import "@babylonjs/inspector";
 
 const Wrapper = styled.div<{ width: number; height: number }>`

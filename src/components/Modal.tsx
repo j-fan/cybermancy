@@ -1,9 +1,6 @@
-import React, {
-  createContext,
-  FunctionComponent,
-  useContext,
-  useState,
-} from "react";
+import React, { FunctionComponent } from "react";
+import ReactDOM from "react-dom";
+import { useModal } from "./ModalContext";
 
 export type ModalProps = {
   title?: string;
@@ -12,60 +9,15 @@ export type ModalProps = {
   key?: string;
 };
 
-type ModalContextProps = {
-  updateModal?: (newModalState: ModalProps) => void;
-  closeModal?: () => void;
-} & ModalProps;
-
-const defaultModalContext = {
-  isOpen: true,
-  title: "title",
-  description: "description",
-};
-
-const ModalContext = createContext<ModalContextProps>(defaultModalContext);
-
-const ModalProvider: FunctionComponent<ModalProps> = ({ children }) => {
-  const [currentModalState, setCurrentModalState] = useState<ModalProps>(
-    defaultModalContext
-  );
-
-  const updateModal = (newModalState: ModalProps) => {
-    setCurrentModalState(newModalState);
-  };
-
-  const closeModal = () => {
-    setCurrentModalState({
-      ...currentModalState,
-      isOpen: false,
-    });
-  };
-
-  return (
-    <ModalContext.Provider
-      value={{ ...currentModalState, updateModal, closeModal }}
-    >
-      <Modal />
-      {children}
-    </ModalContext.Provider>
-  );
-};
-
-const ModalConsumer = ModalContext.Consumer;
-
-const useModal = (): ModalContextProps => {
-  const context = useContext(ModalContext);
-  return context;
-};
-
 const Modal: FunctionComponent = () => {
   const { title, description, updateModal } = useModal();
-  return (
+  return ReactDOM.createPortal(
     <div onClick={() => updateModal?.({ description: "wow clicked" })}>
       {title}
       {description}
-    </div>
+    </div>,
+    document.getElementById("modal-root") as HTMLElement
   );
 };
 
-export { Modal, ModalProvider, ModalConsumer, useModal, defaultModalContext };
+export { Modal };

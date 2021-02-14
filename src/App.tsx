@@ -5,7 +5,7 @@ import styled, { css } from "styled-components";
 import { device, GlobalStyle } from "./globalStyles";
 import { MainScene } from "./babylon/MainScene";
 import { startFaceDetect } from "./faceApi/faceDetect";
-import { defaultModalContext, ModalProvider } from "./components/Modal";
+import { ModalProvider } from "./components/ModalContext";
 
 const WEBCAM_VIDEO_ID = "webcam-video";
 const WEBCAM_CANVAS_ID = "webcam-canvas";
