@@ -14,7 +14,7 @@ const Wrapper = styled.div<{
   height: number;
   isModalOpen?: boolean;
 }>`
-  z-index: 99;
+  z-index: 1;
   position: absolute;
   top: 0;
   left: 0;

@@ -6,6 +6,7 @@ import { device, GlobalStyle } from "./globalStyles";
 import { MainScene } from "./babylon/MainScene";
 import { startFaceDetect } from "./faceApi/faceDetect";
 import { ModalProvider } from "./components/ModalContext";
+import { Info } from "./components/Info";
 
 const WEBCAM_VIDEO_ID = "webcam-video";
 const WEBCAM_CANVAS_ID = "webcam-canvas";
@@ -77,7 +78,7 @@ const App: FunctionComponent = () => {
             setUseMeasureRef(ref);
             videoRef.current = ref;
           }}
-          onPlay={startFaceDetect}
+          // onPlay={startFaceDetect}
         />
         <WebcamCanvas id={WEBCAM_CANVAS_ID} />
         <FaceLandmarksDebugCanvas
@@ -85,6 +86,7 @@ const App: FunctionComponent = () => {
           width={videoCanvasWidth}
           height={videoCanvasHeight}
         />
+        <Info />
       </AppWrapper>
     </ModalProvider>
   );

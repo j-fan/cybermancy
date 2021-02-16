@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 
 export const colours = {
   black: "#222",
@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-family: Open-Sans, Helvetica, Sans-Serif;
     background-color: ${colours.black};
-    /* overflow: hidden; */
+    overflow: hidden;
   }
 `;
 
@@ -41,4 +41,11 @@ export const device = {
   desktopL: `(min-width: ${size.desktop})`,
 };
 
-export { GlobalStyle };
+const dropShadow = css`
+  box-shadow: 0px 0px 8px 0px #000;
+`;
+const textShadow = css`
+  text-shadow: 0 0 8px #000;
+`;
+
+export { GlobalStyle, dropShadow, textShadow };
