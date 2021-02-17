@@ -78,7 +78,7 @@ const App: FunctionComponent = () => {
             setUseMeasureRef(ref);
             videoRef.current = ref;
           }}
-          // onPlay={startFaceDetect}
+          onPlay={startFaceDetect}
         />
         <WebcamCanvas id={WEBCAM_CANVAS_ID} />
         <FaceLandmarksDebugCanvas

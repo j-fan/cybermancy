@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
 export const colours = {
   black: "#222",
@@ -8,15 +8,47 @@ export const colours = {
   teal: "#45fce7",
 };
 
+const Unica = css`
+  font-family: "Unica One", cursive;
+`;
+
+const OpenSans = css`
+  font-family: "Open Sans", Sans-Serif;
+`;
+
+const Title1 = styled.h1`
+  ${Unica}
+  font-size: 2em;
+`;
+
+const Title2 = styled.h1`
+  ${Unica}
+  font-size: 1.5em;
+`;
+
+const Title3 = styled.h1`
+  ${Unica}
+  font-size: 1.25em;
+`;
+
+const IconText = styled.span`
+  ${OpenSans}
+`;
+
+const BodyText = styled.p`
+  ${OpenSans}
+  font-size: 1em;
+`;
+
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    font-family: Open-Sans, Helvetica, Sans-Serif;
     background-color: ${colours.black};
     overflow: hidden;
+    ${OpenSans}
   }
 `;
 
@@ -48,4 +80,13 @@ const textShadow = css`
   text-shadow: 0 0 8px #000;
 `;
 
-export { GlobalStyle, dropShadow, textShadow };
+export {
+  GlobalStyle,
+  dropShadow,
+  textShadow,
+  Title1,
+  Title2,
+  Title3,
+  IconText,
+  BodyText,
+};

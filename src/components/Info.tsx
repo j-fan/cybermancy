@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
-import { colours, textShadow } from "../globalStyles";
+import { colours, IconText, textShadow } from "../globalStyles";
 import { useModal } from "./ModalContext";
 
 const IconContainer = styled.div`
@@ -24,9 +24,15 @@ const Info: FunctionComponent = () => {
   const { updateModal } = useModal();
   return (
     <IconContainer
-      onClick={() => updateModal?.({ isOpen: true, title: "Info modal" })}
+      onClick={() =>
+        updateModal?.({
+          isOpen: true,
+          title: "Info modal",
+          description: "Description description",
+        })
+      }
     >
-      ⓘ
+      <IconText>ⓘ</IconText>
     </IconContainer>
   );
 };

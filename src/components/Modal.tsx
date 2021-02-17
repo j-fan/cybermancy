@@ -1,7 +1,14 @@
 import React, { FunctionComponent } from "react";
 import ReactDOM from "react-dom";
 import styled, { css } from "styled-components";
-import { colours, device, dropShadow } from "../globalStyles";
+import {
+  BodyText,
+  colours,
+  device,
+  dropShadow,
+  IconText,
+  Title1,
+} from "../globalStyles";
 import { useModal } from "./ModalContext";
 
 export type ModalProps = {
@@ -83,11 +90,11 @@ const ExitButtonStyle = styled.div`
   font-size: 36px;
   border: ${colours.teal} solid ${borderWidth};
   border-radius: 50%;
-  line-height: 40px;
+  line-height: 36px;
   text-align: center;
   cursor: pointer;
   user-select: none;
-  ${dropShadow};
+  ${dropShadow}
   transition: transform ease 0.05s;
 
   &:active {
@@ -97,7 +104,11 @@ const ExitButtonStyle = styled.div`
 
 const ExitButton: FunctionComponent<{
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-}> = ({ onClick }) => <ExitButtonStyle onClick={onClick}>×</ExitButtonStyle>;
+}> = ({ onClick }) => (
+  <ExitButtonStyle onClick={onClick}>
+    <IconText>×</IconText>
+  </ExitButtonStyle>
+);
 
 const Modal: FunctionComponent = () => {
   const { title, description, closeModal, isOpen } = useModal();
@@ -111,8 +122,8 @@ const Modal: FunctionComponent = () => {
         }}
       >
         <ExitButton onClick={() => closeModal?.()} />
-        {title}
-        {description}
+        <Title1>{title}</Title1>
+        <BodyText>{description}</BodyText>
       </ModalContainer>
     </ModalBackground>,
     document.getElementById("modal-root") as HTMLElement
