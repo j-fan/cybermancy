@@ -1,17 +1,22 @@
 import { Vector3 } from "@babylonjs/core";
-import { FaceLandmarks68 } from "@vladmandic/face-api";
+import { FaceLandmarks68, Gender } from "@vladmandic/face-api";
 import React, { Fragment, FunctionComponent } from "react";
-import { ModalProps, useModal } from "../components/Modal";
+import { ModalProps } from "../components/Modal";
+import { FortuneCategory, getFaceReading } from "../data/fortuneDataMappers";
 import { faceApiToBabylonCoord } from "../utils/faceApiToBabylonCoord";
 import { InteractiveModel } from "./InteractiveModel";
 
 type InteractiveModelsProps = {
   faceLandmarks?: FaceLandmarks68;
   updateModal?: (newModalState: ModalProps) => void;
+  age: number;
+  gender: Gender;
 };
 
 const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
   faceLandmarks,
+  age,
+  gender,
   updateModal,
 }) => {
   return (
@@ -24,7 +29,8 @@ const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
         position={faceApiToBabylonCoord(faceLandmarks?.getRightEye()[0])}
         onClick={() => {
           updateModal?.({
-            description: `woooo ${Math.random()}`,
+            title: "3d object clicked",
+            description: getFaceReading(FortuneCategory.CAREER, age, gender),
             isOpen: true,
           });
         }}
@@ -37,7 +43,11 @@ const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
         scaleTo={50}
         position={faceApiToBabylonCoord(faceLandmarks?.getLeftEye()[0])}
         onClick={() => {
-          alert("spike clicked");
+          updateModal?.({
+            title: "3d object clicked",
+            description: getFaceReading(FortuneCategory.FORTUNE, age, gender),
+            isOpen: true,
+          });
         }}
       />
 

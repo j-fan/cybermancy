@@ -4,7 +4,7 @@ import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
 import styled, { css } from "styled-components";
 import { Camera, BaseTexture } from "@babylonjs/core";
 import { runDetections } from "../faceApi/faceDetect";
-import { FaceLandmarks68 } from "@vladmandic/face-api";
+import { FaceLandmarks68, Gender } from "@vladmandic/face-api";
 import { InteractiveModels } from "./InteractiveModels";
 import { useModal } from "../components/ModalContext";
 // import "@babylonjs/inspector";
@@ -69,6 +69,8 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
   const [faceLandmarks, setFaceLandmarks] = useState<
     FaceLandmarks68 | undefined
   >();
+  const [age, setAge] = useState(0);
+  const [gender, setGender] = useState(Gender.MALE);
 
   const onSceneMounted = ({ scene }: SceneEventArgs) => {
     scene.imageProcessingConfiguration.exposure = 0.6;
@@ -90,6 +92,9 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
     if (faceResults.landmarks) {
       setFaceLandmarks(faceResults.landmarks.landmarks);
     }
+
+    setGender(faceResults.estimatedGender);
+    setAge(faceResults.estimatedAge);
   };
 
   return (
@@ -141,6 +146,8 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
           <InteractiveModels
             faceLandmarks={faceLandmarks}
             updateModal={updateModal}
+            age={age}
+            gender={gender}
           />
         </Scene>
       </Engine>
