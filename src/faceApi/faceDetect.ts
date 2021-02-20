@@ -108,4 +108,4 @@ const runDetections = async (
   };
 };
 
-export { startFaceDetect, runDetections };
+export { startFaceDetect, runDetections, estimatedAge, estimatedGender };
