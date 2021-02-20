@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import ReactDOM from "react-dom";
 import styled, { css } from "styled-components";
+import { SingleObjectScene } from "../babylon/SingleObjectScene";
 import {
   BodyText,
   colours,
@@ -15,7 +16,7 @@ export type ModalProps = {
   title?: string;
   description?: React.ReactNode;
   isOpen?: boolean;
-  key?: string;
+  heroObject?: string;
 };
 
 const ModalBackground = styled.div`
@@ -122,6 +123,7 @@ const Modal: FunctionComponent = () => {
         }}
       >
         <ExitButton onClick={() => closeModal?.()} />
+        <SingleObjectScene />
         <Title1>{title}</Title1>
         <BodyText>{description}</BodyText>
       </ModalContainer>

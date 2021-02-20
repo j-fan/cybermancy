@@ -138,16 +138,7 @@ const InteractiveModel: FunctionComponent<InteractiveModelProps> = ({
 
   return (
     <SceneLoaderContextProvider>
-      <Suspense
-        fallback={
-          <ProgressFallback
-            progressBarColor={progressBarColor}
-            rotation={rotation}
-            position={position}
-            scaleTo={scaleTo}
-          />
-        }
-      >
+      <Suspense fallback={<box name="fallback" />}>
         <Model
           name={name}
           reportProgress

@@ -1,7 +1,6 @@
-import { Vector3 } from "@babylonjs/core";
 import { FaceLandmarks68 } from "@vladmandic/face-api";
 import React, { Fragment, FunctionComponent } from "react";
-import { ModalProps, useModal } from "../components/Modal";
+import { ModalProps } from "../components/Modal";
 import { faceApiToBabylonCoord } from "../utils/faceApiToBabylonCoord";
 import { InteractiveModel } from "./InteractiveModel";
 
@@ -38,17 +37,6 @@ const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
         position={faceApiToBabylonCoord(faceLandmarks?.getLeftEye()[0])}
         onClick={() => {
           alert("spike clicked");
-        }}
-      />
-
-      <InteractiveModel
-        name="Boombox"
-        rootUrl="./3dassets/BoomBox/"
-        sceneFilename="BoomBox.gltf"
-        scaleTo={1}
-        position={new Vector3(0, 1, 0)}
-        onClick={() => {
-          alert("boombox clicked");
         }}
       />
     </Fragment>

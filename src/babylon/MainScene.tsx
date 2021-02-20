@@ -2,11 +2,13 @@ import React, { FunctionComponent, useCallback, useState } from "react";
 import { Engine, Scene, SceneEventArgs } from "react-babylonjs";
 import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
 import styled, { css } from "styled-components";
-import { Camera, BaseTexture } from "@babylonjs/core";
+import { BaseTexture } from "@babylonjs/core";
 import { runDetections } from "../faceApi/faceDetect";
 import { FaceLandmarks68 } from "@vladmandic/face-api";
 import { InteractiveModels } from "./InteractiveModels";
 import { useModal } from "../components/ModalContext";
+import { OrthoCamera } from "./OrthoCamera";
+import { HdrEnvironment } from "./HdrEnvironment";
 // import "@babylonjs/inspector";
 
 const Wrapper = styled.div<{
@@ -40,7 +42,6 @@ const Wrapper = styled.div<{
     ${({ width, height }) => css`
       width: ${width}px;
       height: ${height}px;
-      outline: none;
     `}
   }
 `;
@@ -51,8 +52,6 @@ type MainSceneProps = {
   width: number;
   height: number;
 };
-
-const ENVIRONMENT_IMG_URL = "./images/environment.dds";
 
 const MainScene: FunctionComponent<MainSceneProps> = ({
   width,
@@ -104,32 +103,12 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
             console.log("ready");
           }}
         >
-          <cubeTexture
-            ref={hdrTextureRef}
-            name="hdrTexture"
-            rootUrl={ENVIRONMENT_IMG_URL}
-            createPolynomials={true}
-            format={undefined}
-            prefiltered={true}
-          />
+          <HdrEnvironment hdrTextureRef={hdrTextureRef} name="hdrTexture" />
 
-          <arcRotateCamera
+          <OrthoCamera
             name="camera1"
-            alpha={Math.PI / 2}
-            beta={Math.PI / 2}
-            /* prevent any rotation caused by mouse */
-            upperBetaLimit={Math.PI / 2}
-            upperAlphaLimit={Math.PI / 2}
-            lowerBetaLimit={Math.PI / 2}
-            lowerAlphaLimit={Math.PI / 2}
-            radius={100.0}
-            target={Vector3.Zero()}
-            minZ={0.001}
-            mode={Camera.ORTHOGRAPHIC_CAMERA}
-            orthoLeft={trueVideoWidth}
-            orthoTop={0}
-            orthoBottom={trueVideoHeight}
-            orthoRight={0}
+            canvasWidth={trueVideoWidth}
+            canvasHeight={trueVideoHeight}
           />
 
           <hemisphericLight

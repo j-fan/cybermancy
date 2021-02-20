@@ -50,6 +50,10 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     ${OpenSans}
   }
+
+  canvas {
+    outline: none;
+  }
 `;
 
 export const size = {
