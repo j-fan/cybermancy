@@ -226,42 +226,42 @@ const FortuneData: FortuneDataType = {
 
 type FortuneCategoryDataType = {
   [key in FortuneCategory]: {
-    model: string;
+    model: string[];
     description: string;
   };
 };
 
 const FortuneCategoryData: FortuneCategoryDataType = {
   career: {
-    model: "spikes.glb",
+    model: ["spikes.glb"],
     description: "career base description",
   },
   fortune: {
-    model: "spikes.glb",
+    model: ["spikes2.glb", "spikes2a.glb"],
     description: "fortune base description",
   },
   marriage: {
-    model: "spikes.glb",
+    model: ["spikes3.glb", "spikes3a.glb"],
     description: "marriage base description",
   },
   health: {
-    model: "spikes.glb",
+    model: ["spikes4.glb"],
     description: "health base description",
   },
   wealth: {
-    model: "spikes.glb",
+    model: ["spikes5.glb"],
     description: "wealth base description",
   },
   children: {
-    model: "spikes.glb",
+    model: ["spikes6.glb", "spikes6a.glb"],
     description: "children base description",
   },
   popularity: {
-    model: "spikes.glb",
+    model: ["spikes7.glb", "spikes7a.glb"],
     description: "popularity base description",
   },
   assets: {
-    model: "spikes.glb",
+    model: ["spikes8.glb", "spikes8a.glb"],
     description: "assets base description",
   },
 };

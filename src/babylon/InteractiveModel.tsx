@@ -1,78 +1,20 @@
 import {
   Vector3,
-  Matrix,
-  Color3,
   ActionManager,
   SetValueAction,
   ExecuteCodeAction,
 } from "@babylonjs/core";
-import React, { FunctionComponent, Suspense, useContext } from "react";
+import React, { FunctionComponent, Suspense } from "react";
 import {
   ILoadedModel,
   MeshEventType,
   Model,
-  SceneLoaderContext,
   SceneLoaderContextProvider,
   useScene,
 } from "react-babylonjs";
 import "@babylonjs/loaders/glTF";
 
-type ProgessFallbackProps = {
-  rotation?: Vector3;
-  position: Vector3;
-  scaleTo: number;
-  progressBarColor: Color3;
-};
-
-const PROGRESS_BAR_DEPTH = 0.01;
-
-const ProgressFallback: FunctionComponent<ProgessFallbackProps> = ({
-  rotation,
-  position,
-  scaleTo,
-  progressBarColor,
-}) => {
-  const sceneLoaderContext = useContext(SceneLoaderContext);
-
-  let loadProgress = 0;
-  if (sceneLoaderContext && sceneLoaderContext.lastProgress) {
-    const progress = sceneLoaderContext.lastProgress;
-    loadProgress = progress.lengthComputable
-      ? progress.loaded / progress.total
-      : progress.loaded / 10000; // TODO: provide option to input file size for proper loading.
-  }
-
-  return (
-    <transformNode name="load-mesh" rotation={rotation} position={position}>
-      <box
-        key="progress"
-        name="boxProgress"
-        height={scaleTo / 10}
-        width={scaleTo}
-        depth={PROGRESS_BAR_DEPTH}
-        scaling={new Vector3(loadProgress, 1, 1)}
-        position={new Vector3(scaleTo / 2, 0, PROGRESS_BAR_DEPTH)}
-        setPivotMatrix={[Matrix.Translation(-scaleTo, 0, 0)]}
-        setPreTransformMatrix={[Matrix.Translation(-scaleTo / 2, 0, 0)]}
-      >
-        <pbrMaterial name="progress-mat" albedoColor={progressBarColor} unlit />
-      </box>
-      <box
-        key="back"
-        name="boxBack"
-        height={scaleTo / 10}
-        width={scaleTo}
-        depth={PROGRESS_BAR_DEPTH}
-        position={new Vector3(0, 0, 0)}
-      >
-        <pbrMaterial name="progress-back" albedoColor={Color3.White()} unlit />
-      </box>
-    </transformNode>
-  );
-};
-
 type InteractiveModelProps = {
-  progressBarColor?: Color3;
   rotation?: Vector3;
   position: Vector3;
   scaleTo: number;
@@ -85,7 +27,6 @@ type InteractiveModelProps = {
 };
 
 const InteractiveModel: FunctionComponent<InteractiveModelProps> = ({
-  progressBarColor = Color3.Green(),
   rotation,
   position,
   scaleTo,
@@ -138,16 +79,7 @@ const InteractiveModel: FunctionComponent<InteractiveModelProps> = ({
 
   return (
     <SceneLoaderContextProvider>
-      <Suspense
-        fallback={
-          <ProgressFallback
-            progressBarColor={progressBarColor}
-            rotation={rotation}
-            position={position}
-            scaleTo={scaleTo}
-          />
-        }
-      >
+      <Suspense fallback={<box name="fallback" />}>
         <Model
           name={name}
           reportProgress

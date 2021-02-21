@@ -34,22 +34,25 @@ const mapAgeToAgeGroup = (age: number): AgeGroups => {
   return AgeGroups.AGE_20_TO_30;
 };
 
-// refer to this map for the positions of the 68 points on the face
-// https://www.researchgate.net/figure/The-68-facial-landmarks-extracted-from-a-frontal-face-view_fig3_320979643
-const mapFaceToFortuneCategory = (
-  faceLandmarks: FaceLandmarks68,
-  category: FortuneCategory
+// Look up face landmarks 68 for the map of the points
+const mapFortuneCategoryToFacePoint = (
+  category: FortuneCategory,
+  faceLandmarks?: FaceLandmarks68
 ): Point[] => {
+  if (!faceLandmarks) {
+    return [];
+  }
+
   const facePoints: Point[] = [];
   switch (category) {
     // Temples
     case FortuneCategory.FORTUNE:
       facePoints.push(faceLandmarks.positions[18].sub(new Point(0, 30)));
-      facePoints.push(faceLandmarks.positions[27].sub(new Point(0, 30)));
+      facePoints.push(faceLandmarks.positions[25].sub(new Point(0, 30)));
       break;
     // Nose
     case FortuneCategory.CAREER:
-      facePoints.push(faceLandmarks.positions[28].sub(new Point(0, 50)));
+      facePoints.push(faceLandmarks.positions[28].sub(new Point(0, 100)));
       break;
     case FortuneCategory.HEALTH:
       facePoints.push(faceLandmarks.positions[28]);
@@ -59,20 +62,21 @@ const mapFaceToFortuneCategory = (
       break;
     // Eyes
     case FortuneCategory.ASSETS:
-      facePoints.push(faceLandmarks.positions[39]);
-      facePoints.push(faceLandmarks.positions[44]);
+      facePoints.push(faceLandmarks.positions[37].sub(new Point(0, 15)));
+      facePoints.push(faceLandmarks.positions[44].sub(new Point(0, 15)));
       break;
     case FortuneCategory.MARRIAGE:
-      facePoints.push(faceLandmarks.positions[1]);
-      facePoints.push(faceLandmarks.positions[17]);
+      facePoints.push(faceLandmarks.positions[36].sub(new Point(20, 0)));
+      facePoints.push(faceLandmarks.positions[45].add(new Point(20, 0)));
       break;
     case FortuneCategory.CHILDREN:
-      facePoints.push(faceLandmarks.positions[42]);
-      facePoints.push(faceLandmarks.positions[47]);
+      facePoints.push(faceLandmarks.positions[40].add(new Point(0, 15)));
+      facePoints.push(faceLandmarks.positions[47].add(new Point(0, 15)));
       break;
     // Chin
     case FortuneCategory.POPULARITY:
-      facePoints.push(faceLandmarks.positions[9]);
+      facePoints.push(faceLandmarks.positions[6]);
+      facePoints.push(faceLandmarks.positions[10]);
       break;
   }
   return facePoints;
@@ -89,4 +93,9 @@ const getFaceReading = (
   return `${categoryDescription}\n\n${reading}`;
 };
 
-export { FortuneCategory, AgeGroups, mapFaceToFortuneCategory, getFaceReading };
+export {
+  FortuneCategory,
+  AgeGroups,
+  mapFortuneCategoryToFacePoint,
+  getFaceReading,
+};
