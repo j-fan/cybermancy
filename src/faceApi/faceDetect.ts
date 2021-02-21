@@ -87,17 +87,22 @@ type DetectionResults = {
   landmarks?: WithFaceLandmarks<{ detection: FaceDetection }, FaceLandmarks68>;
   estimatedAge: number;
   estimatedGender: Gender;
+  isFaceGenderReady: boolean;
 };
 
 const runDetections = async (
   options: FaceDetectOptions
 ): Promise<DetectionResults> => {
+  let isFaceGenderReady = false;
+
   if (!netsLoaded) {
-    return { estimatedAge, estimatedGender };
+    return { estimatedAge, estimatedGender, isFaceGenderReady };
   }
 
   if (successfulAgeGenderDetections < 5) {
     await runAgeGenderDetection(options);
+  } else {
+    isFaceGenderReady = true;
   }
   const landmarks = await runFaceLandmarkDetection(options);
 
@@ -105,6 +110,7 @@ const runDetections = async (
     landmarks,
     estimatedAge,
     estimatedGender,
+    isFaceGenderReady,
   };
 };
 

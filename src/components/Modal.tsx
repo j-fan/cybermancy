@@ -6,6 +6,7 @@ import {
   colours,
   device,
   dropShadow,
+  gradient45deg,
   IconText,
   Title1,
 } from "../globalStyles";
@@ -65,12 +66,7 @@ const ModalContainer = styled.div<{ isOpen?: boolean }>`
     z-index: -1;
     margin: -${borderWidth};
     border-radius: inherit;
-    background: linear-gradient(
-      45deg,
-      ${colours.pink} 0%,
-      ${colours.purple} 50%,
-      ${colours.teal} 100%
-    );
+    background: ${gradient45deg};
     ${dropShadow}
   }
 

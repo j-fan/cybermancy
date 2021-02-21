@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef } from "react";
+import React, { FunctionComponent, useRef, useState } from "react";
 import { ResizeObserver } from "@juggle/resize-observer";
 import useMeasure from "react-use-measure";
 import styled, { css } from "styled-components";
@@ -7,6 +7,7 @@ import { MainScene } from "./babylon/MainScene";
 import { startFaceDetect } from "./faceApi/faceDetect";
 import { ModalProvider } from "./components/ModalContext";
 import { Info } from "./components/Info";
+import { LoadingScreen } from "./components/LoadingScreen";
 
 const WEBCAM_VIDEO_ID = "webcam-video";
 const WEBCAM_CANVAS_ID = "webcam-canvas";
@@ -59,6 +60,8 @@ const App: FunctionComponent = () => {
     polyfill: ResizeObserver,
   });
 
+  const [isFaceDetectReady, setIsFaceDetectReady] = useState(false);
+
   return (
     <ModalProvider>
       <AppWrapper>
@@ -68,6 +71,7 @@ const App: FunctionComponent = () => {
           height={videoCanvasHeight}
           trueVideoWidth={videoRef.current?.videoWidth ?? 0}
           trueVideoHeight={videoRef.current?.videoHeight ?? 0}
+          setFaceDetectReady={() => setIsFaceDetectReady(true)}
         />
         <WebcamVideo
           id={WEBCAM_VIDEO_ID}
@@ -78,7 +82,7 @@ const App: FunctionComponent = () => {
             setUseMeasureRef(ref);
             videoRef.current = ref;
           }}
-          onPlay={startFaceDetect}
+          // onPlay={startFaceDetect}
         />
         <WebcamCanvas id={WEBCAM_CANVAS_ID} />
         <FaceLandmarksDebugCanvas
@@ -87,6 +91,7 @@ const App: FunctionComponent = () => {
           height={videoCanvasHeight}
         />
         <Info />
+        <LoadingScreen isFaceDetectReady={isFaceDetectReady} />
       </AppWrapper>
     </ModalProvider>
   );

@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 
 export const colours = {
-  black: "#222",
+  black: "#111",
   white: "#FFF",
   pink: "#ff256f",
   purple: "#c21dfd",
@@ -9,7 +9,7 @@ export const colours = {
 };
 
 const Unica = css`
-  font-family: "Unica One", cursive;
+  font-family: "Unica One", Sans-Serif;
 `;
 
 const OpenSans = css`
@@ -80,6 +80,28 @@ const textShadow = css`
   text-shadow: 0 0 8px #000;
 `;
 
+const gradient = `
+  ${colours.pink},
+  ${colours.purple},
+  ${colours.teal}
+`;
+
+const gradientSeamless = `
+linear-gradient(
+  90deg,
+  ${colours.pink},
+  ${colours.purple},
+  ${colours.teal},
+  ${colours.purple},
+  ${colours.pink}
+)`;
+
+const gradient45deg = `
+linear-gradient(
+  45deg,
+  ${gradient}
+)`;
+
 export {
   GlobalStyle,
   dropShadow,
@@ -89,4 +111,7 @@ export {
   Title3,
   IconText,
   BodyText,
+  Unica,
+  gradientSeamless,
+  gradient45deg,
 };

@@ -50,6 +50,7 @@ type MainSceneProps = {
   trueVideoHeight: number;
   width: number;
   height: number;
+  setFaceDetectReady: (isReady: boolean) => void;
 };
 
 const ENVIRONMENT_IMG_URL = "./images/environment.dds";
@@ -59,6 +60,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
   height,
   trueVideoHeight,
   trueVideoWidth,
+  setFaceDetectReady,
 }) => {
   /*
    * Unfortunately useModal is undefined (???) child babylon
@@ -91,6 +93,10 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
 
     if (faceResults.landmarks) {
       setFaceLandmarks(faceResults.landmarks.landmarks);
+    }
+
+    if (faceResults.isFaceGenderReady) {
+      setFaceDetectReady();
     }
   };
 
