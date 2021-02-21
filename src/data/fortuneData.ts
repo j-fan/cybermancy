@@ -12,7 +12,11 @@ type FortuneDataType = {
 const FortuneData: FortuneDataType = {
   career: {
     "under-20": {
-      female: ["test data test data test data female under 20 career"],
+      female: [
+        "test data test data test data female under 20 career",
+        "test data test data test data female under 20 career 2",
+        "test data test data test data female under 20 career 3",
+      ],
       male: ["test data test data test data career default"],
     },
     "20-30": {
@@ -220,19 +224,46 @@ const FortuneData: FortuneDataType = {
   },
 };
 
-type FortuneCategory3dModelsType = {
-  [key in FortuneCategory]: string;
+type FortuneCategoryDataType = {
+  [key in FortuneCategory]: {
+    model: string;
+    description: string;
+  };
 };
 
-const FortuneCategory3dModels: FortuneCategory3dModelsType = {
-  career: "spikes.glb",
-  fortune: "spikes.glb",
-  marriage: "spikes.glb",
-  health: "spikes.glb",
-  wealth: "spikes.glb",
-  children: "spikes.glb",
-  popularity: "spikes.glb",
-  assets: "spikes.glb",
+const FortuneCategoryData: FortuneCategoryDataType = {
+  career: {
+    model: "spikes.glb",
+    description: "career base description",
+  },
+  fortune: {
+    model: "spikes.glb",
+    description: "fortune base description",
+  },
+  marriage: {
+    model: "spikes.glb",
+    description: "marriage base description",
+  },
+  health: {
+    model: "spikes.glb",
+    description: "health base description",
+  },
+  wealth: {
+    model: "spikes.glb",
+    description: "wealth base description",
+  },
+  children: {
+    model: "spikes.glb",
+    description: "children base description",
+  },
+  popularity: {
+    model: "spikes.glb",
+    description: "popularity base description",
+  },
+  assets: {
+    model: "spikes.glb",
+    description: "assets base description",
+  },
 };
 
-export { FortuneData, FortuneCategory3dModels };
+export { FortuneData, FortuneCategoryData };

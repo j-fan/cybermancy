@@ -35,6 +35,7 @@ const ModalContainer = styled.div<{ isOpen?: boolean }>`
   min-height: 400px;
   color: ${colours.white};
   padding: 20px;
+  white-space: break-spaces;
   ${({ isOpen }) =>
     isOpen
       ? css`

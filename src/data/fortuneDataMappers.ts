@@ -1,5 +1,5 @@
 import { FaceLandmarks68, Gender, Point } from "@vladmandic/face-api";
-import { FortuneData } from "./fortuneData";
+import { FortuneCategoryData, FortuneData } from "./fortuneData";
 
 enum FortuneCategory {
   CAREER = "career",
@@ -82,8 +82,11 @@ const getFaceReading = (
   category: FortuneCategory,
   age: number,
   gender: Gender
-): string[] => {
-  return FortuneData[category][mapAgeToAgeGroup(age)][gender];
+): string => {
+  const categoryDescription = FortuneCategoryData[category].description;
+  const readings = FortuneData[category][mapAgeToAgeGroup(age)][gender];
+  const reading = readings[Math.floor(Math.random() * readings.length)];
+  return `${categoryDescription}\n\n${reading}`;
 };
 
 export { FortuneCategory, AgeGroups, mapFaceToFortuneCategory, getFaceReading };
