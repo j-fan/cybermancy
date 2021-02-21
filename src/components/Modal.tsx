@@ -6,9 +6,10 @@ import {
   colours,
   device,
   dropShadow,
-  gradient45deg,
+  gradientBorderStyle,
   IconText,
   Title1,
+  borderWidth,
 } from "../globalStyles";
 import { useModal } from "./ModalContext";
 
@@ -28,10 +29,7 @@ const ModalBackground = styled.div`
   place-items: center;
 `;
 
-const borderWidth = "3px";
-
 const ModalContainer = styled.div<{ isOpen?: boolean }>`
-  background-color: ${colours.black};
   width: calc(100% - 40px);
   min-height: 400px;
   color: ${colours.white};
@@ -49,26 +47,7 @@ const ModalContainer = styled.div<{ isOpen?: boolean }>`
           margin-top: -40px;
           transition: margin-top ease 0.3s 0s, visibility ease 0s 0.3s;
         `}
-
-  border-radius: 1em;
-  box-sizing: border-box;
-  background-clip: padding-box;
-  border: solid ${borderWidth} transparent;
-  position: relative;
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    margin: -${borderWidth};
-    border-radius: inherit;
-    background: ${gradient45deg};
-    ${dropShadow}
-  }
+  ${gradientBorderStyle};
 
   @media ${device.mobileL} {
     min-height: 300px;

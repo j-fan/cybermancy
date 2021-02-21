@@ -96,11 +96,41 @@ linear-gradient(
   ${colours.pink}
 )`;
 
+const gradient90deg = `
+linear-gradient(
+  90deg,
+  ${gradient}
+)`;
+
 const gradient45deg = `
 linear-gradient(
   45deg,
   ${gradient}
 )`;
+
+const borderWidth = "3px";
+const gradientBorderStyle = css`
+  border-radius: 1em;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  border: solid ${borderWidth} transparent;
+  position: relative;
+  background-color: ${colours.black};
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -${borderWidth};
+    border-radius: inherit;
+    background: ${gradient45deg};
+    ${dropShadow}
+  }
+`;
 
 export {
   GlobalStyle,
@@ -114,4 +144,8 @@ export {
   Unica,
   gradientSeamless,
   gradient45deg,
+  gradient90deg,
+  gradientBorderStyle,
+  borderWidth,
+  OpenSans,
 };

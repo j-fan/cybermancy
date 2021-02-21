@@ -1,13 +1,15 @@
 import React, { FunctionComponent, useState } from "react";
 import styled from "styled-components";
 import { colours } from "../globalStyles";
-import { ScrollDirection, ScrollText } from "./ScrollText";
+import { Button } from "./Button";
+import { DividerPosition, ScrollDirection, ScrollText } from "./ScrollText";
 
 const LoadingScreenContainer = styled.div<{ showLoading: boolean }>`
   z-index: 3;
   position: absolute;
   width: 100%;
-  height: 100%;
+  top: 0;
+  height: calc(100% - 2px);
   background-color: ${colours.black};
   color: ${colours.white};
   visibility: ${({ showLoading }) => (showLoading ? "visible" : "hidden")};
@@ -15,11 +17,8 @@ const LoadingScreenContainer = styled.div<{ showLoading: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 `;
-
-const MainImage = styled.div``;
-
-const Button = styled.div``;
 
 type LoadingScreenProps = {
   isFaceDetectReady: boolean;
@@ -32,17 +31,46 @@ const LoadingScreen: FunctionComponent<LoadingScreenProps> = ({
 
   return (
     <LoadingScreenContainer showLoading={showLoading}>
-      <ScrollText direction={ScrollDirection.RIGHT} text="Cybermancy-2-" />
-      <div>
-        <MainImage />
-        {isFaceDetectReady ? (
-          <Button onClick={() => setShowLoading(false)}>Enter</Button>
-        ) : (
-          "Loading"
-        )}
-      </div>
-      <ScrollText direction={ScrollDirection.LEFT} text="Cybermancy-2-" />
+      <ScrollText
+        direction={ScrollDirection.RIGHT}
+        text="Cybermancy-2-"
+        dividerPosition={DividerPosition.TOP}
+      />
+      <LoadingScreenContent
+        isFaceDetectReady={isFaceDetectReady}
+        setShowLoading={setShowLoading}
+      />
+      <ScrollText
+        direction={ScrollDirection.LEFT}
+        text="Cybermancy-2-"
+        dividerPosition={DividerPosition.BOTTOM}
+      />
     </LoadingScreenContainer>
+  );
+};
+
+const LoadingScreenContentWrapper = styled.div`
+  display: flex;
+  padding: 20px;
+  max-width: 700px;
+`;
+
+type LoadingScreenContentProps = {
+  setShowLoading: (isLoading: boolean) => void;
+} & LoadingScreenProps;
+
+const LoadingScreenContent: FunctionComponent<LoadingScreenContentProps> = ({
+  isFaceDetectReady,
+  setShowLoading,
+}) => {
+  return (
+    <LoadingScreenContentWrapper>
+      {isFaceDetectReady ? (
+        <Button onClick={() => setShowLoading(false)}>Enter</Button>
+      ) : (
+        <Button onClick={() => setShowLoading(false)}>Loading</Button>
+      )}
+    </LoadingScreenContentWrapper>
   );
 };
 
