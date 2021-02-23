@@ -1,23 +1,38 @@
 import React, { FunctionComponent, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { colours } from "../globalStyles";
-import { Button } from "./Button";
+import { LoadingScreenContent } from "./LoadingScreenContent";
 import { DividerPosition, ScrollDirection, ScrollText } from "./ScrollText";
 
-const LoadingScreenContainer = styled.div<{ showLoading: boolean }>`
+const LoadingScreenContainer = styled.div<{
+  showLoading: boolean;
+  isFaceDetectReady: boolean;
+}>`
   z-index: 3;
   position: absolute;
   width: 100%;
   top: 0;
   height: calc(100% - 2px);
-  background-color: ${colours.black};
-  color: ${colours.white};
-  visibility: ${({ showLoading }) => (showLoading ? "visible" : "hidden")};
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  transition: background-color ease 1s, opacity ease 1s, visibility ease 0s 1s;
+  background-color: ${({ showLoading }) =>
+    showLoading ? colours.black : "rgba(0,0,0,0)"};
+
+  ${({ isFaceDetectReady, showLoading }) =>
+    isFaceDetectReady && !showLoading
+      ? css`
+          opacity: 0;
+          visibility: hidden;
+        `
+      : css`
+          opacity: 1;
+          visibility: visible;
+        `};
 `;
 
 type LoadingScreenProps = {
@@ -30,7 +45,10 @@ const LoadingScreen: FunctionComponent<LoadingScreenProps> = ({
   const [showLoading, setShowLoading] = useState(true);
 
   return (
-    <LoadingScreenContainer showLoading={showLoading}>
+    <LoadingScreenContainer
+      showLoading={showLoading}
+      isFaceDetectReady={isFaceDetectReady}
+    >
       <ScrollText
         direction={ScrollDirection.RIGHT}
         text="Cybermancy-2-"
@@ -39,6 +57,7 @@ const LoadingScreen: FunctionComponent<LoadingScreenProps> = ({
       <LoadingScreenContent
         isFaceDetectReady={isFaceDetectReady}
         setShowLoading={setShowLoading}
+        showLoading={showLoading}
       />
       <ScrollText
         direction={ScrollDirection.LEFT}
@@ -46,31 +65,6 @@ const LoadingScreen: FunctionComponent<LoadingScreenProps> = ({
         dividerPosition={DividerPosition.BOTTOM}
       />
     </LoadingScreenContainer>
-  );
-};
-
-const LoadingScreenContentWrapper = styled.div`
-  display: flex;
-  padding: 20px;
-  max-width: 700px;
-`;
-
-type LoadingScreenContentProps = {
-  setShowLoading: (isLoading: boolean) => void;
-} & LoadingScreenProps;
-
-const LoadingScreenContent: FunctionComponent<LoadingScreenContentProps> = ({
-  isFaceDetectReady,
-  setShowLoading,
-}) => {
-  return (
-    <LoadingScreenContentWrapper>
-      {isFaceDetectReady ? (
-        <Button onClick={() => setShowLoading(false)}>Enter</Button>
-      ) : (
-        <Button onClick={() => setShowLoading(false)}>Loading</Button>
-      )}
-    </LoadingScreenContentWrapper>
   );
 };
 

@@ -10,6 +10,7 @@ const ButtonStyle = styled.div`
   font-size: 1.5em;
   cursor: pointer;
   user-select: none;
+  align-self: center;
 
   &:hover {
     background: transparent;

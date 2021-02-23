@@ -37,7 +37,7 @@ const IconText = styled.span`
 
 const BodyText = styled.p`
   ${OpenSans}
-  font-size: 1em;
+  font-size: 1.2em;
 `;
 
 const GlobalStyle = createGlobalStyle`
