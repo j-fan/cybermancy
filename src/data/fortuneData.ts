@@ -261,7 +261,7 @@ const FortuneCategoryData: FortuneCategoryDataType = {
     description: "popularity base description",
   },
   assets: {
-    model: ["spikes8.glb", "spikes8a.glb"],
+    model: ["assets.glb", "assets2.glb"],
     description: "assets base description",
   },
 };

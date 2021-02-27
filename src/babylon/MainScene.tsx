@@ -53,7 +53,7 @@ type MainSceneProps = {
   setFaceDetectReady: (isReady: boolean) => void;
 };
 
-const ENVIRONMENT_IMG_URL = "./images/environment.dds";
+const ENVIRONMENT_IMG_URL = "./images/env.env";
 
 const MainScene: FunctionComponent<MainSceneProps> = ({
   width,
@@ -77,6 +77,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
   const onSceneMounted = ({ scene }: SceneEventArgs) => {
     scene.imageProcessingConfiguration.exposure = 0.6;
     scene.imageProcessingConfiguration.contrast = 1.6;
+    scene.imageProcessingConfiguration.toneMappingEnabled = true;
     // scene.debugLayer.show();
   };
 
@@ -96,7 +97,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
     }
 
     if (faceResults.isFaceGenderReady) {
-      setFaceDetectReady();
+      setFaceDetectReady(true);
     }
   };
 
