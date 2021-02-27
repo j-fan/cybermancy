@@ -51,7 +51,7 @@ const LoadingScreen: FunctionComponent<LoadingScreenProps> = ({
     >
       <ScrollText
         direction={ScrollDirection.RIGHT}
-        text="Cybermancy-2-"
+        text="Cybermancy"
         dividerPosition={DividerPosition.TOP}
         isVisible={showLoading}
 
@@ -63,7 +63,7 @@ const LoadingScreen: FunctionComponent<LoadingScreenProps> = ({
       />
       <ScrollText
         direction={ScrollDirection.LEFT}
-        text="Cybermancy-2-"
+        text="Cybermancy"
         dividerPosition={DividerPosition.BOTTOM}
         isVisible={showLoading}
       />

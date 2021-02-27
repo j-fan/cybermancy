@@ -8,6 +8,26 @@ export const colours = {
   teal: "#45fce7",
 };
 
+const size = {
+  mobileS: "320px",
+  mobileM: "375px",
+  mobileL: "425px",
+  tablet: "768px",
+  laptop: "1024px",
+  laptopL: "1440px",
+  desktop: "2560px",
+};
+
+export const device = {
+  mobileS: `(min-width: ${size.mobileS})`,
+  mobileM: `(min-width: ${size.mobileM})`,
+  mobileL: `(min-width: ${size.mobileL})`,
+  tablet: `(min-width: ${size.tablet})`,
+  laptop: `(min-width: ${size.laptop})`,
+  laptopL: `(min-width: ${size.laptopL})`,
+  desktop: `(min-width: ${size.desktop})`,
+};
+
 const Unica = css`
   font-family: "Unica One", Sans-Serif;
 `;
@@ -37,7 +57,15 @@ const IconText = styled.span`
 
 const BodyText = styled.p`
   ${OpenSans}
-  font-size: 1.2em;
+  font-size: 0.8em;
+
+  @media ${device.mobileL} {
+    font-size: 1.2em;
+  }
+
+  @media ${device.desktop} {
+    font-size: 1.4em;
+  }
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -51,27 +79,6 @@ const GlobalStyle = createGlobalStyle`
     ${OpenSans}
   }
 `;
-
-export const size = {
-  mobileS: "320px",
-  mobileM: "375px",
-  mobileL: "425px",
-  tablet: "768px",
-  laptop: "1024px",
-  laptopL: "1440px",
-  desktop: "2560px",
-};
-
-export const device = {
-  mobileS: `(min-width: ${size.mobileS})`,
-  mobileM: `(min-width: ${size.mobileM})`,
-  mobileL: `(min-width: ${size.mobileL})`,
-  tablet: `(min-width: ${size.tablet})`,
-  laptop: `(min-width: ${size.laptop})`,
-  laptopL: `(min-width: ${size.laptopL})`,
-  desktop: `(min-width: ${size.desktop})`,
-  desktopL: `(min-width: ${size.desktop})`,
-};
 
 const dropShadow = css`
   box-shadow: 0px 0px 8px 0px #000;

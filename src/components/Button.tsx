@@ -5,9 +5,9 @@ import { gradientBorderStyle, OpenSans, colours } from "../globalStyles";
 const ButtonStyle = styled.div`
   ${gradientBorderStyle};
   padding: 8px 16px;
-  border-radius: 1.5em;
+  border-radius: 2em;
   ${OpenSans}
-  font-size: 1.5em;
+  font-size: 1em;
   cursor: pointer;
   user-select: none;
   align-self: center;

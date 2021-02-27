@@ -1,6 +1,8 @@
+import { ResizeObserver } from "@juggle/resize-observer";
 import React, { FunctionComponent } from "react";
+import useMeasure from "react-use-measure";
 import styled, { keyframes, css } from "styled-components";
-import { colours, Unica, BodyText, gradientBorderStyle } from "../globalStyles";
+import { colours, Unica, BodyText, gradientBorderStyle, device } from "../globalStyles";
 import { Button } from "./Button";
 
 const LoadingScreenContentWrapper = styled.div<{ showLoading: boolean }>`
@@ -8,13 +10,23 @@ const LoadingScreenContentWrapper = styled.div<{ showLoading: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 20px;
-  max-width: 700px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  background-image: url('./images/bagua.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
 
   ${({ showLoading }) =>
     !showLoading &&
     css`
       height: 100%;
+      background-image: none;
     `};
 `;
 
@@ -44,6 +56,15 @@ const LoadingText = styled.span`
   animation: ${fadeInOut} 1s linear infinite;
 `;
 
+const StyledBodyText = styled(BodyText)<{width: number}>`
+  ${({width}) => css`width: calc(${width}px * 0.5)`};
+  text-align: center;
+`;
+
+const IntroductionText = 
+`Cybermancy is an interactive webcam experience based on the concept of Chinese face reading.
+Best experienced on desktop.`
+
 type LoadingScreenContentProps = {
   isFaceDetectReady: boolean;
   showLoading: boolean;
@@ -55,6 +76,10 @@ const LoadingScreenContent: FunctionComponent<LoadingScreenContentProps> = ({
   setShowLoading,
   showLoading,
 }) => {
+  const [ref, { height, width }] = useMeasure({
+    polyfill: ResizeObserver,
+  });
+  
   const renderAnalysingFaceMessage = () => {
     if (!isFaceDetectReady) {
       return (
@@ -70,10 +95,10 @@ const LoadingScreenContent: FunctionComponent<LoadingScreenContentProps> = ({
   };
 
   return (
-    <LoadingScreenContentWrapper showLoading={showLoading}>
+    <LoadingScreenContentWrapper showLoading={showLoading} ref={ref}>
       {showLoading ? (
         <>
-          <BodyText>Welcome text goes here</BodyText>
+          <StyledBodyText width={height < width ? height: width}>{IntroductionText}</StyledBodyText>
           <Button onClick={() => setShowLoading(false)}>Enter</Button>
         </>
       ) : (

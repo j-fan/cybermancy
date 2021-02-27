@@ -5,7 +5,6 @@ import styled, { keyframes, css } from "styled-components";
 import {
   colours,
   Unica,
-  device,
   gradientSeamless,
   gradient90deg,
   borderWidth,
@@ -46,16 +45,13 @@ const ScrollTextStyle = styled.span<{
   -webkit-background-clip: text;
   -webkit-text-stroke: 2px transparent;
   color: ${colours.black};
+  user-select: none;
 
   ${({ direction, width, isVisible }) =>
     css`
       animation: ${getAnimation(direction, width)} 10s linear infinite;
-      opacity: ${isVisible ? '1' : '0'}
+      opacity: ${isVisible ? "1" : "0"};
     `};
-
-  @media ${device.mobileL} {
-    font-size: 6em;
-  }
 `;
 
 const FlexWrapper = styled.div`
@@ -89,29 +85,48 @@ type ScrollTextProps = {
   isVisible: boolean;
 };
 
+const trigrams = ["☰", "☱", "☲", "☳", "☴", "☵", "☶", "☷"];
+
+const getRandomTrigrams = () => {
+  let trigramsStr = "";
+  Array.from(Array(3)).forEach(() => {
+    trigramsStr = trigramsStr + trigrams[Math.floor(Math.random() * trigrams.length)];
+  });
+  return trigramsStr;
+};
+
 const ScrollText: FunctionComponent<ScrollTextProps> = ({
   direction,
   text,
   dividerPosition,
-  isVisible
+  isVisible,
 }) => {
   const [ref, { width }] = useMeasure({
     polyfill: ResizeObserver,
   });
 
   let repeatedText = "";
-  Array.from(Array(3)).forEach(() => {
-    repeatedText = repeatedText + text;
+  Array.from(Array(6)).forEach(() => {
+    repeatedText = repeatedText + " " + getRandomTrigrams() + " " + text;
   });
 
   return (
     <AlignStartWrapper>
       {dividerPosition === DividerPosition.TOP && <Divider />}
       <FlexWrapper>
-        <ScrollTextStyle direction={direction} ref={ref} width={width} isVisible={isVisible}>
+        <ScrollTextStyle
+          direction={direction}
+          ref={ref}
+          width={width}
+          isVisible={isVisible}
+        >
           {repeatedText}
         </ScrollTextStyle>
-        <ScrollTextStyle direction={direction} width={width} isVisible={isVisible}>
+        <ScrollTextStyle
+          direction={direction}
+          width={width}
+          isVisible={isVisible}
+        >
           {repeatedText}
         </ScrollTextStyle>
       </FlexWrapper>
