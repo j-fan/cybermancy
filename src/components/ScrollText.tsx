@@ -49,7 +49,7 @@ const ScrollTextStyle = styled.span<{
 
   ${({ direction, width, isVisible }) =>
     css`
-      animation: ${getAnimation(direction, width)} 10s linear infinite;
+      animation: ${getAnimation(direction, width)} 20s linear infinite;
       opacity: ${isVisible ? "1" : "0"};
     `};
 `;

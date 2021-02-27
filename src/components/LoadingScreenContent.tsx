@@ -2,7 +2,7 @@ import { ResizeObserver } from "@juggle/resize-observer";
 import React, { FunctionComponent } from "react";
 import useMeasure from "react-use-measure";
 import styled, { keyframes, css } from "styled-components";
-import { colours, Unica, BodyText, gradientBorderStyle, device } from "../globalStyles";
+import { colours, Unica, BodyText, gradientBorderStyle } from "../globalStyles";
 import { Button } from "./Button";
 
 const LoadingScreenContentWrapper = styled.div<{ showLoading: boolean }>`
@@ -62,7 +62,7 @@ const StyledBodyText = styled(BodyText)<{width: number}>`
 `;
 
 const IntroductionText = 
-`Cybermancy is an interactive webcam experience based on the concept of Chinese face reading.
+`Cybermancy 2 is an interactive webcam experience based on the concept of Chinese face reading.
 Best experienced on desktop.`
 
 type LoadingScreenContentProps = {
