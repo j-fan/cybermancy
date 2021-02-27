@@ -12,7 +12,7 @@ const LoadingScreenContainer = styled.div<{
   position: absolute;
   width: 100%;
   top: 0;
-  height: calc(100% - 2px);
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -53,6 +53,8 @@ const LoadingScreen: FunctionComponent<LoadingScreenProps> = ({
         direction={ScrollDirection.RIGHT}
         text="Cybermancy-2-"
         dividerPosition={DividerPosition.TOP}
+        isVisible={showLoading}
+
       />
       <LoadingScreenContent
         isFaceDetectReady={isFaceDetectReady}
@@ -63,6 +65,7 @@ const LoadingScreen: FunctionComponent<LoadingScreenProps> = ({
         direction={ScrollDirection.LEFT}
         text="Cybermancy-2-"
         dividerPosition={DividerPosition.BOTTOM}
+        isVisible={showLoading}
       />
     </LoadingScreenContainer>
   );

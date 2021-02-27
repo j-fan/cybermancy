@@ -36,6 +36,7 @@ const getAnimation = (direction: ScrollDirection, width: number) => {
 const ScrollTextStyle = styled.span<{
   direction: ScrollDirection;
   width: number;
+  isVisible: boolean;
 }>`
   ${Unica}
   font-size: 4em;
@@ -46,9 +47,10 @@ const ScrollTextStyle = styled.span<{
   -webkit-text-stroke: 2px transparent;
   color: ${colours.black};
 
-  ${({ direction, width }) =>
+  ${({ direction, width, isVisible }) =>
     css`
       animation: ${getAnimation(direction, width)} 10s linear infinite;
+      opacity: ${isVisible ? '1' : '0'}
     `};
 
   @media ${device.mobileL} {
@@ -84,19 +86,21 @@ type ScrollTextProps = {
   direction: ScrollDirection;
   text: string;
   dividerPosition: DividerPosition;
+  isVisible: boolean;
 };
 
 const ScrollText: FunctionComponent<ScrollTextProps> = ({
   direction,
   text,
   dividerPosition,
+  isVisible
 }) => {
   const [ref, { width }] = useMeasure({
     polyfill: ResizeObserver,
   });
 
   let repeatedText = "";
-  Array.from(Array(3)).forEach((_) => {
+  Array.from(Array(3)).forEach(() => {
     repeatedText = repeatedText + text;
   });
 
@@ -104,10 +108,10 @@ const ScrollText: FunctionComponent<ScrollTextProps> = ({
     <AlignStartWrapper>
       {dividerPosition === DividerPosition.TOP && <Divider />}
       <FlexWrapper>
-        <ScrollTextStyle direction={direction} ref={ref} width={width}>
+        <ScrollTextStyle direction={direction} ref={ref} width={width} isVisible={isVisible}>
           {repeatedText}
         </ScrollTextStyle>
-        <ScrollTextStyle direction={direction} width={width}>
+        <ScrollTextStyle direction={direction} width={width} isVisible={isVisible}>
           {repeatedText}
         </ScrollTextStyle>
       </FlexWrapper>
