@@ -33,7 +33,7 @@ const Info: FunctionComponent = () => {
           isOpen: true,
           title: "Info modal",
           description: "Description description",
-          imageUrl: "/images/info.png"
+          imageUrl: "./images/info.png",
         })
       }
     >

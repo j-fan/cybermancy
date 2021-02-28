@@ -17,11 +17,10 @@ const LoadingScreenContentWrapper = styled.div<{ showLoading: boolean }>`
   height: 100%;
   box-sizing: border-box;
 
-  background-image: url('./images/bagua.png');
+  background-image: url("./images/bagua.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-
 
   ${({ showLoading }) =>
     !showLoading &&
@@ -57,14 +56,16 @@ const LoadingText = styled.span`
   animation: ${fadeInOut} 1s linear infinite;
 `;
 
-const StyledBodyText = styled(BodyText)<{width: number}>`
-  ${({width}) => css`width: calc(${width}px * 0.5)`};
+const StyledBodyText = styled(BodyText)<{ width: number }>`
+  ${({ width }) =>
+    css`
+      width: calc(${width}px * 0.5);
+    `};
   text-align: center;
 `;
 
-const IntroductionText = 
-`Cybermancy 2 is an interactive webcam experience based on the concept of Chinese face reading.
-Best experienced on desktop.`
+const IntroductionText = `Cybermancy 2 is an interactive webcam experience based on the concept of Chinese face reading.
+Best experienced on desktop.`;
 
 type LoadingScreenContentProps = {
   isFaceDetectReady: boolean;
@@ -84,13 +85,14 @@ const LoadingScreenContent: FunctionComponent<LoadingScreenContentProps> = ({
   const { updateModal, isOpen: modalIsOpen } = useModal();
 
   useEffect(() => {
-    if(isFaceDetectReady && !modalIsOpen){
+    if (isFaceDetectReady && !modalIsOpen) {
       updateModal?.({
-        title: 'Instructions',
-        description: 'Your face reading is ready! Click on the 3D objects to get a reading about a life theme that corresponds to a region of the face.',
-        imageUrl: "/images/info.png",
-        isOpen: true
-      })
+        title: "Instructions",
+        description:
+          "Your face reading is ready! Click on the 3D objects to get a reading about a life theme that corresponds to a region of the face.",
+        imageUrl: "./images/info.png",
+        isOpen: true,
+      });
     }
   }, [isFaceDetectReady]);
 
@@ -112,7 +114,9 @@ const LoadingScreenContent: FunctionComponent<LoadingScreenContentProps> = ({
     <LoadingScreenContentWrapper showLoading={showLoading} ref={ref}>
       {showLoading ? (
         <>
-          <StyledBodyText width={height < width ? height: width}>{IntroductionText}</StyledBodyText>
+          <StyledBodyText width={height < width ? height : width}>
+            {IntroductionText}
+          </StyledBodyText>
           <Button onClick={() => setShowLoading(false)}>Enter</Button>
         </>
       ) : (

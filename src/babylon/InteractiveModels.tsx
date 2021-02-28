@@ -36,7 +36,7 @@ const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
               name={`${category}-model-${i}`}
               rootUrl="./3dassets/"
               sceneFilename={FortuneCategoryData[category].model[i]}
-              scale={new Vector3(10,10,10)}
+              scale={new Vector3(10, 10, 10)}
               position={faceApiToBabylonCoord(facePoint)}
               onClick={() => {
                 updateModal?.({
@@ -47,7 +47,7 @@ const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
                     estimatedGender
                   ),
                   isOpen: true,
-                  imageUrl: `/images/${category}.png`
+                  imageUrl: `./images/${category}.png`,
                 });
               }}
             />
