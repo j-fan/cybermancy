@@ -1,5 +1,5 @@
 import { ResizeObserver } from "@juggle/resize-observer";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import useMeasure from "react-use-measure";
 import styled, { keyframes, css } from "styled-components";
 import {
@@ -88,7 +88,8 @@ const trigrams = ["☰", "☱", "☲", "☳", "☴", "☵", "☶", "☷"];
 const getRandomTrigrams = () => {
   let trigramsStr = "";
   Array.from(Array(3)).forEach(() => {
-    trigramsStr = trigramsStr + trigrams[Math.floor(Math.random() * trigrams.length)];
+    trigramsStr =
+      trigramsStr + trigrams[Math.floor(Math.random() * trigrams.length)];
   });
   return trigramsStr;
 };
@@ -101,28 +102,25 @@ const ScrollText: FunctionComponent<ScrollTextProps> = ({
   const [ref, { width }] = useMeasure({
     polyfill: ResizeObserver,
   });
+  const [textWithTrigrams, setTextWithTrigrams] = useState("");
 
-  let repeatedText = "";
-  Array.from(Array(6)).forEach(() => {
-    repeatedText = repeatedText + " " + getRandomTrigrams() + " " + text;
-  });
+  useEffect(() => {
+    let repeatedText = "";
+    Array.from(Array(6)).forEach(() => {
+      repeatedText = repeatedText + " " + getRandomTrigrams() + " " + text;
+    });
+    setTextWithTrigrams(repeatedText);
+  }, []);
 
   return (
     <AlignStartWrapper>
       {dividerPosition === DividerPosition.TOP && <Divider />}
       <FlexWrapper>
-        <ScrollTextStyle
-          direction={direction}
-          ref={ref}
-          width={width}
-        >
-          {repeatedText}
+        <ScrollTextStyle direction={direction} ref={ref} width={width}>
+          {textWithTrigrams}
         </ScrollTextStyle>
-        <ScrollTextStyle
-          direction={direction}
-          width={width}
-        >
-          {repeatedText}
+        <ScrollTextStyle direction={direction} width={width}>
+          {textWithTrigrams}
         </ScrollTextStyle>
       </FlexWrapper>
       {dividerPosition === DividerPosition.BOTTOM && <Divider />}
