@@ -17,7 +17,7 @@ import "@babylonjs/loaders/glTF";
 type InteractiveModelProps = {
   rotation?: Vector3;
   position: Vector3;
-  scaleTo: number;
+  scale: Vector3;
   name: string;
   rootUrl: string;
   sceneFilename: string;
@@ -29,7 +29,7 @@ type InteractiveModelProps = {
 const InteractiveModel: FunctionComponent<InteractiveModelProps> = ({
   rotation,
   position,
-  scaleTo,
+  scale,
   name,
   rootUrl,
   sceneFilename,
@@ -86,7 +86,7 @@ const InteractiveModel: FunctionComponent<InteractiveModelProps> = ({
           position={position}
           rootUrl={rootUrl}
           sceneFilename={sceneFilename}
-          scaleToDimension={scaleTo}
+          scaling={scale}
           rotation={rotation}
           onModelLoaded={handleModelLoaded}
         />

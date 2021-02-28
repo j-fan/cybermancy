@@ -1,3 +1,4 @@
+import { Vector3 } from "@babylonjs/core";
 import { FaceLandmarks68 } from "@vladmandic/face-api";
 import React, { Fragment, FunctionComponent } from "react";
 import { ModalProps } from "../components/Modal";
@@ -35,7 +36,7 @@ const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
               name={`${category}-model-${i}`}
               rootUrl="./3dassets/"
               sceneFilename={FortuneCategoryData[category].model[i]}
-              scaleTo={35}
+              scale={new Vector3(10,10,10)}
               position={faceApiToBabylonCoord(facePoint)}
               onClick={() => {
                 updateModal?.({
