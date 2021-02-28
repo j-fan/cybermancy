@@ -11,7 +11,7 @@ const IconContainer = styled.div`
   font-size: 24px;
   cursor: pointer;
   padding: 20px;
-  z-index: 2;
+  z-index: 3;
   transition: transform ease 0.05s;
   ${textShadow}
 

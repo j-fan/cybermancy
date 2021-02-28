@@ -8,7 +8,7 @@ const LoadingScreenContainer = styled.div<{
   showLoading: boolean;
   isFaceDetectReady: boolean;
 }>`
-  z-index: 3;
+  z-index: 2;
   position: absolute;
   width: 100%;
   top: 0;
@@ -23,15 +23,13 @@ const LoadingScreenContainer = styled.div<{
   background-color: ${({ showLoading }) =>
     showLoading ? colours.black : "rgba(0,0,0,0)"};
 
-  ${({ isFaceDetectReady, showLoading }) =>
+    ${({ isFaceDetectReady, showLoading }) =>
     isFaceDetectReady && !showLoading
       ? css`
-          opacity: 0;
-          visibility: hidden;
+          pointer-events: none;
         `
       : css`
-          opacity: 1;
-          visibility: visible;
+          pointer-events: all;
         `};
 `;
 
@@ -53,7 +51,6 @@ const LoadingScreen: FunctionComponent<LoadingScreenProps> = ({
         direction={ScrollDirection.RIGHT}
         text="Cybermancy"
         dividerPosition={DividerPosition.TOP}
-        isVisible={showLoading}
 
       />
       <LoadingScreenContent
@@ -65,7 +62,6 @@ const LoadingScreen: FunctionComponent<LoadingScreenProps> = ({
         direction={ScrollDirection.LEFT}
         text="Cybermancy"
         dividerPosition={DividerPosition.BOTTOM}
-        isVisible={showLoading}
       />
     </LoadingScreenContainer>
   );

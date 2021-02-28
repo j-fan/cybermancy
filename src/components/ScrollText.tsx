@@ -35,7 +35,6 @@ const getAnimation = (direction: ScrollDirection, width: number) => {
 const ScrollTextStyle = styled.span<{
   direction: ScrollDirection;
   width: number;
-  isVisible: boolean;
 }>`
   ${Unica}
   font-size: 4em;
@@ -46,11 +45,11 @@ const ScrollTextStyle = styled.span<{
   -webkit-text-stroke: 2px transparent;
   color: ${colours.black};
   user-select: none;
+  will-change: transform;
 
-  ${({ direction, width, isVisible }) =>
+  ${({ direction, width }) =>
     css`
-      animation: ${getAnimation(direction, width)} 20s linear infinite;
-      opacity: ${isVisible ? "1" : "0"};
+      animation: ${getAnimation(direction, width)} 30s linear infinite;
     `};
 `;
 
@@ -82,7 +81,6 @@ type ScrollTextProps = {
   direction: ScrollDirection;
   text: string;
   dividerPosition: DividerPosition;
-  isVisible: boolean;
 };
 
 const trigrams = ["☰", "☱", "☲", "☳", "☴", "☵", "☶", "☷"];
@@ -99,7 +97,6 @@ const ScrollText: FunctionComponent<ScrollTextProps> = ({
   direction,
   text,
   dividerPosition,
-  isVisible,
 }) => {
   const [ref, { width }] = useMeasure({
     polyfill: ResizeObserver,
@@ -118,14 +115,12 @@ const ScrollText: FunctionComponent<ScrollTextProps> = ({
           direction={direction}
           ref={ref}
           width={width}
-          isVisible={isVisible}
         >
           {repeatedText}
         </ScrollTextStyle>
         <ScrollTextStyle
           direction={direction}
           width={width}
-          isVisible={isVisible}
         >
           {repeatedText}
         </ScrollTextStyle>

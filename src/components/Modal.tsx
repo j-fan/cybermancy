@@ -20,13 +20,23 @@ export type ModalProps = {
   key?: string;
 };
 
-const ModalBackground = styled.div`
+const ModalBackground = styled.div<{ isOpen?: boolean }>`
+  z-index: 2;
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   display: grid;
   place-items: center;
+
+  ${({ isOpen }) =>
+    isOpen
+      ? css`
+          pointer-events: all;
+        `
+      : css`
+          pointer-events: none;
+        `}
 `;
 
 const ModalContainer = styled.div<{ isOpen?: boolean }>`
@@ -90,7 +100,7 @@ const Modal: FunctionComponent = () => {
   const { title, description, closeModal, isOpen } = useModal();
 
   return ReactDOM.createPortal(
-    <ModalBackground onClick={() => closeModal?.()}>
+    <ModalBackground onClick={() => closeModal?.()} isOpen={isOpen}>
       <ModalContainer
         isOpen={isOpen}
         onClick={(e) => {
