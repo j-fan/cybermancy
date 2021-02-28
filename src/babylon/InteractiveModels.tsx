@@ -47,6 +47,7 @@ const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
                     estimatedGender
                   ),
                   isOpen: true,
+                  imageUrl: `/images/${category}.png`
                 });
               }}
             />

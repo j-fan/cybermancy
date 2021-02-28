@@ -60,7 +60,7 @@ const BodyText = styled.p`
   font-size: 0.8em;
 
   @media ${device.mobileL} {
-    font-size: 1.2em;
+    font-size: 1em;
   }
 
   @media ${device.desktop} {

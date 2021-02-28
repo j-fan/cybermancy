@@ -1,9 +1,10 @@
 import { ResizeObserver } from "@juggle/resize-observer";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import useMeasure from "react-use-measure";
 import styled, { keyframes, css } from "styled-components";
 import { colours, Unica, BodyText, gradientBorderStyle } from "../globalStyles";
 import { Button } from "./Button";
+import { useModal } from "./ModalContext";
 
 const LoadingScreenContentWrapper = styled.div<{ showLoading: boolean }>`
   color: ${colours.white};
@@ -52,7 +53,7 @@ const MessageBox = styled.div`
 const LoadingText = styled.span`
   ${Unica}
   font-size: 2em;
-  color: ${colours.pink};
+  color: ${colours.purple};
   animation: ${fadeInOut} 1s linear infinite;
 `;
 
@@ -79,7 +80,20 @@ const LoadingScreenContent: FunctionComponent<LoadingScreenContentProps> = ({
   const [ref, { height, width }] = useMeasure({
     polyfill: ResizeObserver,
   });
-  
+
+  const { updateModal, isOpen: modalIsOpen } = useModal();
+
+  useEffect(() => {
+    if(isFaceDetectReady && !modalIsOpen){
+      updateModal?.({
+        title: 'Instructions',
+        description: 'Your face reading is ready! Click on the 3D objects to get a reading about a life theme that corresponds to a region of the face.',
+        imageUrl: "/images/info.png",
+        isOpen: true
+      })
+    }
+  }, [isFaceDetectReady]);
+
   const renderAnalysingFaceMessage = () => {
     if (!isFaceDetectReady) {
       return (

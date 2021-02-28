@@ -18,6 +18,7 @@ export type ModalProps = {
   description?: React.ReactNode;
   isOpen?: boolean;
   key?: string;
+  imageUrl?: string;
 };
 
 const ModalBackground = styled.div<{ isOpen?: boolean }>`
@@ -59,9 +60,14 @@ const ModalContainer = styled.div<{ isOpen?: boolean }>`
         `}
   ${gradientBorderStyle};
 
-  @media ${device.mobileL} {
+  @media ${device.tablet} {
     min-height: 300px;
-    width: 400px;
+    width: 600px;
+  }
+
+  @media ${device.desktop} {
+    min-height: 400px;
+    width: 800px;
   }
 `;
 
@@ -76,7 +82,7 @@ const ExitButtonStyle = styled.div`
   font-size: 36px;
   border: ${colours.teal} solid ${borderWidth};
   border-radius: 50%;
-  line-height: 36px;
+  line-height: 37px;
   text-align: center;
   cursor: pointer;
   user-select: none;
@@ -88,6 +94,26 @@ const ExitButtonStyle = styled.div`
   }
 `;
 
+const StyledImage = styled.img`
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+
+  @media ${device.mobileL} {
+    height: 200px;
+  }
+`;
+
+const StyledTitle = styled(Title1)<{hasTopMargin : boolean}>`
+  text-align: center;
+  ${({ hasTopMargin }) =>
+    !hasTopMargin
+      &&
+      css`
+          margin-top: 0;
+        `}
+`;
+
 const ExitButton: FunctionComponent<{
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }> = ({ onClick }) => (
@@ -97,7 +123,7 @@ const ExitButton: FunctionComponent<{
 );
 
 const Modal: FunctionComponent = () => {
-  const { title, description, closeModal, isOpen } = useModal();
+  const { title, description, closeModal, isOpen, imageUrl } = useModal();
 
   return ReactDOM.createPortal(
     <ModalBackground onClick={() => closeModal?.()} isOpen={isOpen}>
@@ -108,7 +134,8 @@ const Modal: FunctionComponent = () => {
         }}
       >
         <ExitButton onClick={() => closeModal?.()} />
-        <Title1>{title}</Title1>
+        {imageUrl && <StyledImage src={imageUrl}/>}
+        <StyledTitle hasTopMargin={!!imageUrl}>{title}</StyledTitle>
         <BodyText>{description}</BodyText>
       </ModalContainer>
     </ModalBackground>,

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
-import { colours, IconText, textShadow } from "../globalStyles";
+import { colours, IconText, textShadow, device } from "../globalStyles";
 import { useModal } from "./ModalContext";
 
 const IconContainer = styled.div`
@@ -8,7 +8,7 @@ const IconContainer = styled.div`
   top: 0;
   right: 0;
   color: ${colours.teal};
-  font-size: 24px;
+  font-size: 1.2rem;
   cursor: pointer;
   padding: 20px;
   z-index: 3;
@@ -17,6 +17,10 @@ const IconContainer = styled.div`
 
   &:hover {
     transform: scale(1.2);
+  }
+
+  @media ${device.mobileL} {
+    font-size: 2rem;
   }
 `;
 
@@ -29,6 +33,7 @@ const Info: FunctionComponent = () => {
           isOpen: true,
           title: "Info modal",
           description: "Description description",
+          imageUrl: "/images/info.png"
         })
       }
     >
