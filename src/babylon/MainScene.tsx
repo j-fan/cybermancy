@@ -2,7 +2,12 @@ import React, { FunctionComponent, useCallback, useState } from "react";
 import { Engine, Scene, SceneEventArgs } from "react-babylonjs";
 import { Color4, Vector3 } from "@babylonjs/core/Maths/math";
 import styled, { css } from "styled-components";
-import { Camera, BaseTexture } from "@babylonjs/core";
+import {
+  Camera,
+  BaseTexture,
+  DefaultRenderingPipeline,
+  Scene as SceneType,
+} from "@babylonjs/core";
 import { runDetections } from "../faceApi/faceDetect";
 import { FaceLandmarks68 } from "@vladmandic/face-api";
 import { InteractiveModels } from "./InteractiveModels";
@@ -81,6 +86,21 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
     // scene.debugLayer.show();
   };
 
+  const onSceneReady = (scene: SceneType) => {
+    const defaultPipeline = new DefaultRenderingPipeline(
+      "default",
+      true,
+      scene,
+      scene.cameras
+    );
+    defaultPipeline.chromaticAberrationEnabled = true;
+    defaultPipeline.chromaticAberration.aberrationAmount = -10;
+    defaultPipeline.chromaticAberration.radialIntensity = 0.2;
+
+    defaultPipeline.grainEnabled = true;
+    defaultPipeline.grain.intensity = 20;
+  };
+
   const hdrTextureRef = useCallback((node) => {
     setHdrTexture(node);
   }, []);
@@ -109,9 +129,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
           onSceneMount={onSceneMounted}
           environmentTexture={hdrTexture}
           beforeRender={beforeRender}
-          onReadyObservable={() => {
-            console.log("ready");
-          }}
+          onReadyObservable={onSceneReady}
         >
           <cubeTexture
             ref={hdrTextureRef}
