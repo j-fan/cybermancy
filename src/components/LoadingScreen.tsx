@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from "react";
 import styled, { css } from "styled-components";
 import { colours } from "../globalStyles";
 import { LoadingScreenContent } from "./LoadingScreenContent";
-import { DividerPosition, ScrollDirection, ScrollText } from "./ScrollText";
+import { ScrollDirection, ScrollText } from "./ScrollText";
 
 const LoadingScreenContainer = styled.div<{
   showLoading: boolean;
@@ -23,7 +23,7 @@ const LoadingScreenContainer = styled.div<{
   background-color: ${({ showLoading }) =>
     showLoading ? colours.black : "rgba(0,0,0,0)"};
 
-    ${({ isFaceDetectReady, showLoading }) =>
+  ${({ isFaceDetectReady, showLoading }) =>
     isFaceDetectReady && !showLoading
       ? css`
           pointer-events: none;
@@ -47,22 +47,13 @@ const LoadingScreen: FunctionComponent<LoadingScreenProps> = ({
       showLoading={showLoading}
       isFaceDetectReady={isFaceDetectReady}
     >
-      <ScrollText
-        direction={ScrollDirection.RIGHT}
-        text="Cybermancy"
-        dividerPosition={DividerPosition.TOP}
-
-      />
+      <ScrollText direction={ScrollDirection.RIGHT} text="Cybermancy" />
       <LoadingScreenContent
         isFaceDetectReady={isFaceDetectReady}
         setShowLoading={setShowLoading}
         showLoading={showLoading}
       />
-      <ScrollText
-        direction={ScrollDirection.LEFT}
-        text="Cybermancy"
-        dividerPosition={DividerPosition.BOTTOM}
-      />
+      <ScrollText direction={ScrollDirection.LEFT} text="Cybermancy" />
     </LoadingScreenContainer>
   );
 };

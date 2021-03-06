@@ -66,21 +66,9 @@ enum ScrollDirection {
   RIGHT = "right",
 }
 
-enum DividerPosition {
-  TOP = "top",
-  BOTTOM = "bottom",
-}
-
-const Divider = styled.div`
-  height: ${borderWidth};
-  background: ${gradient90deg};
-  width: 100%;
-`;
-
 type ScrollTextProps = {
   direction: ScrollDirection;
   text: string;
-  dividerPosition: DividerPosition;
 };
 
 const trigrams = ["☰", "☱", "☲", "☳", "☴", "☵", "☶", "☷"];
@@ -97,7 +85,6 @@ const getRandomTrigrams = () => {
 const ScrollText: FunctionComponent<ScrollTextProps> = ({
   direction,
   text,
-  dividerPosition,
 }) => {
   const [ref, { width }] = useMeasure({
     polyfill: ResizeObserver,
@@ -114,7 +101,6 @@ const ScrollText: FunctionComponent<ScrollTextProps> = ({
 
   return (
     <AlignStartWrapper>
-      {dividerPosition === DividerPosition.TOP && <Divider />}
       <FlexWrapper>
         <ScrollTextStyle direction={direction} ref={ref} width={width}>
           {textWithTrigrams}
@@ -123,9 +109,8 @@ const ScrollText: FunctionComponent<ScrollTextProps> = ({
           {textWithTrigrams}
         </ScrollTextStyle>
       </FlexWrapper>
-      {dividerPosition === DividerPosition.BOTTOM && <Divider />}
     </AlignStartWrapper>
   );
 };
 
-export { ScrollText, ScrollDirection, DividerPosition };
+export { ScrollText, ScrollDirection };
