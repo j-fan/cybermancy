@@ -94,11 +94,11 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
       scene.cameras
     );
     defaultPipeline.chromaticAberrationEnabled = true;
-    defaultPipeline.chromaticAberration.aberrationAmount = -10;
+    defaultPipeline.chromaticAberration.aberrationAmount = -30;
     defaultPipeline.chromaticAberration.radialIntensity = 0.2;
 
     defaultPipeline.grainEnabled = true;
-    defaultPipeline.grain.intensity = 20;
+    defaultPipeline.grain.intensity = 50;
   };
 
   const hdrTextureRef = useCallback((node) => {
