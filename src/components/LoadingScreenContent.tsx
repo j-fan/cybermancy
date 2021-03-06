@@ -85,7 +85,7 @@ const LoadingScreenContent: FunctionComponent<LoadingScreenContentProps> = ({
   const { updateModal, isOpen: modalIsOpen } = useModal();
 
   useEffect(() => {
-    if (isFaceDetectReady && !modalIsOpen) {
+    if (isFaceDetectReady && !modalIsOpen && !showLoading) {
       updateModal?.({
         title: "Instructions",
         description:
@@ -94,7 +94,7 @@ const LoadingScreenContent: FunctionComponent<LoadingScreenContentProps> = ({
         isOpen: true,
       });
     }
-  }, [isFaceDetectReady]);
+  }, [isFaceDetectReady, showLoading]);
 
   const renderAnalysingFaceMessage = () => {
     if (!isFaceDetectReady) {

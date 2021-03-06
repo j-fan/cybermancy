@@ -8,7 +8,7 @@ const LoadingScreenContainer = styled.div<{
   showLoading: boolean;
   isFaceDetectReady: boolean;
 }>`
-  z-index: 2;
+  z-index: 3;
   position: absolute;
   width: 100%;
   top: 0;

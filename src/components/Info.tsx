@@ -8,10 +8,10 @@ const IconContainer = styled.div`
   top: 0;
   right: 0;
   color: ${colours.teal};
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  padding: 20px;
-  z-index: 3;
+  padding: 10px;
+  z-index: 5;
   transition: transform ease 0.05s;
   ${textShadow}
 
@@ -21,6 +21,22 @@ const IconContainer = styled.div`
 
   @media ${device.mobileL} {
     font-size: 2rem;
+    padding: 20px;
+  }
+`;
+
+const IconBackground = styled.div`
+  background: ${colours.black};
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media ${device.mobileL} {
+    width: 40px;
+    height: 40px;
   }
 `;
 
@@ -37,7 +53,9 @@ const Info: FunctionComponent = () => {
         })
       }
     >
-      <IconText>ⓘ</IconText>
+      <IconBackground>
+        <IconText>ⓘ</IconText>
+      </IconBackground>
     </IconContainer>
   );
 };

@@ -19,7 +19,7 @@ const Wrapper = styled.div<{
   height: number;
   isModalOpen?: boolean;
 }>`
-  z-index: 1;
+  z-index: 2;
   position: absolute;
   top: 0;
   left: 0;

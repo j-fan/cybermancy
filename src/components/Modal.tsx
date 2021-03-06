@@ -22,7 +22,7 @@ export type ModalProps = {
 };
 
 const ModalBackground = styled.div<{ isOpen?: boolean }>`
-  z-index: 2;
+  z-index: 4;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -104,14 +104,13 @@ const StyledImage = styled.img`
   }
 `;
 
-const StyledTitle = styled(Title1)<{hasTopMargin : boolean}>`
+const StyledTitle = styled(Title1)<{ hasTopMargin: boolean }>`
   text-align: center;
   ${({ hasTopMargin }) =>
-    !hasTopMargin
-      &&
-      css`
-          margin-top: 0;
-        `}
+    !hasTopMargin &&
+    css`
+      margin-top: 0;
+    `}
 `;
 
 const ExitButton: FunctionComponent<{
@@ -134,7 +133,7 @@ const Modal: FunctionComponent = () => {
         }}
       >
         <ExitButton onClick={() => closeModal?.()} />
-        {imageUrl && <StyledImage src={imageUrl}/>}
+        {imageUrl && <StyledImage src={imageUrl} />}
         <StyledTitle hasTopMargin={!!imageUrl}>{title}</StyledTitle>
         <BodyText>{description}</BodyText>
       </ModalContainer>

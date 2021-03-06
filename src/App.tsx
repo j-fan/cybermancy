@@ -8,6 +8,7 @@ import { startFaceDetect } from "./faceApi/faceDetect";
 import { ModalProvider } from "./components/ModalContext";
 import { Info } from "./components/Info";
 import { LoadingScreen } from "./components/LoadingScreen";
+import { VideoOverlay } from "./components/VideoOverlay";
 
 const WEBCAM_VIDEO_ID = "webcam-video";
 const WEBCAM_CANVAS_ID = "webcam-canvas";
@@ -22,6 +23,7 @@ const WebcamVideo = styled.video`
   height: auto;
   width: 100%;
   transform: scaleX(-1);
+  filter: contrast(1.3);
 
   @media ${device.mobileL} {
     height: 100%;
@@ -73,6 +75,7 @@ const App: FunctionComponent = () => {
           trueVideoHeight={videoRef.current?.videoHeight ?? 0}
           setFaceDetectReady={() => setIsFaceDetectReady(true)}
         />
+        <VideoOverlay />
         <WebcamVideo
           id={WEBCAM_VIDEO_ID}
           autoPlay
