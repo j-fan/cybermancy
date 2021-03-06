@@ -1,7 +1,8 @@
 import { Vector3 } from "@babylonjs/core";
 import { FaceLandmarks68 } from "@vladmandic/face-api";
-import React, { Fragment, FunctionComponent } from "react";
+import React, { Fragment, FunctionComponent, useEffect, useState } from "react";
 import { ModalProps } from "../components/Modal";
+import { useDeviceDetect } from "../components/useDeviceDetect";
 import { FortuneCategoryData } from "../data/fortuneData";
 import {
   FortuneCategory,
@@ -26,6 +27,15 @@ const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
   faceLandmarks,
   updateModal,
 }) => {
+  const [modelScale, setModelScale] = useState(10);
+  const { isMobile } = useDeviceDetect();
+
+  useEffect(() => {
+    if (isMobile) {
+      setModelScale(20);
+    }
+  }, [isMobile]);
+
   return (
     <Fragment>
       {Object.values(FortuneCategory).map((category) =>
@@ -36,7 +46,7 @@ const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
               name={`${category}-model-${i}`}
               rootUrl="./3dassets/"
               sceneFilename={FortuneCategoryData[category].model[i]}
-              scale={new Vector3(10, 10, 10)}
+              scale={new Vector3(modelScale, modelScale, modelScale)}
               position={faceApiToBabylonCoord(facePoint)}
               onClick={() => {
                 updateModal?.({

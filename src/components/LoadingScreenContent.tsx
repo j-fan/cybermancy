@@ -64,8 +64,8 @@ const StyledBodyText = styled(BodyText)<{ width: number }>`
   text-align: center;
 `;
 
-const IntroductionText = `Cybermancy 2 is an interactive webcam experience based on the concept of Chinese face reading.
-Best experienced on desktop.`;
+const IntroductionText =
+  "Cybermancy 2 is an interactive webcam experience based on the concept of Chinese face reading.";
 
 type LoadingScreenContentProps = {
   isFaceDetectReady: boolean;

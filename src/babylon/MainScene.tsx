@@ -12,6 +12,7 @@ import { runDetections } from "../faceApi/faceDetect";
 import { FaceLandmarks68 } from "@vladmandic/face-api";
 import { InteractiveModels } from "./InteractiveModels";
 import { useModal } from "../components/ModalContext";
+import { useDeviceDetect } from "../components/useDeviceDetect";
 // import "@babylonjs/inspector";
 
 const Wrapper = styled.div<{
@@ -72,6 +73,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
    * components, so we have to pass it down from here.
    */
   const { updateModal, isOpen: isModalOpen } = useModal();
+  const { isMobile } = useDeviceDetect();
   const [hdrTexture, setHdrTexture] = useState<BaseTexture | undefined>(
     undefined
   );
@@ -94,11 +96,17 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
       scene.cameras
     );
     defaultPipeline.chromaticAberrationEnabled = true;
-    defaultPipeline.chromaticAberration.aberrationAmount = -30;
-    defaultPipeline.chromaticAberration.radialIntensity = 0.2;
-
     defaultPipeline.grainEnabled = true;
-    defaultPipeline.grain.intensity = 50;
+
+    if (isMobile) {
+      defaultPipeline.chromaticAberration.aberrationAmount = 0.04;
+      defaultPipeline.chromaticAberration.radialIntensity = 0.1;
+      defaultPipeline.grain.intensity = 10;
+    } else {
+      defaultPipeline.chromaticAberration.aberrationAmount = -30;
+      defaultPipeline.chromaticAberration.radialIntensity = 0.2;
+      defaultPipeline.grain.intensity = 50;
+    }
   };
 
   const hdrTextureRef = useCallback((node) => {
