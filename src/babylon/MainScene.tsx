@@ -103,7 +103,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
       defaultPipeline.chromaticAberration.radialIntensity = 0.1;
       defaultPipeline.grain.intensity = 10;
     } else {
-      defaultPipeline.chromaticAberration.aberrationAmount = -30;
+      defaultPipeline.chromaticAberration.aberrationAmount = -15;
       defaultPipeline.chromaticAberration.radialIntensity = 0.2;
       defaultPipeline.grain.intensity = 50;
     }

@@ -78,6 +78,10 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     ${OpenSans}
   }
+
+  a {
+    color: ${colours.teal};
+  }
 `;
 
 const dropShadow = css`

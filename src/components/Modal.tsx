@@ -1,8 +1,9 @@
+import { ResizeObserver } from "@juggle/resize-observer";
 import React, { FunctionComponent } from "react";
 import ReactDOM from "react-dom";
+import useMeasure from "react-use-measure";
 import styled, { css } from "styled-components";
 import {
-  BodyText,
   colours,
   device,
   dropShadow,
@@ -40,12 +41,12 @@ const ModalBackground = styled.div<{ isOpen?: boolean }>`
         `}
 `;
 
-const ModalContainer = styled.div<{ isOpen?: boolean }>`
+const ModalContainer = styled.div<{ isOpen?: boolean; isAutoHeight: boolean }>`
   width: calc(100% - 40px);
-  min-height: 400px;
   color: ${colours.white};
-  padding: 20px;
   white-space: break-spaces;
+  padding: 20px;
+
   ${({ isOpen }) =>
     isOpen
       ? css`
@@ -61,14 +62,28 @@ const ModalContainer = styled.div<{ isOpen?: boolean }>`
   ${gradientBorderStyle};
 
   @media ${device.tablet} {
-    min-height: 300px;
     width: 600px;
   }
 
   @media ${device.desktop} {
-    min-height: 400px;
     width: 800px;
   }
+
+  ${({ isAutoHeight }) =>
+    isAutoHeight
+      ? css`
+          max-height: 400px;
+        `
+      : css`
+          height: 450px;
+          @media ${device.tablet} {
+            height: 500px;
+          }
+
+          @media ${device.desktop} {
+            height: 600px;
+          }
+        `}
 `;
 
 const ExitButtonStyle = styled.div`
@@ -113,6 +128,24 @@ const StyledTitle = styled(Title1)<{ hasTopMargin: boolean }>`
     `}
 `;
 
+const ScrollWrapper = styled.div`
+  box-sizing: border-box;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+  -ms-overflow-style: none; /* IE and Edge hide scrollbar */
+  scrollbar-width: none; /* Firefox hide scrollbar */
+
+  @media ${device.tablet} {
+    padding: 0px 40px 20px;
+  }
+
+  ::-webkit-scrollbar {
+    display: none; /* Chrome hide scrollbar */
+  }
+`;
+
 const ExitButton: FunctionComponent<{
   onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }> = ({ onClick }) => (
@@ -123,19 +156,25 @@ const ExitButton: FunctionComponent<{
 
 const Modal: FunctionComponent = () => {
   const { title, description, closeModal, isOpen, imageUrl } = useModal();
+  const [setUseMeasureRef, { height }] = useMeasure({
+    polyfill: ResizeObserver,
+  });
 
   return ReactDOM.createPortal(
     <ModalBackground onClick={() => closeModal?.()} isOpen={isOpen}>
       <ModalContainer
+        isAutoHeight={height < 400}
         isOpen={isOpen}
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
         <ExitButton onClick={() => closeModal?.()} />
-        {imageUrl && <StyledImage src={imageUrl} />}
-        <StyledTitle hasTopMargin={!!imageUrl}>{title}</StyledTitle>
-        <BodyText>{description}</BodyText>
+        <ScrollWrapper ref={setUseMeasureRef}>
+          {imageUrl && <StyledImage src={imageUrl} />}
+          <StyledTitle hasTopMargin={!!imageUrl}>{title}</StyledTitle>
+          {description}
+        </ScrollWrapper>
       </ModalContainer>
     </ModalBackground>,
     document.getElementById("modal-root") as HTMLElement

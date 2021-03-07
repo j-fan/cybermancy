@@ -89,7 +89,7 @@ const LoadingScreenContent: FunctionComponent<LoadingScreenContentProps> = ({
       updateModal?.({
         title: "Instructions",
         description:
-          "Your face reading is ready! Click on the 3D objects to get a reading about a life theme that corresponds to a region of the face.",
+          "Your face reading is ready! Click on the 3D objects to get a reading about a life theme that corresponds to that region of the face.",
         imageUrl: "./images/info.png",
         isOpen: true,
       });
