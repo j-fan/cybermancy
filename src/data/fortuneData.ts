@@ -250,7 +250,7 @@ const FortuneCategoryData: FortuneCategoryDataType = {
   health: {
     model: ["health.glb"],
     description:
-      "The nose can reveal insights about your health and wealth. Together with the nose, the middle region of your face determines your luck in middle age (30-50 years old). A stylised symbol of the word longevity 壽 was chosen to represent health here.",
+      "The nose can reveal insights about your health and wealth. Together with the nose, the middle region of your face determines your luck in middle age (30-50 years old). The peach, a popularity symbol of longevity was chosen to represent health.",
   },
   wealth: {
     model: ["wealth.glb"],
