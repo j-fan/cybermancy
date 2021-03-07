@@ -234,35 +234,43 @@ type FortuneCategoryDataType = {
 const FortuneCategoryData: FortuneCategoryDataType = {
   career: {
     model: ["career.glb"],
-    description: "career base description",
+    description:
+      "The forehead represents your luck in youth (15-30 years old), as well as career prospects, analytical ability and general fortune. Any lines, scars and moles on the forehead indicate reduced luck. A dragon was chosen to represent this category because it possessing strong yang energy that governs wealth & power.",
   },
   fortune: {
     model: ["fortune.glb", "fortune2.glb"],
-    description: "fortune base description",
+    description:
+      "The forehead represents your luck in youth (15-30 years old), as well as career prospects, analytical ability and general fortune. A orange was chosen as the symbol here because its golden colour and shape resemble gold coins, so they attract wealth when placed in the home or at a shrine.",
   },
   marriage: {
     model: ["marriage.glb", "marriage2.glb"],
-    description: "marriage base description",
+    description:
+      "The eyes and eyebrows can tell us about your social status, family and romantic relationships. Together with the nose, the middle region of your face determines your luck in middle age (30-50 years old). An eternal knot was chosen to represent this category, as it is a ornament usually given at weddings to wish them a long and happy relationship.",
   },
   health: {
     model: ["health.glb"],
-    description: "health base description",
+    description:
+      "The nose can reveal insights about your health and wealth. Together with the nose, the middle region of your face determines your luck in middle age (30-50 years old). A stylised symbol of the word longevity 壽 was chosen to represent health here.",
   },
   wealth: {
     model: ["wealth.glb"],
-    description: "wealth base description",
+    description:
+      "The nose can reveal insights about your health and wealth. Together with the nose, the middle region of your face determines your luck in middle age (30-50 years old). The Chinese ingot or sycee was chosen as the symbol to represent wealth here.",
   },
   children: {
     model: ["children.glb", "children2.glb"],
-    description: "children base description",
+    description:
+      "The area under the eyes relate to success in having children. Dark eye circles or any skin problems can affect the chances of having healthy children. The orchid, which is a symbol of fertility was chosen to represent this category.",
   },
   popularity: {
     model: ["popularity.glb", "popularity2.glb"],
-    description: "popularity base description",
+    description:
+      "The lower part of the face below the nose can reveal insights about older age (after 50 years old). Features of the area on either side of the mouth are related to your popularity or luck with friends. A rooster, an auspicious bird with the power to fight off enemies was chosen as a symbol for popularity here.",
   },
   assets: {
     model: ["assets.glb", "assets2.glb"],
-    description: "assets base description",
+    description:
+      "The eyes and eyebrows can tell us about your social status, family and romantic relationships. Together with the nose, the middle region of your face determines your luck in middle age (30-50 years old). The region between the eyes and eyebrows tells us about your luck in owning and developing assets. An ancient Chinese coin, a popular object in lucky decorations was chosen to be the symbol for this category.",
   },
 };
 
