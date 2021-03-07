@@ -13,31 +13,43 @@ const FortuneData: FortuneDataType = {
   career: {
     "under-20": {
       female: [
-        "test data test data test data female under 20 career",
-        "test data test data test data female under 20 career 2",
-        "test data test data test data female under 20 career 3",
+        "At this stage in life, you may not have your career figured out, but that is fine. Make sure to keep studying hard so that you can maximise the opportunities later on, especially in entrance exams. There is no harm in asking for additional help in the form of private tutoring. You might also be struggling with finding your own identity and fitting in at the same time in school. It is worth learning how to improve your appearance and to dress well, as this will give you a social advantage in your early adulthood - whether it be in job interviews or dating.",
       ],
-      male: ["test data test data test data career default"],
+      male: [
+        "Spend the time to think about your career if you have no yet. Make sure to keep studying hard so that you can maximise the opportunities later on, especially in entrance exams. There is no harm in asking for additional help in the form of private tutoring. You might also be struggling with finding your own identity and fitting in at the same time in school. Its a good idea to engage in friendly competition like sports and debating, as this is great practice for your first job.",
+      ],
     },
     "20-30": {
-      female: ["test data test data test data female 20-30 career"],
-      male: ["test data test data test data male 20-30 career"],
+      female: [
+        "You are early in your career or looking to start it. In this day and age, finding a job that suits you can be difficult. Aim to be a reliable and steadfast worker. If you are looking for a husband or are already married, you do not need to spend excess effort in improving this aspect of your life.",
+      ],
+      male: [
+        "You are early in your career or looking to start it. In this day and age, finding a job that suits you can be difficult. Remember to persevere and work hard, so that success can come to you. Embrace your ambition now as actions in your early career can set you up for life.",
+      ],
     },
     "30-40": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "If you are still working, perhaps consider if other parts your life needs attention, such as your family. If you have not started one yet, give it some thought as your biological clock is running out of time.",
+      ],
+      male: [
+        "You are likely in the middle of your career. If you have taken successful risks in your early career you are probably enjoying it now. Otherwise it is not too late. Perhaps try re-skilling with further education so that you can move upwards or transition into a different but better compensated profession.",
+      ],
     },
     "50-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "You are hopefully heading towards retirement or have already done so. If you can, remember to care for your family so that they will care for you in your old age.",
+      ],
+      male: [
+        "You are hopefully heading towards retirement or have already done so. Now is not the time to make risky career choices, it is better to be a reliable and steadfast worker so that you can continue to take care if your family.",
+      ],
     },
-    "60-70": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
-    },
-    "over-70": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+    "over-60": {
+      female: [
+        "You are hopefully retired or will be soon. Enjoy the rest of your life with your family and friends. If you have any grandchildren, it is not a bad idea to care for them so that your children can focus on building their career.",
+      ],
+      male: [
+        "You are hopefully retired or will be soon. Enjoy the rest of your life with your family and friends. If you have any grandchildren, it is not a bad idea to care for them so that your children can focus on building their career.",
+      ],
     },
   },
   fortune: {
@@ -57,11 +69,7 @@ const FortuneData: FortuneDataType = {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
-    "60-70": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
-    },
-    "over-70": {
+    "over-60": {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
@@ -83,11 +91,7 @@ const FortuneData: FortuneDataType = {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
-    "60-70": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
-    },
-    "over-70": {
+    "over-60": {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
@@ -109,11 +113,7 @@ const FortuneData: FortuneDataType = {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
-    "60-70": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
-    },
-    "over-70": {
+    "over-60": {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
@@ -135,11 +135,7 @@ const FortuneData: FortuneDataType = {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
-    "60-70": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
-    },
-    "over-70": {
+    "over-60": {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
@@ -161,11 +157,7 @@ const FortuneData: FortuneDataType = {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
-    "60-70": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
-    },
-    "over-70": {
+    "over-60": {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
@@ -187,11 +179,7 @@ const FortuneData: FortuneDataType = {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
-    "60-70": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
-    },
-    "over-70": {
+    "over-60": {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
@@ -213,11 +201,7 @@ const FortuneData: FortuneDataType = {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },
-    "60-70": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
-    },
-    "over-70": {
+    "over-60": {
       female: ["test data test data test data"],
       male: ["test data test data test data"],
     },

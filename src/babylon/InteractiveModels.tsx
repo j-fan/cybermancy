@@ -13,6 +13,23 @@ import { estimatedAge, estimatedGender } from "../faceApi/faceDetect";
 import { faceApiToBabylonCoord } from "../utils/faceApiToBabylonCoord";
 import { InteractiveModel } from "./InteractiveModel";
 
+type ModalContentProps = {
+  categoryDescription: string;
+  reading: string;
+};
+
+const ModalContent: FunctionComponent<ModalContentProps> = ({
+  categoryDescription,
+  reading,
+}) => (
+  <div>
+    <h2>About this facial region</h2>
+    <p>{categoryDescription}</p>
+    <h2>Your reading</h2>
+    <p>{reading}</p>
+  </div>
+);
+
 type InteractiveModelsProps = {
   faceLandmarks?: FaceLandmarks68;
   updateModal?: (newModalState: ModalProps) => void;
@@ -51,10 +68,14 @@ const InteractiveModels: FunctionComponent<InteractiveModelsProps> = ({
               onClick={() => {
                 updateModal?.({
                   title: category,
-                  description: getFaceReading(
-                    category,
-                    estimatedAge,
-                    estimatedGender
+                  description: (
+                    <ModalContent
+                      {...getFaceReading(
+                        category,
+                        estimatedAge,
+                        estimatedGender
+                      )}
+                    />
                   ),
                   isOpen: true,
                   imageUrl: `./images/${category}.png`,

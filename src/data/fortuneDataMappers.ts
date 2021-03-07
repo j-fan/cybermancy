@@ -18,8 +18,7 @@ enum AgeGroups {
   AGE_30_TO_40 = "30-40",
   AGE_40_TO_50 = "50-60",
   AGE_50_TO_60 = "50-60",
-  AGE_60_TO_70 = "60-70",
-  AGE_OVER_70 = "over-70",
+  AGE_OVER_60 = "over-60",
 }
 
 const mapAgeToAgeGroup = (age: number): AgeGroups => {
@@ -28,8 +27,7 @@ const mapAgeToAgeGroup = (age: number): AgeGroups => {
   if (age >= 30 && age < 40) return AgeGroups.AGE_30_TO_40;
   if (age >= 40 && age < 50) return AgeGroups.AGE_40_TO_50;
   if (age >= 50 && age < 60) return AgeGroups.AGE_50_TO_60;
-  if (age >= 60 && age < 70) return AgeGroups.AGE_60_TO_70;
-  if (age >= 70) return AgeGroups.AGE_OVER_70;
+  if (age >= 60) return AgeGroups.AGE_OVER_60;
 
   return AgeGroups.AGE_20_TO_30;
 };
@@ -86,11 +84,11 @@ const getFaceReading = (
   category: FortuneCategory,
   age: number,
   gender: Gender
-): string => {
+): { categoryDescription: string; reading: string } => {
   const categoryDescription = FortuneCategoryData[category].description;
   const readings = FortuneData[category][mapAgeToAgeGroup(age)][gender];
   const reading = readings[Math.floor(Math.random() * readings.length)];
-  return `${categoryDescription}\n\n${reading}`;
+  return { categoryDescription, reading };
 };
 
 export {
