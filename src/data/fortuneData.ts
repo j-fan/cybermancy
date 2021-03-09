@@ -13,65 +13,85 @@ const FortuneData: FortuneDataType = {
   career: {
     "under-20": {
       female: [
-        "At this stage in life, you may not have your career figured out, but that is fine. Make sure to keep studying hard so that you can maximise the opportunities later on, especially in entrance exams. There is no harm in asking for additional help in the form of private tutoring. You might also be struggling with finding your own identity and fitting in at the same time in school. It is worth learning how to improve your appearance and to dress well, as this will give you a social advantage in your early adulthood - whether it be in job interviews or dating.",
+        "Your forehead shape indicates that you are young and have not started your career yet. At this stage in life, you may not have your career figured out, but that is fine. Make sure to keep studying hard so that you can maximise the opportunities later on, especially in entrance exams. There is no harm in asking for additional help in the form of private tutoring. You might also be struggling with finding your own identity and fitting in at the same time in school. It is worth learning how to improve your appearance and to dress well, as this will give you a social advantage in your early adulthood - whether it be in job interviews or dating.",
       ],
       male: [
-        "Spend the time to think about your career if you have no yet. Make sure to keep studying hard so that you can maximise the opportunities later on, especially in entrance exams. There is no harm in asking for additional help in the form of private tutoring. You might also be struggling with finding your own identity and fitting in at the same time in school. Its a good idea to engage in friendly competition like sports and debating, as this is great practice for your first job.",
+        "Your forehead shape indicates that you are young and have not started your career yet. Spend the time to think about your career if you have no yet. Make sure to keep studying hard so that you can maximise the opportunities later on, especially in entrance exams. There is no harm in asking for additional help in the form of private tutoring. You might also be struggling with finding your own identity and fitting in at the same time in school. Its a good idea to engage in friendly competition like sports and debating, as this is great practice for your first job.",
       ],
     },
     "20-30": {
       female: [
-        "You are early in your career or looking to start it. In this day and age, finding a job that suits you can be difficult. Aim to be a reliable and steadfast worker. If you are looking for a husband or are already married, you do not need to spend excess effort in improving this aspect of your life.",
+        "Your forehead shape indicates that you are early in your career or looking to start it. In this day and age, finding a job that suits you can be difficult. Aim to be a reliable and steadfast worker. If you are looking for a husband or are already married, you do not need to spend excess effort in improving this aspect of your life.",
       ],
       male: [
-        "You are early in your career or looking to start it. In this day and age, finding a job that suits you can be difficult. Remember to persevere and work hard, so that success can come to you. Embrace your ambition now as actions in your early career can set you up for life.",
+        "Your forehead shape indicates that you are early in your career or looking to start it. In this day and age, finding a job that suits you can be difficult. Remember to persevere and work hard, so that success can come to you. Embrace your ambition now as actions in your early career can set you up for life.",
       ],
     },
     "30-40": {
       female: [
-        "If you are still working, perhaps consider if other parts your life needs attention, such as your family. If you have not started one yet, give it some thought as your biological clock is running out of time.",
+        "Based on the shape of your forehead, you are likely in the middle of your career or getting close. If you are still working, perhaps consider if other parts your life needs attention, such as your family. If you have not started one yet, give it some thought as your biological clock is running out of time.",
       ],
       male: [
-        "You are likely in the middle of your career. If you have taken successful risks in your early career you are probably enjoying it now. Otherwise it is not too late. Perhaps try re-skilling with further education so that you can move upwards or transition into a different but better compensated profession.",
+        "Based on the shape of your forehead, you are likely in the middle of your career or getting close. If you have taken successful risks in your early career you are probably enjoying it now. Otherwise it is not too late. Perhaps try re-skilling with further education so that you can move upwards or transition into a different but better compensated profession.",
       ],
     },
     "50-60": {
       female: [
-        "You are hopefully heading towards retirement or have already done so. If you can, remember to care for your family so that they will care for you in your old age.",
+        "Based on the shape of your forehead, you are hopefully heading towards retirement or have already done so. If you can, remember to care for your family so that they will care for you in your old age.",
       ],
       male: [
-        "You are hopefully heading towards retirement or have already done so. Now is not the time to make risky career choices, it is better to be a reliable and steadfast worker so that you can continue to take care if your family.",
+        "Based on the shape of your forehead, you are hopefully heading towards retirement or have already done so. Now is not the time to make risky career choices, it is better to be a reliable and steadfast worker so that you can continue to take care if your family.",
       ],
     },
     "over-60": {
       female: [
-        "You are hopefully retired or will be soon. Enjoy the rest of your life with your family and friends. If you have any grandchildren, it is not a bad idea to care for them so that your children can focus on building their career.",
+        "Based on the shape of your forehead, you are hopefully retired or will be soon. Enjoy the rest of your life with your family and friends. If you have any grandchildren, it is not a bad idea to care for them so that your children can focus on building their career.",
       ],
       male: [
-        "You are hopefully retired or will be soon. Enjoy the rest of your life with your family and friends. If you have any grandchildren, it is not a bad idea to care for them so that your children can focus on building their career.",
+        "Based on the shape of your forehead, you are hopefully retired or will be soon. Enjoy the rest of your life with your family and friends. If you have any grandchildren, it is not a bad idea to care for them so that your children can focus on building their career.",
       ],
     },
   },
   fortune: {
     "under-20": {
-      female: ["test data test data test data female under 20 fortune"],
-      male: ["test data test data test data fortune default"],
+      female: [
+        "Your forehead shape indicates that you are young and full of potential. Be grateful for the good opportunities that come your way.",
+      ],
+      male: [
+        "Your forehead shape indicates that you are young and full of potential. Do not hesitate and squander good opportunities that come your way.",
+      ],
     },
     "20-30": {
-      female: ["test data test data test data female 20-30 fortune"],
-      male: ["test data test data test data male 20-30 fortune"],
+      female: [
+        'Your forehead shape indicates that you have a decent chance to attract good fortune for yourself or your partner. However this region of the face only indicates your luck "sent from heaven", or in other words - your luck in youth. If things are going well for you, do not take it for granted and make the most of it.',
+      ],
+      male: [
+        'Your forehead shape indicates that you have a decent chance to attract good fortune for yourself. However this region of the face only indicates your luck "sent from heaven", or in other words - your luck in youth. If things are going well for you, do not take it for granted and make the most of it.',
+      ],
     },
     "30-40": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "Your forehead is beginning to show signs of lines or other blemishes which can indicate troubles with your luck. It is recommended to maintain a good skincare routine or use makeup to keep the forehead bright and clear, to attract good fortune.",
+      ],
+      male: [
+        "Your forehead is beginning to show signs of lines or other blemishes which can indicate troubles with your luck. It is recommended to maintain a good skincare routine to keep the forehead bright and clear, to attract good fortune.",
+      ],
     },
     "50-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "Your forehead has signs of lines or other blemishes which can interfere with good fortune. However since this area of the face mainly governs your luck in youth, other positive facial features can make up for this. Continue to maintain a skin care routine or employ cosmetics so that you can keep the skin bright and clear, to attract good fortune.",
+      ],
+      male: [
+        "Your forehead has signs of lines or other blemishes which can interfere with good fortune. However since this area of the face mainly governs your luck in youth, other positive facial features can make up for this. Continue to maintain a skin care routine so that you can keep the skin bright and clear, to attract good fortune.",
+      ],
     },
     "over-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "Your forehead has signs of lines or other blemishes which can interfere with good fortune. However since this area of the face mainly governs your luck in youth, other positive facial features can make up for this.",
+      ],
+      male: [
+        "Your forehead has signs of lines or other blemishes which can interfere with good fortune. However since this area of the face mainly governs your luck in youth, other positive facial features can make up for this.",
+      ],
     },
   },
   marriage: {
@@ -120,15 +140,21 @@ const FortuneData: FortuneDataType = {
   },
   wealth: {
     "under-20": {
-      female: ["test data test data test data"],
+      female: [
+        "Your nose shape indicates that you have a fair opportunity to bring wealth in your life. However your nose should be luminous with no blemishes or spots. Spots mean that blockages to attaining wealth exists. You can make up for this by using cosmetics.",
+      ],
       male: ["test data test data test data"],
     },
     "20-30": {
-      female: ["test data test data test data"],
+      female: [
+        "Your nose shape indicates that you have a fair opportunity to bring wealth to your husband or partner. However your nose should be luminous with no blemishes or spots. Spots mean that blockages to attaining wealth exists. You can make up for this by using cosmetics.",
+      ],
       male: ["test data test data test data"],
     },
     "30-40": {
-      female: ["test data test data test data"],
+      female: [
+        "Your nose shape indicates that you have a fair opportunity to bring wealth to your husband or partner. However your nose should be luminous with no blemishes or spots. Spots mean that blockages to attaining wealth exists. You can make up for this by using cosmetics.",
+      ],
       male: ["test data test data test data"],
     },
     "50-60": {
