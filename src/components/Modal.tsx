@@ -1,5 +1,5 @@
 import { ResizeObserver } from "@juggle/resize-observer";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import useMeasure from "react-use-measure";
 import styled, { css } from "styled-components";
@@ -159,6 +159,13 @@ const Modal: FunctionComponent = () => {
   const [setUseMeasureRef, { height }] = useMeasure({
     polyfill: ResizeObserver,
   });
+  const scrollWrapperRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      scrollWrapperRef.current?.scrollTo({ top: 0 });
+    }
+  }, [isOpen]);
 
   return ReactDOM.createPortal(
     <ModalBackground onClick={() => closeModal?.()} isOpen={isOpen}>
@@ -170,7 +177,12 @@ const Modal: FunctionComponent = () => {
         }}
       >
         <ExitButton onClick={() => closeModal?.()} />
-        <ScrollWrapper ref={setUseMeasureRef}>
+        <ScrollWrapper
+          ref={(ref) => {
+            setUseMeasureRef(ref);
+            scrollWrapperRef.current = ref;
+          }}
+        >
           {imageUrl && <StyledImage src={imageUrl} />}
           <StyledTitle hasTopMargin={!!imageUrl}>{title}</StyledTitle>
           {description}
