@@ -306,24 +306,44 @@ const FortuneData: FortuneDataType = {
   },
   assets: {
     "under-20": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The features of your eyes indicate that you are young and do not have many assets to your name yet. If you don't intend to work during your best years to get a comfortable life, start thinking about finding a partner that can provide well for you.",
+      ],
+      male: [
+        "The features of your eyes indicate that you are young and do not have many assets to your name yet.  Work hard and stay competitive in school so that you set yourself up for a successful career later.",
+      ],
     },
     "20-30": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The features of your eyes indicate that you are young and starting to accumulate some assets. As a young person you are feeling the pressure of a competitive economy. It is hard to acquire large assets like property in this day and age. It will help to share that burden with a life partner.",
+      ],
+      male: [
+        "The features of your eyes indicate that you are young and starting to accumulate some assets. As a young person you are feeling the pressure of a competitive economy. It is hard to acquire large assets like property in this day and age. You will have to work hard and smart. Taking care of your finances will help you attract a good partner.",
+      ],
     },
     "30-40": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The features of your eyes suggest that you had some mixed success in trying to grow your own assets. It might help to combine forces with a partner to help you achieve financial milestones like buying a house.",
+      ],
+      male: [
+        "The features of your eyes suggest that you had some mixed success in trying to grow your own assets. You will have to work hard and make good investments.  Perhaps starting your own business is the way to go if you are having difficulties progressing fast enough in your career.",
+      ],
     },
     "50-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The features of your eyes suggest that you are heading towards retirement or have already started it. If you have chosen a good spouse, you are living comfortably with a good amount of shared assets to last. If not, you should make sure that you have enough retirement funds or downscale your lifestyle to be manageable.",
+      ],
+      male: [
+        "The features of your eyes suggest that you are heading towards retirement or have already started it. Although a little late, you should make sure that you have enough retirement funds or downscale your lifestyle to be manageable.",
+      ],
     },
     "over-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The features of your eyes suggest that you are heading towards retirement or have already started it. If you have chosen a good spouse, you are living comfortably with a good amount of shared assets to last. If not, you should make sure that you have enough retirement funds or downscale your lifestyle to be manageable.",
+      ],
+      male: [
+        "The features of your eyes suggest that you are heading towards retirement or have already started it. Although a little late, you should make sure that you have enough retirement funds or downscale your lifestyle to be manageable.",
+      ],
     },
   },
 };
