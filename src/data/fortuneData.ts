@@ -96,46 +96,86 @@ const FortuneData: FortuneDataType = {
   },
   marriage: {
     "under-20": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The shape of your eyebrows indicate that you are too young to consider marriage yet. However you should keep on the lookout for boys that might make an ideal husband.",
+      ],
+      male: [
+        "The shape of your eyebrows indicate that you are too young to consider marriage yet. However you should still work hard so that you can secure a career to attract a good wife.",
+      ],
     },
     "20-30": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The shape of your eyebrows indicate that you might be newly married or considering it. You should not leave the decision too late otherwise the ideal partners will have been chosen by others already.",
+      ],
+      male: [
+        "The shape of your eyebrows indicate that you might be newly married or considering it. If you are not happily partnered yet, keep working on your career and yourself so that you can attract an ideal wife.",
+      ],
     },
     "30-40": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The shape of your eyebrows indicate that you are having increasing struggle in your dating life, if you are not already partnered. If you desire a marriage or long term relationship, this will be difficult to achieve with your youthful days behind you.",
+      ],
+      male: [
+        "The shape of your eyebrows indicate that you are having increasing struggle in your dating life, if you are not already partnered. There is still time to attract an ideal partner if you keep working on your career and yourself.",
+      ],
     },
     "50-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "Judging by the shape and form of your eyebrows, marriage is not a primary concern for you, either because you are already married or decided that you do not need it in your life. If you are not partnered, perhaps consider if you have lived the best life that you could.",
+      ],
+      male: [
+        "Judging by the shape and form of your eyebrows, marriage is not a primary concern for you, either because you are already married or decided that you do not need it in your life.",
+      ],
     },
     "over-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "Judging by the shape and form of your eyebrows, marriage is not a primary concern for you, either because you are already married or decided that you do not need it in your life. If you are not partnered, perhaps consider if you have lived the best life that you could.",
+      ],
+      male: [
+        "Judging by the shape and form of your eyebrows, marriage is not a primary concern for you, either because you are already married or decided that you do not need it in your life.",
+      ],
     },
   },
   health: {
     "under-20": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The shape of your nose indicates that you are mostly healthy and youthful. You should maintain that health though good diet and exercise you that you can preserve your beauty for longer.",
+      ],
+      male: [
+        "The shape of your nose indicates that you are mostly healthy and youthful. You should maintain that health though good diet and exercise so that keep your strength and vitality for longer.",
+      ],
     },
     "20-30": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The shape of your nose indicates that you are in the prime of life. You should aim to maintain that health though good diet and exercise you that you can preserve your beauty for longer, and to be prepared for any child you might have.",
+      ],
+      male: [
+        "The shape of your nose indicates that you are in the prime of life. You should maintain that health though good diet and exercise so that keep your strength and vitality for longer.",
+      ],
     },
     "30-40": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The shape of your nose indicates that you are beginning to age. You should keep taking care of your body and skin, especially your face, so that your can maintain your looks for longer.",
+      ],
+      male: [
+        "The shape of your nose indicates that you are beginning to age. You should keep taking care of your body so that avoid illnesses and pain in your later life.",
+      ],
     },
     "50-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The features of your nose suggest that you are aging. Keep working on your health with good diet and exercise so that you can age gracefully.",
+      ],
+      male: [
+        "The features of your nose suggest that you are aging. Keep working on your health with good diet and exercise so that you can preserve your strength.",
+      ],
     },
     "over-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The features of your nose suggest that you are aging. Keep working on your health with good diet and exercise before it is too late.",
+      ],
+      male: [
+        "The features of your nose suggest that you are aging. Keep working on your health with good diet and exercise before it is too late.",
+      ],
     },
   },
   wealth: {
@@ -143,27 +183,41 @@ const FortuneData: FortuneDataType = {
       female: [
         "Your nose shape indicates that you have a fair opportunity to bring wealth in your life. However your nose should be luminous with no blemishes or spots. Spots mean that blockages to attaining wealth exists. You can make up for this by using cosmetics.",
       ],
-      male: ["test data test data test data"],
+      male: [
+        "Your nose shape indicates that you have a fair opportunity to bring wealth to your life. It should be free of blemishes as they indicate impediments to attaining wealth. Keep it clean and adopt a skincare routine if necessary.",
+      ],
     },
     "20-30": {
       female: [
-        "Your nose shape indicates that you have a fair opportunity to bring wealth to your husband or partner. However your nose should be luminous with no blemishes or spots. Spots mean that blockages to attaining wealth exists. You can make up for this by using cosmetics.",
+        "Your nose shape indicates that you have a fair opportunity to bring wealth to your husband or partner. Your nose should be luminous with no blemishes or spots. Spots mean that blockages to attaining wealth exists. You can make up for this by using cosmetics.",
       ],
-      male: ["test data test data test data"],
+      male: [
+        "Your nose shape indicates that you have a fair opportunity to bring wealth to your life. It should be free of blemishes as they indicate impediments to attaining wealth. Keep it clean and adopt a skincare routine if necessary. If you are frugal and ambitious in your career now, you can amass wealth in your middle age.",
+      ],
     },
     "30-40": {
       female: [
-        "Your nose shape indicates that you have a fair opportunity to bring wealth to your husband or partner. However your nose should be luminous with no blemishes or spots. Spots mean that blockages to attaining wealth exists. You can make up for this by using cosmetics.",
+        "Your nose shape indicates that you have a good opportunity to bring wealth to your husband or partner. Your nose should not have any blemishes or spots as they indicate problems in attaining wealth. It is a good investment to spend some money on a house or children now, so that you can be taken care of in old age.",
       ],
-      male: ["test data test data test data"],
+      male: [
+        "Your nose shape indicates that you have a good opportunity to bring wealth to your life. Invest your money well and keep working hard and you can gain wealth in your middle age. Keep it clean and free of blemishes to increase your luck in attaining wealth.",
+      ],
     },
     "50-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "Your nose shape indicates that you have a good opportunity to bring wealth to your husband or partner. It is a good idea to take care of the home so that your partner has the best chance to succeed.",
+      ],
+      male: [
+        "tYour nose shape indicates that you have a good opportunity to bring wealth to your life. Invest your money well and keep working hard and you can gain wealth in your middle age.  Keep it clean and free of blemishes to increase your luck in attaining wealth.",
+      ],
     },
     "over-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "Your nose shape indicates that you have a fair opportunity to bring wealth to your husband or partner. However at this age, the nose plays a lesser part in your general fortunes. Desirable traits in your lower face can make up for the lack of luck in this area. If you have invested in your husband or any children, you will be taken care of in old age.",
+      ],
+      male: [
+        "our nose shape indicates that you have a fair opportunity to bring wealth to yourself. However at this age, the nose plays a lesser part in your general fortunes. Desirable traits in your lower face can make up for the lack of luck in this area. It is time to make smart investments to secure your retirement.",
+      ],
     },
   },
   children: {
