@@ -208,7 +208,7 @@ const FortuneData: FortuneDataType = {
         "Your nose shape indicates that you have a good opportunity to bring wealth to your husband or partner. It is a good idea to take care of the home so that your partner has the best chance to succeed.",
       ],
       male: [
-        "tYour nose shape indicates that you have a good opportunity to bring wealth to your life. Invest your money well and keep working hard and you can gain wealth in your middle age.  Keep it clean and free of blemishes to increase your luck in attaining wealth.",
+        "Your nose shape indicates that you have a good opportunity to bring wealth to your life. Invest your money well and keep working hard and you can gain wealth in your middle age.  Keep it clean and free of blemishes to increase your luck in attaining wealth.",
       ],
     },
     "over-60": {
@@ -222,24 +222,44 @@ const FortuneData: FortuneDataType = {
   },
   children: {
     "under-20": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "Your eyes and the features around it suggest that you are too young to consider children yet. However keep on the lookout for a ideal partner that you could settle down with.",
+      ],
+      male: [
+        "Your eyes and the features around it suggest that you are too young to consider children yet.",
+      ],
     },
     "20-30": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "Based on the shape of your eyes, you are at the best age to have children. Although you might be preoccupied with your career, friends and other things, do not let your best ages go by.",
+      ],
+      male: [
+        "Based on the shape of your eyes, you should start thinking about whether you want children. However this is also the best time to make advancements in your career, so that should take precedence so that you can provide for your family.",
+      ],
     },
     "30-40": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "Your eyes and the features around it indicate that you are running out of time to have children if you have not done so already. If that is the case, spend more time and effort in this area rather than being distracted by career and friends.",
+      ],
+      male: [
+        "Your eyes and the features around it indicate that you are at a good point to start a family if you have not done so. You are probably well established in your career now and should choose",
+      ],
     },
     "50-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The shape of your eyes indicate that having children is not possible at your stage of life. Either because you chosen not to have them or they are almost grown. If you don't have any, consider whether or not you have lived your life to its fullest potential.",
+      ],
+      male: [
+        "The shape of your eyes indicate that having children is not primary concern for you at your stage of life. Either because you chosen not to have them or they are almost grown.",
+      ],
     },
     "over-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The shape of your eyes indicate that having children is not possible at your stage of life. Either because you chosen not to have them or they are almost grown. If you don't have any, consider whether or not you have lived your life to its potential.",
+      ],
+      male: [
+        "The shape of your eyes indicate that having children is not primary concern for you at your stage of life. Either because you chosen not to have them or they are almost grown.",
+      ],
     },
   },
   popularity: {
