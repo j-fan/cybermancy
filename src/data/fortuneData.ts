@@ -264,24 +264,44 @@ const FortuneData: FortuneDataType = {
   },
   popularity: {
     "under-20": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The features of your lower face indicate that you have some problems with your popularity. You are trying to find your authentic self but not stand out too much at the same time. Do not worry, you will be able to develop your own style in time.",
+      ],
+      male: [
+        "The features of your lower face indicate that you have some problems with your popularity. You are trying to find your authentic self but not stand out too much at the same time. Do not worry, you will be able to express yourself comfortably in time.",
+      ],
     },
     "20-30": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The features of your lower face indicate that this is a time of great change in your life. You may be losing and gaining different sets of friends as you move through life stages - from highschool to university or university to the workplace. Do not worry, you social circle will settle in time.",
+      ],
+      male: [
+        "The features of your lower face indicate that this is a time of great change in your life. You may be losing and gaining different sets of friends as you move through life stages - from highschool to university or university to the workplace. Take care of your friendships, they may open doors in your career or other parts of life if you treat them well.",
+      ],
     },
     "30-40": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "The features of your lower face show that you might be having some trouble maintaining the same amount of friendships as in your youth. They may be withdrawing because they are preoccupied with partners or careers. Remember to take of your friendships, as it is easy to become isolated or withdrawn yourself.",
+      ],
+      male: [
+        "The features of your lower face show that you might be having some trouble maintaining the same amount of friendships as in your youth. They may be withdrawing because they are preoccupied with partners or careers. Remember to take care of your friendships, they may open doors in your career or other parts of life if you treat them well.",
+      ],
     },
     "50-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "Your lower face shows that you might have some trouble commanding respect from others, whether that be strangers, children or other coworkers, compared to your younger days. Improving your appearance though posture and attire may help with this.",
+      ],
+      male: [
+        "Your lower face indicates that you are respected, mainly to your age and experience. Perhaps consider being a mentor to another so that you that you can pass on your knowledge. Remember to take care of your friendships as they may become fewer as you age.",
+      ],
     },
     "over-60": {
-      female: ["test data test data test data"],
-      male: ["test data test data test data"],
+      female: [
+        "Your lower face shows that you might have some trouble commanding respect from others, whether that be strangers, children or other coworkers, compared to your younger days. Improving your appearance though posture and attire may help with this.",
+      ],
+      male: [
+        "Your lower face indicates that you are respected, mainly to your age and experience. Perhaps consider being a mentor to another so that you that you can pass on your knowledge. Remember to take care of your friendships as they may become fewer as you age.",
+      ],
     },
   },
   assets: {
