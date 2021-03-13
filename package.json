@@ -1,14 +1,14 @@
 {
   "private": true,
-  "name": "webpack-typescript-react-starter",
+  "name": "cybermancy",
   "version": "1.0.0",
-  "repository": "git@github.com:saltyshiomix/webpack-typescript-react-starter.git",
-  "author": "Shiono Yoshihide <shiono.yoshihide@gmail.com>",
+  "repository": "git@github.com:j-fan/cybermancy.git",
+  "author": "Jane Fan",
   "license": "MIT",
   "scripts": {
     "check-types": "tsc",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --color --progress --content-base public/ --https",
-    "local": "cross-env NODE_ENV=development webpack-dev-server --color --progress --content-base public/ --host 192.168.20.28 --https",
+    "local": "cross-env NODE_ENV=development webpack-dev-server --color --progress --content-base public/ --host 192.168.20.21 --https",
     "build": "cross-env NODE_ENV=production webpack --color --progress",
     "postbuild": "ncp ./public ./docs --filter '**/*.*'",
     "start": "serve docs",
