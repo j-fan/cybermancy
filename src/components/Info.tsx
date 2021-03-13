@@ -72,7 +72,7 @@ const InfoModalContent: FunctionComponent = () => (
       ancient practice. It is hard to say whether we are being successfully read
       by others or we are conforming to the predictions presented to us.
     </p>
-    <h2>About the artwork</h2>
+    <h2>About the artist</h2>
     <p>
       Jane Fan is a software engineer and digital artist based in Sydney,
       Australia. Her works span a variety of mediums including illustration, 3D
