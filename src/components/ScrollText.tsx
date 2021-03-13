@@ -2,13 +2,7 @@ import { ResizeObserver } from "@juggle/resize-observer";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import useMeasure from "react-use-measure";
 import styled, { keyframes, css } from "styled-components";
-import {
-  colours,
-  Unica,
-  gradientSeamless,
-  gradient90deg,
-  borderWidth,
-} from "../globalStyles";
+import { colours, Unica, gradientSeamless } from "../globalStyles";
 
 const getAnimation = (direction: ScrollDirection, width: number) => {
   if (direction === ScrollDirection.LEFT) {
@@ -71,17 +65,6 @@ type ScrollTextProps = {
   text: string;
 };
 
-const trigrams = ["☰", "☱", "☲", "☳", "☴", "☵", "☶", "☷"];
-
-const getRandomTrigrams = () => {
-  let trigramsStr = "";
-  Array.from(Array(3)).forEach(() => {
-    trigramsStr =
-      trigramsStr + trigrams[Math.floor(Math.random() * trigrams.length)];
-  });
-  return trigramsStr;
-};
-
 const ScrollText: FunctionComponent<ScrollTextProps> = ({
   direction,
   text,
@@ -94,7 +77,7 @@ const ScrollText: FunctionComponent<ScrollTextProps> = ({
   useEffect(() => {
     let repeatedText = "";
     Array.from(Array(6)).forEach(() => {
-      repeatedText = repeatedText + " " + getRandomTrigrams() + " " + text;
+      repeatedText = repeatedText + "-" + text;
     });
     setTextWithTrigrams(repeatedText);
   }, []);

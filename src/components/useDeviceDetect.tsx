@@ -1,7 +1,10 @@
 import React from "react";
 
-const useDeviceDetect = (): { isMobile: boolean } => {
+type DeviceInfo = { isMobile: boolean; isAppleDevice: boolean };
+
+const useDeviceDetect = (): DeviceInfo => {
   const [isMobile, setMobile] = React.useState(false);
+  const [isAppleDevice, setIsAppleDevice] = React.useState(false);
 
   React.useEffect(() => {
     const userAgent =
@@ -12,9 +15,12 @@ const useDeviceDetect = (): { isMobile: boolean } => {
       )
     );
     setMobile(mobile);
+
+    const isApple = Boolean(userAgent.match(/iPhone|iPad|iPod/i));
+    setIsAppleDevice(isApple);
   }, []);
 
-  return { isMobile };
+  return { isMobile, isAppleDevice };
 };
 
 export { useDeviceDetect };

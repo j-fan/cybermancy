@@ -9,6 +9,7 @@ import { ModalProvider } from "./components/ModalContext";
 import { Info } from "./components/Info";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { VideoOverlay } from "./components/VideoOverlay";
+import { useDeviceDetect } from "./components/useDeviceDetect";
 
 const WEBCAM_VIDEO_ID = "webcam-video";
 const WEBCAM_CANVAS_ID = "webcam-canvas";
@@ -44,13 +45,20 @@ const FaceLandmarksDebugCanvas = styled.canvas<VideoCanvasDimensions>`
   transform: scaleX(-1);
 `;
 
-const AppWrapper = styled.div`
+const AppWrapper = styled.div<{ heightFillAvailable: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   width: 100vw;
-  height: 100vh;
+  ${({ heightFillAvailable }) =>
+    heightFillAvailable
+      ? css`
+          height: -webkit-fill-available;
+        `
+      : css`
+          height: 100vh;
+        `}
 `;
 
 const App: FunctionComponent = () => {
@@ -61,12 +69,12 @@ const App: FunctionComponent = () => {
   ] = useMeasure({
     polyfill: ResizeObserver,
   });
-
+  const { isAppleDevice } = useDeviceDetect();
   const [isFaceDetectReady, setIsFaceDetectReady] = useState(false);
 
   return (
     <ModalProvider>
-      <AppWrapper>
+      <AppWrapper heightFillAvailable={isAppleDevice}>
         <GlobalStyle />
         <MainScene
           width={videoCanvasWidth}
