@@ -23,20 +23,24 @@ const FortuneData: FortuneDataType = {
       female: [
         "Your forehead shape indicates that you are early in your career or looking to start it. In this day and age, finding a job that suits you can be difficult. Aim to be a reliable and steadfast worker. If you are looking for a husband or are already married, you do not need to spend excess effort in improving this aspect of your life.",
         "The features of your forehead suggests that you are early in your career or about to start it. Work hard and aim to be a reliable worker, but do not become overly ambitious as it can deter future partners.",
+        "Your forehead indicates that you have a good chance of starting your career on the right foot. However do not get too absorbed in progressing your career that you neglect friends and potential partners.",
       ],
       male: [
         "Your forehead shape indicates that you are early in your career or looking to start it. In this day and age, finding a job that suits you can be difficult. Remember to persevere and work hard, so that success can come to you. Embrace your ambition now as actions in your early career can set you up for life.",
         "The features of your forehead suggests that you are early in your career or about to start it. Take advantage of your youth now and be ambitious. You are more likely to make progress in your career in this stage of life. Working on your career will help you attract partners.",
+        "Your forehead indicates that you have a good chance of starting your career on the right foot. Take advantage of your youth now and be ambitious. You are more likely to make progress in your career in this stage of life. Working on your career will help you attract partners.",
       ],
     },
     "30-40": {
       female: [
         "Based on the shape of your forehead, you are likely in the middle of your career or getting close. If you are still working, perhaps consider if other parts your life needs attention, such as your family. If you have not started one yet, give it some thought as your biological clock is running out of time.",
         "The features of your forehead suggests that you are established in your career. Work hard and aim to be a reliable worker, but do not become overly ambitious as it can deter future partners. If you have not started a family yet, give it some thought as your biological clock is running out of time.",
+        "Your forehead indicates that you have a good chance of advancing in your career soon. However do not get too absorbed in progressing your career that you neglect friends and potential partners.",
       ],
       male: [
         "Based on the shape of your forehead, you are likely in the middle of your career or getting close. If you have taken successful risks in your early career you are probably enjoying it now. Otherwise it is not too late. Perhaps try re-skilling with further education so that you can move upwards or transition into a different but better compensated profession.",
         "The features of your forehead suggests that you are established in your career. Do not be afraid to be ambitious. Working on your career will help you attract partners or keep your current one.",
+        "Your forehead indicates that you have a good chance of advancing in your career soon. Do not be afraid to be ambitious. Working on your career will help you attract partners or keep your current one.",
       ],
     },
     "50-60": {
@@ -80,9 +84,13 @@ const FortuneData: FortuneDataType = {
     "30-40": {
       female: [
         "Your forehead is beginning to show signs of lines or other blemishes which can indicate troubles with your luck. It is recommended to maintain a good skincare routine or use makeup to keep the forehead bright and clear, to attract good fortune.",
+        "The features of your forehead suggest that you have a good chance to attract fortune for yourself or your partner. Take advantage of your remaining youth and beauty now to advance your social standing, especially through your choice of partner.",
+        "The features of your forehead suggest that you have a slightly poorer chance to attract fortune for yourself and your partner. Since this region only determines your luck in youth, you can overturn this with a favorable reading in the other areas of the face. To improve your luck, try to keep the forehead free of blemishes, through good skincare and cosmetics if necessary.",
       ],
       male: [
         "Your forehead is beginning to show signs of lines or other blemishes which can indicate troubles with your luck. It is recommended to maintain a good skincare routine to keep the forehead bright and clear, to attract good fortune.",
+        "Your forehead shape indicates that you have a decent chance to attract good fortune for yourself. Take advantage of your remaining youth and vitality now to advance your social standing, especially on with your friends and networks.",
+        "The features of your forehead suggest that you have a slightly poorer chance to attract fortune for yourself and your partner. Since this region only determines your luck in youth, you can overturn this with a favorable reading in the other areas of the face.",
       ],
     },
     "50-60": {
@@ -129,6 +137,7 @@ const FortuneData: FortuneDataType = {
       ],
       male: [
         "The shape of your eyebrows indicate that you are having increasing struggle in your dating life, if you are not already partnered. There is still time to attract an ideal partner if you keep working on your career and yourself.",
+        "The shape of your eyebrows indicate that you might be experiencing a bit of relationship dissatisfaction. It is better to show the courage to fix or end a relationship, rather than stay in comfortable unhappiness. Any delay will also make it harder to find good partners.",
       ],
     },
     "50-60": {
