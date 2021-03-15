@@ -22,17 +22,21 @@ const FortuneData: FortuneDataType = {
     "20-30": {
       female: [
         "Your forehead shape indicates that you are early in your career or looking to start it. In this day and age, finding a job that suits you can be difficult. Aim to be a reliable and steadfast worker. If you are looking for a husband or are already married, you do not need to spend excess effort in improving this aspect of your life.",
+        "The features of your forehead suggests that you are early in your career or about to start it. Work hard and aim to be a reliable worker, but do not become overly ambitious as it can deter future partners.",
       ],
       male: [
         "Your forehead shape indicates that you are early in your career or looking to start it. In this day and age, finding a job that suits you can be difficult. Remember to persevere and work hard, so that success can come to you. Embrace your ambition now as actions in your early career can set you up for life.",
+        "The features of your forehead suggests that you are early in your career or about to start it. Take advantage of your youth now and be ambitious. You are more likely to make progress in your career in this stage of life. Working on your career will help you attract partners.",
       ],
     },
     "30-40": {
       female: [
         "Based on the shape of your forehead, you are likely in the middle of your career or getting close. If you are still working, perhaps consider if other parts your life needs attention, such as your family. If you have not started one yet, give it some thought as your biological clock is running out of time.",
+        "The features of your forehead suggests that you are established in your career. Work hard and aim to be a reliable worker, but do not become overly ambitious as it can deter future partners. If you have not started a family yet, give it some thought as your biological clock is running out of time.",
       ],
       male: [
         "Based on the shape of your forehead, you are likely in the middle of your career or getting close. If you have taken successful risks in your early career you are probably enjoying it now. Otherwise it is not too late. Perhaps try re-skilling with further education so that you can move upwards or transition into a different but better compensated profession.",
+        "The features of your forehead suggests that you are established in your career. Do not be afraid to be ambitious. Working on your career will help you attract partners or keep your current one.",
       ],
     },
     "50-60": {
@@ -64,9 +68,13 @@ const FortuneData: FortuneDataType = {
     "20-30": {
       female: [
         'Your forehead shape indicates that you have a decent chance to attract good fortune for yourself or your partner. However this region of the face only indicates your luck "sent from heaven", or in other words - your luck in youth. If things are going well for you, do not take it for granted and make the most of it.',
+        "The features of your forehead suggest that you have a good chance to attract fortune for yourself or your partner. Take advantage of your youth and beauty now to advance your social standing, especially through your choice of partner.",
+        "The features of your forehead suggest that you have a slightly poorer chance to attract fortune for yourself and your partner. Since this region only determines your luck in youth, you can overturn this with a favorable reading in the other areas of the face. To improve your luck, try to keep the forehead free of blemishes, through good skincare and cosmetics if necessary.",
       ],
       male: [
         'Your forehead shape indicates that you have a decent chance to attract good fortune for yourself. However this region of the face only indicates your luck "sent from heaven", or in other words - your luck in youth. If things are going well for you, do not take it for granted and make the most of it.',
+        "Your forehead shape indicates that you have a decent chance to attract good fortune for yourself. Take advantage of your youth and vitality now to advance your social standing, especially on with your friends and networks.",
+        "The features of your forehead suggest that you have a slightly poorer chance to attract fortune for yourself and your partner. Since this region only determines your luck in youth, you can overturn this with a favorable reading in the other areas of the face.",
       ],
     },
     "30-40": {
@@ -106,14 +114,18 @@ const FortuneData: FortuneDataType = {
     "20-30": {
       female: [
         "The shape of your eyebrows indicate that you might be newly married or considering it. You should not leave the decision too late otherwise the ideal partners will have been chosen by others already.",
+        "The shape of your eyebrows indicate that you are at a good age to get married, if you are not already. You should not leave the decision too late otherwise the ideal partners will have been chosen by others already.",
+        "The shape of your eyebrows indicate that you might be experiencing a bit of relationship dissatisfaction. It is better to show the courage to fix or end a relationship, rather than stay in comfortable unhappiness. Any delay will also make it harder to find good partners.",
       ],
       male: [
         "The shape of your eyebrows indicate that you might be newly married or considering it. If you are not happily partnered yet, keep working on your career and yourself so that you can attract an ideal wife.",
+        "The shape of your eyebrows indicate that you might be experiencing a bit of relationship dissatisfaction. It is better to show the courage to fix or end a relationship, rather than stay in comfortable unhappiness.",
       ],
     },
     "30-40": {
       female: [
         "The shape of your eyebrows indicate that you are having increasing struggle in your dating life, if you are not already partnered. If you desire a marriage or long term relationship, this will be difficult to achieve with your youthful days behind you.",
+        "The shape of your eyebrows indicate that you might be experiencing a bit of relationship dissatisfaction. It is better to show the courage to fix or end a relationship, rather than stay in comfortable unhappiness. Any delay will also make it harder to find good partners.",
       ],
       male: [
         "The shape of your eyebrows indicate that you are having increasing struggle in your dating life, if you are not already partnered. There is still time to attract an ideal partner if you keep working on your career and yourself.",
@@ -148,17 +160,21 @@ const FortuneData: FortuneDataType = {
     "20-30": {
       female: [
         "The shape of your nose indicates that you are in the prime of life. You should aim to maintain that health though good diet and exercise you that you can preserve your beauty for longer, and to be prepared for any child you might have.",
+        "The shape of your nose indicates that you have some health concerns either mentally or physically. While you think that they are not serious enough to concern you yet, you should take care of yourself. Aim to maintain good health so that you are prepared for any potential child that comes your way.",
       ],
       male: [
         "The shape of your nose indicates that you are in the prime of life. You should maintain that health though good diet and exercise so that keep your strength and vitality for longer.",
+        "The shape of your nose indicates that you have some health concerns either mentally or physically. While you think that they are not serious enough to concern you yet, you should take care of yourself  so that keep your strength and vitality for longer.",
       ],
     },
     "30-40": {
       female: [
         "The shape of your nose indicates that you are beginning to age. You should keep taking care of your body and skin, especially your face, so that your can maintain your looks for longer.",
+        "The shape of your nose indicates that you have some health concerns either mentally or physically. While you think that they are not serious enough to concern you yet, you should take care of yourself. Aim to maintain good health so that you are prepared for any potential child that comes your way.",
       ],
       male: [
         "The shape of your nose indicates that you are beginning to age. You should keep taking care of your body so that avoid illnesses and pain in your later life.",
+        "The shape of your nose indicates that you have some health concerns either mentally or physically. While you think that they are not serious enough to concern you yet, you should take care of yourself  so that keep your strength and vitality for longer.",
       ],
     },
     "50-60": {
@@ -190,17 +206,22 @@ const FortuneData: FortuneDataType = {
     "20-30": {
       female: [
         "Your nose shape indicates that you have a fair opportunity to bring wealth to your husband or partner. Your nose should be luminous with no blemishes or spots. Spots mean that blockages to attaining wealth exists. You can make up for this by using cosmetics.",
+        "The shape of your nose indicates that your have a poorer ability to bring wealth for yourself. One way to address this problem is to find a partner with favorable features that indicate that he can bring wealth, if he is not wealthy already.",
       ],
       male: [
-        "Your nose shape indicates that you have a fair opportunity to bring wealth to your life. It should be free of blemishes as they indicate impediments to attaining wealth. Keep it clean and adopt a skincare routine if necessary. If you are frugal and ambitious in your career now, you can amass wealth in your middle age.",
+        "Your nose shape indicates that you have a poorer chance to bring wealth to your life. It should be free of blemishes as they indicate impediments to attaining wealth. Keep it clean and adopt a skincare routine if necessary. If you are frugal and ambitious in your career now, you can amass wealth in your middle age.",
+        "Your nose shape indicates that you have a good chance to bring wealth to your life. Continue to work hard at your career and make smart investments into stocks and property so that you can build on that wealth.",
       ],
     },
     "30-40": {
       female: [
         "Your nose shape indicates that you have a good opportunity to bring wealth to your husband or partner. Your nose should not have any blemishes or spots as they indicate problems in attaining wealth. It is a good investment to spend some money on a house or children now, so that you can be taken care of in old age.",
+        "The shape of your nose indicates that your have a poorer ability to bring wealth for yourself. One way to address this problem is to find a partner with favorable features that indicate that he can bring wealth, if he is not wealthy already.",
       ],
       male: [
-        "Your nose shape indicates that you have a good opportunity to bring wealth to your life. Invest your money well and keep working hard and you can gain wealth in your middle age. Keep it clean and free of blemishes to increase your luck in attaining wealth.",
+        "Your nose shape indicates that you have a fair opportunity to bring wealth to your life. Invest your money well and keep working hard and you can gain wealth in your middle age. Keep it clean and free of blemishes to increase your luck in attaining wealth.",
+        "Your nose shape indicates that you have a poorer chance to bring wealth to your life. It should be free of blemishes as they indicate impediments to attaining wealth. Keep it clean and adopt a skincare routine if necessary. If you are frugal and ambitious in your career now, you can amass wealth in your middle age.",
+        "Your nose shape indicates that you have a good chance to bring wealth to your life. Continue to work hard at your career and make smart investments into stocks and property so that you can build on that wealth.",
       ],
     },
     "50-60": {
@@ -232,17 +253,21 @@ const FortuneData: FortuneDataType = {
     "20-30": {
       female: [
         "Based on the shape of your eyes, you are at the best age to have children. Although you might be preoccupied with your career, friends and other things, do not let your best ages go by.",
+        "The shape of your eyes and the features around it indicate that you may have complications in childbirth. To reduce the risks, you should consider having children earlier while you are young and healthy.",
       ],
       male: [
         "Based on the shape of your eyes, you should start thinking about whether you want children. However this is also the best time to make advancements in your career, so that should take precedence so that you can provide for your family.",
+        "The shape of your eyes indicate that you may have problems with starting a family. You should work on yourself and your career now to attract a good partner, or else this life milestone will be significantly delayed.",
       ],
     },
     "30-40": {
       female: [
         "Your eyes and the features around it indicate that you are running out of time to have children if you have not done so already. If that is the case, spend more time and effort in this area rather than being distracted by career and friends.",
+        "The shape of your eyes and the features around it indicate that you may have complications in childbirth. To reduce the risks, you should consider having children sooner rather than later.",
       ],
       male: [
-        "Your eyes and the features around it indicate that you are at a good point to start a family if you have not done so. You are probably well established in your career now and should choose",
+        "Your eyes and the features around it indicate that you are at a good point to start a family if you have not done so. You are probably well established in your career now and should take care of other life concerns.",
+        "The shape of your eyes indicate that you may have problems with starting a family. You should work on yourself and your career now to attract a good partner, or else this life milestone will be significantly delayed.",
       ],
     },
     "50-60": {
@@ -274,17 +299,21 @@ const FortuneData: FortuneDataType = {
     "20-30": {
       female: [
         "The features of your lower face indicate that this is a time of great change in your life. You may be losing and gaining different sets of friends as you move through life stages - from highschool to university or university to the workplace. Do not worry, you social circle will settle in time.",
+        "The features of your lower face indicate that your social circle is undergoing a lot of change. You should be strategic in your friendships and network well, as one of them could be a good partner for you.",
       ],
       male: [
         "The features of your lower face indicate that this is a time of great change in your life. You may be losing and gaining different sets of friends as you move through life stages - from highschool to university or university to the workplace. Take care of your friendships, they may open doors in your career or other parts of life if you treat them well.",
+        "The features of your lower face indicate that your social circle is undergoing a lot of change. You should be strategic in your friendships and network well, as they could help you in your career.",
       ],
     },
     "30-40": {
       female: [
         "The features of your lower face show that you might be having some trouble maintaining the same amount of friendships as in your youth. They may be withdrawing because they are preoccupied with partners or careers. Remember to take of your friendships, as it is easy to become isolated or withdrawn yourself.",
+        "The features of your lower face indicate that your friendships are fewer in number but higher in quality. Keep maintaining these friendships as you might be able to find a potential partner among them, if you don't have one already.",
       ],
       male: [
         "The features of your lower face show that you might be having some trouble maintaining the same amount of friendships as in your youth. They may be withdrawing because they are preoccupied with partners or careers. Remember to take care of your friendships, they may open doors in your career or other parts of life if you treat them well.",
+        "The features of your lower face indicate that your friendships are fewer in number but higher in quality. Keep maintaining these friendships as you might be able to help each other in your careers.",
       ],
     },
     "50-60": {
@@ -316,9 +345,11 @@ const FortuneData: FortuneDataType = {
     "20-30": {
       female: [
         "The features of your eyes indicate that you are young and starting to accumulate some assets. As a young person you are feeling the pressure of a competitive economy. It is hard to acquire large assets like property in this day and age. It will help to share that burden with a life partner.",
+        "The features of your eyes indicate that you are young and having trouble getting assets in your name. You may be able to increase your ability to acquire assets by combining finances with family or a partner.",
       ],
       male: [
         "The features of your eyes indicate that you are young and starting to accumulate some assets. As a young person you are feeling the pressure of a competitive economy. It is hard to acquire large assets like property in this day and age. You will have to work hard and smart. Taking care of your finances will help you attract a good partner.",
+        "The features of your eyes indicate that you are young and having trouble getting assets in your name. You may be able to increase your ability to acquire assets by combining finances with family or other like-minded friends.",
       ],
     },
     "30-40": {
