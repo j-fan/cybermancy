@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
-import { colours, IconText, SmallerIconText,textShadow, device } from "../globalStyles";
+import { colours, IconText,textShadow, device } from "../globalStyles";
 import { useModal } from "./ModalContext";
 
 const IconContainer = styled.div`
@@ -23,17 +23,17 @@ const IconContainer = styled.div`
   }
 `;
 
-const IconBackground = styled.div`
+const IconBackground = styled("div")`
   background: ${colours.black};
-  width: 30px;
+  min-width: 30px;
   height: 30px;
-  border-radius: 50%;
+  border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
 
   @media ${device.mobileL} {
-    width: 40px;
+    min-width: 40px;
     height: 40px;
   }
   
@@ -41,6 +41,19 @@ const IconBackground = styled.div`
     transform: scale(1.2);
   }
 `;
+
+const RestartButton = styled("span")`
+  font-size: 0.8rem;
+  padding: 2px 4px;
+  border: 1.5px solid ${colours.teal};
+  border-radius: 30px;
+  box-sizing: border-box;
+
+  @media ${device.mobileL} {
+    font-size: 1rem;
+    padding: 4px 8px;
+  }
+`
 
 const InfoModalContent: FunctionComponent = () => (
   <div>
@@ -107,7 +120,7 @@ const FloatingButtons: FunctionComponent = () => {
       <IconBackground onClick={() => {
         window.location.reload()
       }}>
-        <SmallerIconText >⟳</SmallerIconText>
+        <RestartButton>Restart</RestartButton>
       </IconBackground>
     </IconContainer>
 
