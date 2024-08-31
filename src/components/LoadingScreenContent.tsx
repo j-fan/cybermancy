@@ -5,6 +5,7 @@ import styled, { keyframes, css } from "styled-components";
 import { colours, Unica, BodyText, gradientBorderStyle } from "../globalStyles";
 import { Button } from "./Button";
 import { useModal } from "./ModalContext";
+import { startFaceDetect } from "../faceApi/faceDetect";
 
 const LoadingScreenContentWrapper = styled("div")<{ showLoading: boolean }>`
   color: ${colours.white};
@@ -115,7 +116,14 @@ const LoadingScreenContent: FunctionComponent<LoadingScreenContentProps> = ({
           <StyledBodyText width={height < width ? height : width}>
             {IntroductionText}
           </StyledBodyText>
-          <Button onClick={() => setShowLoading(false)}>Enter</Button>
+          <Button
+            onClick={() => {
+              startFaceDetect();
+              setShowLoading(false);
+            }}
+          >
+            Enter
+          </Button>
         </>
       ) : (
         renderAnalysingFaceMessage()

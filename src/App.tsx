@@ -75,7 +75,7 @@ const App: FunctionComponent = () => {
 
   useEffect(() => {
     inactivityTimeout(5);
-  }, [])
+  }, []);
 
   return (
     <ModalProvider>
@@ -98,7 +98,6 @@ const App: FunctionComponent = () => {
             setUseMeasureRef(ref);
             videoRef.current = ref;
           }}
-          onPlay={startFaceDetect}
         />
         <WebcamCanvas id={WEBCAM_CANVAS_ID} />
         <FaceLandmarksDebugCanvas
