@@ -99,12 +99,10 @@ const LoadingScreenContent: FunctionComponent<LoadingScreenContentProps> = ({
   const renderAnalysingFaceMessage = () => {
     if (!isFaceDetectReady) {
       return (
-        <>
-          <MessageBox>
-            <p>Please ensure that your face is in view and well lit</p>
-            <LoadingText>Anaylsing face...</LoadingText>
-          </MessageBox>
-        </>
+        <MessageBox>
+          <p>Please ensure that your face is in view and well lit</p>
+          <LoadingText>Anaylsing face...</LoadingText>
+        </MessageBox>
       );
     }
     return null;
