@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef, useState } from "react";
+import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import { ResizeObserver } from "@juggle/resize-observer";
 import useMeasure from "react-use-measure";
 import styled, { css } from "styled-components";
@@ -10,6 +10,7 @@ import { FloatingButtons } from "./components/FloatingButtons";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { VideoOverlay } from "./components/VideoOverlay";
 import { useDeviceDetect } from "./components/useDeviceDetect";
+import { inactivityTimeout } from "./utils/inactivityTimeout";
 
 const WEBCAM_VIDEO_ID = "webcam-video";
 const WEBCAM_CANVAS_ID = "webcam-canvas";
@@ -71,6 +72,10 @@ const App: FunctionComponent = () => {
   });
   const { isAppleDevice } = useDeviceDetect();
   const [isFaceDetectReady, setIsFaceDetectReady] = useState(false);
+
+  useEffect(() => {
+    inactivityTimeout(5);
+  }, [])
 
   return (
     <ModalProvider>
