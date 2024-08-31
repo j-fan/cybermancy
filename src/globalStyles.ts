@@ -55,6 +55,16 @@ const IconText = styled.span`
   ${OpenSans}
 `;
 
+const SmallerIconText = styled.span`
+  ${OpenSans}
+
+  font-size: 1.2rem;
+
+  @media ${device.mobileL} {
+    font-size: 1.5rem;
+  }
+`;
+
 const BodyText = styled.p`
   ${OpenSans}
   font-size: 0.8em;
@@ -151,6 +161,7 @@ export {
   Title2,
   Title3,
   IconText,
+  SmallerIconText,
   BodyText,
   Unica,
   gradientSeamless,

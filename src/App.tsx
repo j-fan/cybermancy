@@ -6,7 +6,7 @@ import { device, GlobalStyle } from "./globalStyles";
 import { MainScene } from "./babylon/MainScene";
 import { startFaceDetect } from "./faceApi/faceDetect";
 import { ModalProvider } from "./components/ModalContext";
-import { Info } from "./components/Info";
+import { FloatingButtons } from "./components/FloatingButtons";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { VideoOverlay } from "./components/VideoOverlay";
 import { useDeviceDetect } from "./components/useDeviceDetect";
@@ -101,7 +101,7 @@ const App: FunctionComponent = () => {
           width={videoCanvasWidth}
           height={videoCanvasHeight}
         />
-        <Info />
+        <FloatingButtons />
         <LoadingScreen isFaceDetectReady={isFaceDetectReady} />
       </AppWrapper>
     </ModalProvider>

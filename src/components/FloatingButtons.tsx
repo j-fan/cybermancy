@@ -1,10 +1,12 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
-import { colours, IconText, textShadow, device } from "../globalStyles";
+import { colours, IconText, SmallerIconText,textShadow, device } from "../globalStyles";
 import { useModal } from "./ModalContext";
 
 const IconContainer = styled.div`
   position: fixed;
+  display: flex;
+  gap: 0.5rem;
   top: 0;
   right: 0;
   color: ${colours.teal};
@@ -14,10 +16,6 @@ const IconContainer = styled.div`
   z-index: 5;
   transition: transform ease 0.05s;
   ${textShadow}
-
-  &:hover {
-    transform: scale(1.2);
-  }
 
   @media ${device.mobileL} {
     font-size: 2rem;
@@ -37,6 +35,10 @@ const IconBackground = styled.div`
   @media ${device.mobileL} {
     width: 40px;
     height: 40px;
+  }
+  
+  &:hover {
+    transform: scale(1.2);
   }
 `;
 
@@ -86,24 +88,30 @@ const InfoModalContent: FunctionComponent = () => (
   </div>
 );
 
-const Info: FunctionComponent = () => {
+const FloatingButtons: FunctionComponent = () => {
   const { updateModal } = useModal();
   return (
     <IconContainer
-      onClick={() =>
+      
+    >
+      <IconBackground onClick={() =>
         updateModal?.({
           isOpen: true,
           title: "About",
           description: <InfoModalContent />,
           imageUrl: "./images/info.png",
         })
-      }
-    >
-      <IconBackground>
+      }>
         <IconText>ⓘ</IconText>
       </IconBackground>
+      <IconBackground onClick={() => {
+        window.location.reload()
+      }}>
+        <SmallerIconText >⟳</SmallerIconText>
+      </IconBackground>
     </IconContainer>
+
   );
 };
 
-export { Info };
+export { FloatingButtons };
