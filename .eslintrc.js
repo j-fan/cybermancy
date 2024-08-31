@@ -25,6 +25,7 @@ module.exports = {
 
   rules: {
     "import/no-default-export": "error",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "react/no-unknown-property": "off"
   },
 };
