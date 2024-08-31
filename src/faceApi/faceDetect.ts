@@ -47,7 +47,7 @@ const runFaceLandmarkDetection = async ({
 
   const faceLandmarkDebugCanvas = document.getElementById(
     FACE_DEBUG_CANVAS_ID
-  ) as HTMLCanvasElement;
+  ) as unknown as HTMLCanvasElement;
 
   if (showDebug && faceLandmarkDebugCanvas && result) {
     const dimensions = faceApi.matchDimensions(

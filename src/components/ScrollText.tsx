@@ -26,7 +26,7 @@ const getAnimation = (direction: ScrollDirection, width: number) => {
   }
 };
 
-const ScrollTextStyle = styled.span<{
+const ScrollTextStyle = styled("span")<{
   direction: ScrollDirection;
   width: number;
 }>`

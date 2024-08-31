@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import { gradientBorderStyle, OpenSans, colours, device } from "../globalStyles";
 
-const ButtonStyle = styled.div`
+const ButtonStyle = styled("div")`
   ${gradientBorderStyle};
   padding: 8px 16px;
   ${OpenSans}

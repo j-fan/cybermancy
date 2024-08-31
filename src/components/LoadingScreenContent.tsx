@@ -1,12 +1,12 @@
 import { ResizeObserver } from "@juggle/resize-observer";
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FunctionComponent, PropsWithChildren, useEffect } from "react";
 import useMeasure from "react-use-measure";
 import styled, { keyframes, css } from "styled-components";
 import { colours, Unica, BodyText, gradientBorderStyle } from "../globalStyles";
 import { Button } from "./Button";
 import { useModal } from "./ModalContext";
 
-const LoadingScreenContentWrapper = styled.div<{ showLoading: boolean }>`
+const LoadingScreenContentWrapper = styled("div")<{ showLoading: boolean }>`
   color: ${colours.white};
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@ const LoadingText = styled.span`
   animation: ${fadeInOut} 1s linear infinite;
 `;
 
-const StyledBodyText = styled(BodyText)<{ width: number }>`
+const StyledBodyText = styled(BodyText)<PropsWithChildren<{ width: number }>>`
   ${({ width }) =>
     css`
       width: calc(${width}px * 0.5);

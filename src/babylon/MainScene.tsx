@@ -15,7 +15,7 @@ import { useModal } from "../components/ModalContext";
 import { useDeviceDetect } from "../components/useDeviceDetect";
 // import "@babylonjs/inspector";
 
-const Wrapper = styled.div<{
+const Wrapper = styled("div")<{
   width: number;
   height: number;
   isModalOpen?: boolean;

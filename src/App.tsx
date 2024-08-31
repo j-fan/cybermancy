@@ -20,7 +20,7 @@ type VideoCanvasDimensions = {
   height: number;
 };
 
-const WebcamVideo = styled.video`
+const WebcamVideo = styled("video")`
   height: auto;
   width: 100%;
   transform: scaleX(-1);
@@ -32,11 +32,11 @@ const WebcamVideo = styled.video`
   }
 `;
 
-const WebcamCanvas = styled.canvas`
+const WebcamCanvas = styled("canvas")`
   position: fixed;
 `;
 
-const FaceLandmarksDebugCanvas = styled.canvas<VideoCanvasDimensions>`
+const FaceLandmarksDebugCanvas = styled("canvas")<VideoCanvasDimensions>`
   ${({ width, height }) => css`
     width: ${width}px;
     height: ${height}px;
@@ -45,7 +45,7 @@ const FaceLandmarksDebugCanvas = styled.canvas<VideoCanvasDimensions>`
   transform: scaleX(-1);
 `;
 
-const AppWrapper = styled.div<{ heightFillAvailable: boolean }>`
+const AppWrapper = styled("div")<{ heightFillAvailable: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;

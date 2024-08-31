@@ -4,7 +4,7 @@ import { colours } from "../globalStyles";
 import { LoadingScreenContent } from "./LoadingScreenContent";
 import { ScrollDirection, ScrollText } from "./ScrollText";
 
-const LoadingScreenContainer = styled.div<{
+const LoadingScreenContainer = styled("div")<{
   showLoading: boolean;
   isFaceDetectReady: boolean;
 }>`

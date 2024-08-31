@@ -1,5 +1,5 @@
 import { ResizeObserver } from "@juggle/resize-observer";
-import React, { FunctionComponent, useEffect, useRef } from "react";
+import React, { FunctionComponent, PropsWithChildren, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import useMeasure from "react-use-measure";
 import styled, { css } from "styled-components";
@@ -22,7 +22,7 @@ export type ModalProps = {
   imageUrl?: string;
 };
 
-const ModalBackground = styled.div<{ isOpen?: boolean }>`
+const ModalBackground = styled("div")<{ isOpen?: boolean }>`
   z-index: 4;
   position: fixed;
   width: 100%;
@@ -41,7 +41,7 @@ const ModalBackground = styled.div<{ isOpen?: boolean }>`
         `}
 `;
 
-const ModalContainer = styled.div<{ isOpen?: boolean; isAutoHeight: boolean }>`
+const ModalContainer = styled("div")<{ isOpen?: boolean; isAutoHeight: boolean }>`
   width: calc(100% - 40px);
   color: ${colours.white};
   white-space: break-spaces;
@@ -86,7 +86,7 @@ const ModalContainer = styled.div<{ isOpen?: boolean; isAutoHeight: boolean }>`
         `}
 `;
 
-const ExitButtonStyle = styled.div`
+const ExitButtonStyle = styled("div")`
   color: ${colours.teal};
   background-color: ${colours.black};
   width: 40px;
@@ -109,7 +109,7 @@ const ExitButtonStyle = styled.div`
   }
 `;
 
-const StyledImage = styled.img`
+const StyledImage = styled("img")`
   width: 100%;
   height: 100px;
   object-fit: contain;
@@ -119,7 +119,7 @@ const StyledImage = styled.img`
   }
 `;
 
-const StyledTitle = styled(Title1)<{ hasTopMargin: boolean }>`
+const StyledTitle = styled(Title1)<PropsWithChildren<{ hasTopMargin: boolean }>>`
   text-align: center;
   ${({ hasTopMargin }) =>
     !hasTopMargin &&
@@ -128,7 +128,7 @@ const StyledTitle = styled(Title1)<{ hasTopMargin: boolean }>`
     `}
 `;
 
-const ScrollWrapper = styled.div`
+const ScrollWrapper = styled("div")`
   box-sizing: border-box;
   max-height: 100%;
   overflow-x: hidden;
