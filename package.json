@@ -8,7 +8,7 @@
   "scripts": {
     "check-types": "tsc",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --color --progress --content-base public/ --https",
-    "local": "cross-env NODE_ENV=development webpack-dev-server --color --progress --content-base public/ --host 192.168.20.21 --https",
+    "local": "cross-env NODE_ENV=development webpack-dev-server --color --progress --content-base public/ --host 192.168.20.49 --https",
     "build": "cross-env NODE_ENV=production webpack --color --progress",
     "postbuild": "ncp ./public ./docs --filter '**/*.*'",
     "start": "serve -p 5011 docs",
