@@ -73,14 +73,18 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 500;
-    src: url(/cybermancy/font/OpenSans.ttf) format("truetype");
+    src: 
+      url(/font/OpenSans.ttf) format("truetype"),
+      url(/cybermancy/font/OpenSans.ttf) format("truetype");
   }
 
   @font-face { 
     font-family: "Unica One";
     font-style: normal;
     font-weight: 500;
-    src: url(/cybermancy/font/UnicaOne-Regular.ttf) format("truetype");
+    src:
+      url(/font/UnicaOne-Regular.ttf) format("truetype"),
+      url(/cybermancy/font/UnicaOne-Regular.ttf) format("truetype");
   }
 
   body {
