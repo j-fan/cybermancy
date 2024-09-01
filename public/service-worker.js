@@ -1,17 +1,18 @@
 
 // Define the cache name and the files to cache initially
 const CACHE_NAME = "v1";
+const BASE_PATH = '/cybermancy';  // Base path for GitHub Pages
 const URLS_TO_CACHE = [
-  "/",
-  "/index.html",
-  "/manifest.json",
-  "/images/bagua.png",
-  "/models/age_gender_model-shard1.shard",
-  "/models/age_gender_model-weights_manifest.json",
-  "/models/face_landmark_68_tiny_model-shard1",
-  "/models/face_landmark_68_tiny_model-weights_manifest.json",
-  "/models/tiny_face_detector_model-shard1.shard",
-  "/models/tiny_face_detector_model-weights_manifest.json",
+  `${BASE_PATH}/`,
+  `${BASE_PATH}/index.html`,
+  `${BASE_PATH}/manifest.json`,
+  `${BASE_PATH}/images/bagua.png`,
+  `${BASE_PATH}/models/age_gender_model-shard1.shard`,
+  `${BASE_PATH}/models/age_gender_model-weights_manifest.json`,
+  `${BASE_PATH}/models/face_landmark_68_tiny_model-shard1`,
+  `${BASE_PATH}/models/face_landmark_68_tiny_model-weights_manifest.json`,
+  `${BASE_PATH}/models/tiny_face_detector_model-shard1.shard`,
+  `${BASE_PATH}/models/tiny_face_detector_model-weights_manifest.json`,
 ];
 
 // Install event: cache the files
