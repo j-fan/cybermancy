@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
-import { colours, IconText,textShadow, device } from "../globalStyles";
+import { colours, IconText, textShadow, device } from "../globalStyles";
 import { useModal } from "./ModalContext";
 
 const IconContainer = styled.div`
@@ -24,7 +24,6 @@ const IconContainer = styled.div`
 `;
 
 const IconBackground = styled("div")`
-  background: ${colours.black};
   min-width: 30px;
   height: 30px;
   border-radius: 30px;
@@ -36,24 +35,24 @@ const IconBackground = styled("div")`
     min-width: 40px;
     height: 40px;
   }
-  
+
   &:hover {
     transform: scale(1.2);
   }
 `;
 
-const RestartButton = styled("span")`
-  font-size: 0.8rem;
+const ButtonText = styled("span")`
+  background: ${colours.black};
+  font-size: 1rem;
   padding: 2px 4px;
   border: 1.5px solid ${colours.teal};
   border-radius: 30px;
   box-sizing: border-box;
 
   @media ${device.mobileL} {
-    font-size: 1rem;
     padding: 4px 8px;
   }
-`
+`;
 
 const InfoModalContent: FunctionComponent = () => (
   <div>
@@ -104,26 +103,27 @@ const InfoModalContent: FunctionComponent = () => (
 const FloatingButtons: FunctionComponent = () => {
   const { updateModal } = useModal();
   return (
-    <IconContainer
-      
-    >
-      <IconBackground onClick={() =>
-        updateModal?.({
-          isOpen: true,
-          title: "About",
-          description: <InfoModalContent />,
-          imageUrl: "./images/info.png",
-        })
-      }>
-        <IconText>ⓘ</IconText>
+    <IconContainer>
+      <IconBackground
+        onClick={() =>
+          updateModal?.({
+            isOpen: true,
+            title: "About",
+            description: <InfoModalContent />,
+            imageUrl: "./images/info.png",
+          })
+        }
+      >
+        <ButtonText>About</ButtonText>
       </IconBackground>
-      <IconBackground onClick={() => {
-        window.location.reload()
-      }}>
-        <RestartButton>Restart</RestartButton>
+      <IconBackground
+        onClick={() => {
+          window.location.reload();
+        }}
+      >
+        <ButtonText>Restart</ButtonText>
       </IconBackground>
     </IconContainer>
-
   );
 };
 
