@@ -69,6 +69,20 @@ const BodyText = styled.p`
 `;
 
 const GlobalStyle = createGlobalStyle`
+  @font-face { 
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 500;
+    src: url(/font/OpenSans.ttf) format("truetype");
+  }
+
+  @font-face { 
+    font-family: "Unica One";
+    font-style: normal;
+    font-weight: 500;
+    src: url(/font/UnicaOne-Regular.ttf) format("truetype");
+  }
+
   body {
     margin: 0;
     padding: 0;
