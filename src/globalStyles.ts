@@ -87,6 +87,10 @@ const GlobalStyle = createGlobalStyle`
       url(/cybermancy/font/UnicaOne-Regular.ttf) format("truetype");
   }
 
+  html {
+    background-color: ${colours.black};
+  }
+
   body {
     margin: 0;
     padding: 0;
