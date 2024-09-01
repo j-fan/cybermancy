@@ -4,7 +4,6 @@ import useMeasure from "react-use-measure";
 import styled, { css } from "styled-components";
 import { device, GlobalStyle } from "./globalStyles";
 import { MainScene } from "./babylon/MainScene";
-import { startFaceDetect } from "./faceApi/faceDetect";
 import { ModalProvider } from "./components/ModalContext";
 import { FloatingButtons } from "./components/FloatingButtons";
 import { LoadingScreen } from "./components/LoadingScreen";
