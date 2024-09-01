@@ -1,9 +1,7 @@
-// Casting `self` to ServiceWorkerGlobalScope
-const sw = self as unknown as ServiceWorkerGlobalScope;
 
 // Define the cache name and the files to cache initially
 const CACHE_NAME = "v1";
-const URLS_TO_CACHE: string[] = [
+const URLS_TO_CACHE = [
   "/",
   "/index.html",
   "/manifest.json",
@@ -17,7 +15,7 @@ const URLS_TO_CACHE: string[] = [
 ];
 
 // Install event: cache the files
-sw.addEventListener("install", (event: ExtendableEvent) => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log("Opened cache");
@@ -27,7 +25,7 @@ sw.addEventListener("install", (event: ExtendableEvent) => {
 });
 
 // Activate event: update the cache if necessary
-sw.addEventListener("activate", (event: ExtendableEvent) => {
+self.addEventListener("activate", (event) => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then((cacheNames) =>
@@ -43,7 +41,7 @@ sw.addEventListener("activate", (event: ExtendableEvent) => {
 });
 
 // Fetch event: serve cached content when offline
-sw.addEventListener("fetch", (event: FetchEvent) => {
+self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
       // Cache hit - return response
@@ -70,20 +68,3 @@ sw.addEventListener("fetch", (event: FetchEvent) => {
   );
 });
 
-export const registerCachingWebWorker = (): void => {
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker
-        .register("/service-worker.js")
-        .then((registration) => {
-          console.log(
-            "ServiceWorker registration successful with scope: ",
-            registration.scope
-          );
-        })
-        .catch((error) => {
-          console.log("ServiceWorker registration failed: ", error);
-        });
-    });
-  }
-};
