@@ -73,7 +73,6 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
    * components, so we have to pass it down from here.
    */
   const { updateModal, isOpen: isModalOpen } = useModal();
-  const { isMobile } = useDeviceDetect();
   const [hdrTexture, setHdrTexture] = useState<BaseTexture | undefined>(
     undefined
   );
@@ -98,15 +97,9 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
     defaultPipeline.chromaticAberrationEnabled = true;
     defaultPipeline.grainEnabled = true;
 
-    if (isMobile) {
-      defaultPipeline.chromaticAberration.aberrationAmount = 0.04;
-      defaultPipeline.chromaticAberration.radialIntensity = 0.1;
-      defaultPipeline.grain.intensity = 10;
-    } else {
-      defaultPipeline.chromaticAberration.aberrationAmount = -15;
-      defaultPipeline.chromaticAberration.radialIntensity = 0.2;
-      defaultPipeline.grain.intensity = 50;
-    }
+    defaultPipeline.chromaticAberration.aberrationAmount = 0.02;
+    defaultPipeline.chromaticAberration.radialIntensity = 0.1;
+    defaultPipeline.grain.intensity = 50;
   };
 
   const hdrTextureRef = useCallback((node) => {
