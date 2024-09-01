@@ -27,7 +27,7 @@ const startFaceDetect = async (): Promise<void> => {
   await faceApi.nets.ageGenderNet.loadFromUri("./models");
   await faceApi.nets.faceLandmark68TinyNet.loadFromUri("./models");
 
-  const inputSize = 512;
+  const inputSize = 128;
   const scoreThreshold = 0.5;
   detector = await new TinyFaceDetectorOptions({
     inputSize,

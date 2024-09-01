@@ -6,7 +6,9 @@ const initCamera = async (): Promise<void> => {
   const getWebcam = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
+        video: {
+          width: 640,
+        },
       });
       videoElement.srcObject = stream;
     } catch (err) {

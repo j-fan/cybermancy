@@ -131,7 +131,7 @@ const MainScene: FunctionComponent<MainSceneProps> = ({
 
   return (
     <Wrapper width={width} height={height} isModalOpen={isModalOpen}>
-      <Engine antialias canvasId="babylonJS" width={width} height={height}>
+      <Engine canvasId="babylonJS" width={width} height={height}>
         <Scene
           clearColor={new Color4(0, 0, 0, 0)}
           onSceneMount={onSceneMounted}
