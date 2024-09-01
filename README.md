@@ -1,23 +1,23 @@
 ## Cybermancy II
 
-Interactive browser and webcam based artwork (work in progress)
+Interactive browser and webcam based artwork
 
 ## Usage
 
 ```bash
-# installation
-$ yarn
+# Installation
+$ npm i
 
-# development mode
+# Development mode
 # it automatically opens `http://localhost:8080` in your default browser
-$ yarn dev
+$ npm start
 
-# check types
-$ yarn check-types
+# Check types
+$ npm run check-types
 
-# production build
-$ yarn build
+# Generate production build
+$ npm run build
 
-# production mode
-$ yarn start
+# Preview production build
+$ npm run serve
 ```
